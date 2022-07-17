@@ -1,0 +1,84 @@
+
+Project Name - 
+scope-
+
+        Car Owner travelling to another city can minimise his fuel expenses by allowing trusted passengers to
+  travel with him.
+	In this app/website, traveller can get ride to his/her destination at competative price.
+  and according to his convinience with trusted drivers.
+	
+
+
+Features-
+1.In this app/website, traveller can get ride to his/her destination at competative price.
+  and according to his convinience.
+2.Traveller can search rides available from his nearest location to destination according to date and time.
+3.Passenger can see and compare the costs of rides offered by different drivers.
+4.He/she will be able to see photos of rides and drivers with contact details of respective.
+5.Payment flexibility available--can pay before or after ride.
+6.Passenger is able to see reviews of drivers of available rides and choose ride accordingly.
+7.After ride,he can give feedback and rating of driver. 
+8.Driver can post his ride with following-
+ i.from location
+ ii.Destination
+ iii.Date
+ iv.Time
+ v.Fare
+ vi.Seat availability.
+ vii.pickup point
+ viii.Drop point
+ ix.Car Model
+ x.Petro/Diesel/CNG
+
+9.Driver can write review about passengers & passanger car review driver.
+10.Driver and Passenger can cancel their ride.
+11.integrate google map.
+12.Complaint section
+13.Notification - before canceling
+
+female seat/ smokers allowed
+middle seat chargrs?
+
+
+scope
+summaray - 
+features - billing/ui-ux/feedback/reports
+use case digram.
+
+
+___________________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+Scope -
+Scope of our project is to build an app which will allow the car owner to publish a ride and passanger to search a ride, from one location to another.
+where ride publisher can mention the time of departure, pickup location, drop location, seats available, ticket cost and other details.
+A passanger can search the rides from desiered location to destination. He will be able to see time of departure, cost, pickup & frop point, map and other details.
+Ride publisher and passasnger both will be able to see the feedback and reviews of each other and can rate each other after ride.
+there will be a admin module to verify the profiles and manage complaints.
+
+Features-
+1.Login / register-
+	Only Register user can post a ride and book a ride
+	Visitor(non Registerd user) can only search
+
+2.Features for Car owner
+	post a ride.
+	search other ride.
+	See the contact information/personal infromation of the passenger.
+	See reviews of passager.
+	Cancel a Ride.
+	Give review of passanger.
+
+	
+	
+
+
+
+
+
+
+
