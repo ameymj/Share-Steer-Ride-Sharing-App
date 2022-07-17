@@ -54,6 +54,7 @@ ________________________________________________________________________________
 
 
 Scope -
+
 Scope of our project is to build an app which will allow the car owner to publish a ride and passanger to search a ride, from one location to another.
 where ride publisher can mention the time of departure, pickup location, drop location, seats available, ticket cost and other details.
 A passanger can search the rides from desiered location to destination. He will be able to see time of departure, cost, pickup & frop point, map and other details.
@@ -62,23 +63,66 @@ there will be a admin module to verify the profiles and manage complaints.
 
 Features-
 1.Login / register-
-	Only Register user can post a ride and book a ride
-	Visitor(non Registerd user) can only search
+	-Only Register user can post a ride and book a ride
+
+	-Visitor(non Registerd user) can only search
 
 2.Features for Car owner
-	post a ride.
-	search other ride.
-	See the contact information/personal infromation of the passenger.
-	See reviews of passager.
-	Cancel a Ride.
-	Give review of passanger.
+	-post a ride - owner can post a ride with details like 
+				From city
+				Destination city
+				departure time
+				pick up and drop point
+				Fare
+				Car model
+				Seat availablilty
+				Stops in between
+				pets allowed/ smoking allowed
+				
 
+	-search other ride - User can pos ride as well as search other rides.
+
+	-See the contact information/personal infromation of the passenger - car oner can see the information like conatact no, email,Gender, profile picture of the passanger
+									
+	-See reviews of passager -car owner can see  the reviews of the passanger and rating of the passaner.
+
+	-Cancel a Ride - Driver can cancel the ride.
+
+	-Give review of passanger -Driver can give review of the passanger after the ride
+
+	
+3.Features for passanger
+	-Search a ride - Passanger can search the ride by seeing details like-
+				From city
+				Destination city
+				departure time
+				pick up and drop point
+				Fare
+				Car model
+				Seat availablilty
+				Stops in between
+				pets allowed/ smoking allowed
+				
+	-See the review of driver - passager can see the reviews of he driver
+
+	-Rate the driver - passager can write review about driver after ride
+	
+	-cancel Ride - Passager can cancel the ride
+	
+	-See contact info / personal info of driver - see the email, contact no , profile photo, photoes of car driver verified or not.
+
+
+4.features for admin
+	-verify profile- verify mobile number by otp/ photoes screening
+	-Handle complaints-
+	-Generate Reports-Genreate daily monthly weekly reports of rides
 	
 	
 
+Summary :
 
 
 
-
+Uml Diagram
 
 
