@@ -57,7 +57,7 @@ Scope -
 
 Scope of our project is to build an app which will allow the car owner to publish a ride and passanger to search a ride, from one location to another.
 where ride publisher can mention the time of departure, pickup location, drop location, seats available, ticket cost and other details.
-A passanger can search the rides from desiered location to destination. He will be able to see time of departure, cost, pickup & frop point, map and other details.
+A passanger can search the rides from desired location to destination. He will be able to see time of departure, cost, pickup & drop point, map and other details.
 Ride publisher and passasnger both will be able to see the feedback and reviews of each other and can rate each other after ride.
 there will be a admin module to verify the profiles and manage complaints.
 
@@ -78,11 +78,11 @@ Features-
 				Seat availablilty
 				Stops in between
 				pets allowed/ smoking allowed
-				
+				Luggage weight specified
 
-	-search other ride - User can pos ride as well as search other rides.
+	-search other rides - User can post ride as well as search other rides.
 
-	-See the contact information/personal infromation of the passenger - car oner can see the information like conatact no, email,Gender, profile picture of the passanger
+	-See the contact information/personal information of the passenger - car owner can see the information like conatact no, email,Gender, profile picture of the passanger
 									
 	-See reviews of passager -car owner can see  the reviews of the passanger and rating of the passaner.
 
@@ -102,20 +102,21 @@ Features-
 				Seat availablilty
 				Stops in between
 				pets allowed/ smoking allowed
+				Luggage weight to carry
 				
-	-See the review of driver - passager can see the reviews of he driver
+	-See the review of driver - passager can see the reviews of the driver
 
 	-Rate the driver - passager can write review about driver after ride
 	
 	-cancel Ride - Passager can cancel the ride
 	
-	-See contact info / personal info of driver - see the email, contact no , profile photo, photoes of car driver verified or not.
+	-See contact info / personal info of driver - see the email, contact no , profile photo, photos of car driver verified or not.
 
 
 4.features for admin
-	-verify profile- verify mobile number by otp/ photoes screening
+	-verify profile- verify mobile number/email by otp/ photos screening
 	-Handle complaints-
-	-Generate Reports-Genreate daily monthly weekly reports of rides
+	-Generate Reports-Generate daily monthly weekly reports of rides
 	
 	
 
