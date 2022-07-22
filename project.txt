@@ -1,73 +1,69 @@
 
-Project Name - 
+Project Name - Sheer-Steer
 scope-
 
         Car Owner travelling to another city can minimise his fuel expenses by allowing trusted passengers to
   travel with him.
-	In this app/website, traveller can get ride to his/her destination at competative price.
-  and according to his convinience with trusted drivers.
+	In this app/website, the traveller can get a ride to his/her destination at a competitive price.
+  and according to his convenience with trusted drivers.
 	
 
 
 Features-
-1.In this app/website, traveller can get ride to his/her destination at competative price.
-  and according to his convinience.
-2.Traveller can search rides available from his nearest location to destination according to date and time.
-3.Passenger can see and compare the costs of rides offered by different drivers.
-4.He/she will be able to see photos of rides and drivers with contact details of respective.
-5.Payment flexibility available--can pay before or after ride.
-6.Passenger is able to see reviews of drivers of available rides and choose ride accordingly.
-7.After ride,he can give feedback and rating of driver. 
-8.Driver can post his ride with following-
+1. In this app/website, the traveller can get a ride to his/her destination at a competitive price.
+  and according to his convenience.
+2. Travellers can search rides available from their nearest location to destination according to date and time.
+3. Passengers can see and compare the costs of rides offered by different drivers.
+4. He/she will be able to see photos of rides and drivers with contact details of respective.
+5. Payment flexibility available--can pay before or after the ride.
+6. Passengers can see reviews of drivers of available rides and choose rides accordingly.
+7. After the ride, he can give feedback and rating to the driver. 
+8. Driver can post his ride with the following-
  i.from location
- ii.Destination
- iii.Date
+ ii. Destination
+ iii. Date
  iv.Time
  v.Fare
- vi.Seat availability.
- vii.pickup point
- viii.Drop point
- ix.Car Model
+ vi. Seat availability.
+ vii. pickup point
+ viii. Drop point
+ ix. Car Model
  x.Petro/Diesel/CNG
 
-9.Driver can write review about passengers & passanger car review driver.
-10.Driver and Passenger can cancel their ride.
-11.integrate google map.
-12.Complaint section
-13.Notification - before canceling
+9. Driver can write a review about passengers & passenger car review driver.
+10. Driver and Passenger can cancel their ride.
+11. integrate google maps.
+12. Complaint section
+13. Notification - before cancelling
 
 female seat/ smokers allowed
-middle seat chargrs?
+middle seat charges?
 
 
 scope
-summaray - 
-features - billing/ui-ux/feedback/reports
-use case digram.
+summary - 
+features - billing/UI-UX/feedback/reports
+use case diagram.
 
 
 ___________________________________________________________________________________________________________________________________________________________
 
 
-
-
-
-
 Scope -
 
-Scope of our project is to build an app which will allow the car owner to publish a ride and passanger to search a ride, from one location to another.
-where ride publisher can mention the time of departure, pickup location, drop location, seats available, ticket cost and other details.
-A passanger can search the rides from desired location to destination. He will be able to see time of departure, cost, pickup & drop point, map and other details.
-Ride publisher and passasnger both will be able to see the feedback and reviews of each other and can rate each other after ride.
-there will be a admin module to verify the profiles and manage complaints.
+The scope of our project is to build an app which will allow the car owner to publish a ride and passenger to search for a ride, from one location to another.
+where ride publishers can mention the time of departure, pickup location, drop location, seats available, ticket cost and other details.
+A passenger can search the rides from the desired location to the destination. He will be able to see the time of departure, cost, pickup & drop point, map and other details.
+Ride publishers and passengers both will be able to see the feedback and reviews of each other and can rate each other after the ride.
+there will be an admin module to verify the profiles and manage complaints.
 
 Features-
 1.Login / register-
-	-Only Register user can post a ride and book a ride
+	-Only Register users can post a ride and book a ride
 
-	-Visitor(non Registerd user) can only search
+	-Visitor(non-Registered user) can only search
 
-2.Features for Car owner
+2. Features for the Car owner
 	-post a ride - owner can post a ride with details like 
 				From city
 				Destination city
@@ -75,58 +71,57 @@ Features-
 				pick up and drop point
 				Fare
 				Car model
-				Seat availablilty
+				Seat availability
 				Stops in between
 				pets allowed/ smoking allowed
 				Luggage weight specified
 
-	-search other rides - User can post ride as well as search other rides.
+	-Search for other rides - Users can post rides as well as search for other rides.
 
-	-See the contact information/personal information of the passenger - car owner can see the information like conatact no, email,Gender, profile picture of the passanger
+	-See the contact information/personal information of the passenger - car owner can see the information like contact no, email, Gender, profile picture of the passenger
 									
-	-See reviews of passager -car owner can see  the reviews of the passanger and rating of the passaner.
+	-See reviews of passager -car owner can see the reviews of the passenger and rating of the passenger.
 
-	-Cancel a Ride - Driver can cancel the ride.
+	-Cancel a Ride - The driver can cancel the ride.
 
-	-Give review of passanger -Driver can give review of the passanger after the ride
+	-Give a review of passenger -The driver can give a review of the passenger after the ride
 
-        -Tracking
 	
-3.Features for passanger
-	-Search a ride - Passanger can search the ride by seeing details like-
+3. Features for passenger
+	-Search a ride - Passengers can search the ride by seeing details like-
 				From city
 				Destination city
 				departure time
 				pick up and drop point
 				Fare
 				Car model
-				Seat availablilty
+				Seat availability
 				Stops in between
 				pets allowed/ smoking allowed
 				Luggage weight to carry
 				
-	-Book Ride - Passanger can book ride by selecting his seat.			
+	-Book Ride - Passengers can book a ride by selecting their seat.			
 				
-	-See the review of driver - passager can see the reviews of the driver
+	-See the review of a driver - passager can see the reviews of the driver
 
-	-Rate the driver - passager can write review about driver after ride
+	-Rate the driver - passager can write a review about the driver after the ride
 	
 	-cancel Ride - Passager can cancel the ride
 	
-	-See contact info / personal info of driver - see the email, contact no , profile photo, photos of car driver verified or not.
+	-See contact info / personal info of driver - see the email, contact no, profile photo, photos of car driver verified or not.
 
 
-4.features for admin
-	-verify profile- verify mobile number/email by otp/ photos screening
+4. features for admin
+	-verify profile- verify mobile number/email by OTP/ photos screening
 	-Handle complaints-
 	-Generate Reports-Generate daily monthly weekly reports of rides
-	- Tracking
+	
 	
 
 Summary :
 	
 
 
-Ucase Diagram
+Use Diagram
 
 
