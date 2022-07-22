@@ -104,6 +104,8 @@ Features-
 				pets allowed/ smoking allowed
 				Luggage weight to carry
 				
+	-Book Ride - Passanger can book ride by selecting his seat.			
+				
 	-See the review of driver - passager can see the reviews of the driver
 
 	-Rate the driver - passager can write review about driver after ride
@@ -121,9 +123,9 @@ Features-
 	
 
 Summary :
+	
 
 
-
-Uml Diagram
+Ucase Diagram
 
 
