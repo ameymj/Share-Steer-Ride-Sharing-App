@@ -1,5 +1,12 @@
-Sheer-Steer
+Share-Steer (Online ride sharing application)
 
-A simple and easy Web-app which you can plan your travel at a very short notice of time.Here,any guest user can visit this app.After registering Authenticated user can book ride or post ride.Visitor can check the availability of seats,if there are some female passenger,you can check feamle seats availability.If you want to cancel the ride ,you can update your information.
-Driver can drop as per your destinations.You can track your vehicle where it is and how much time its taking to come at spot.There is easy cancellations is done.After ride there is an option to covey your opinon about driver and vehicle.Driver and Passenger can complaint about there problem. 
-
+The system will present a portal for passengers, drivers as well as and anonymous users as per their aspect.
+Authentication has been provided to all concerning their registration with the system.
+Registered passengers will be able to promote their ride for booking maintained by drivers,
+able to cancel booked booking before 4 hours of travelling, get booking history, and can give a rating to the particular
+driver they have travelled with. Rides listing will be provided based on their category, fare, distance, and vehicle types.
+The driver will be able to add new rides to the ride log, update ride details which have been already posted,
+able to approve or reject the request for booking rides from a catalogue by passengers, and get previous ride history.
+Passengers and drivers can track their route as well as can give feedback and complaint about the ride.
+Any anonymous User will be able to view different Rides available for booking. Any User will be able to select rides 
+available based on categories and can only promote further after registration.
