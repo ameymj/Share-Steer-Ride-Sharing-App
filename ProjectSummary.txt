@@ -1,0 +1,5 @@
+Sheer-Steer
+
+A simple and easy Web-app which you can plan your travel at a very short notice of time.Here,any guest user can visit this app.After registering Authenticated user can book ride or post ride.Visitor can check the availability of seats,if there are some female passenger,you can check feamle seats availability.If you want to cancel the ride ,you can update your information.
+Driver can drop as per your destinations.You can track your vehicle where it is and how much time its taking to come at spot.There is easy cancellations is done.After ride there is an option to covey your opinon about driver and vehicle.Driver and Passenger can complaint about there problem. 
+
