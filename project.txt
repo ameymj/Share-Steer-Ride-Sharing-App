@@ -1,18 +1,13 @@
 
-Project Name - Sheer-Steer
-scope-
+Project Name:- Sheer-Steer
 
-        Car Owner travelling to another city can minimise his fuel expenses by allowing trusted passengers to
-  travel with him.
-	In this app/website, the traveller can get a ride to his/her destination at a competitive price.
-  and according to his convenience with trusted drivers.
+Scope :-
+ Car Owner travelling to another city can minimise his fuel expenses by allowing trusted passengers to travel with him.	In this app/website, the traveller can get a ride to his/her destination at a competitive price, and according to his convenience with trusted drivers.
 	
-
-
-Features-
+Features :-
 1. In this app/website, the traveller can get a ride to his/her destination at a competitive price.
   and according to his convenience.
-2. Travellers can search rides available from their nearest location to destination according to date and time.
+2. Travellers can search rides available from their nearest location to destination according to   date and time.
 3. Passengers can see and compare the costs of rides offered by different drivers.
 4. He/she will be able to see photos of rides and drivers with contact details of respective.
 5. Payment flexibility available--can pay before or after the ride.
@@ -39,8 +34,6 @@ Features-
 female seat/ smokers allowed
 middle seat charges?
 
-
-scope
 summary - 
 features - billing/UI-UX/feedback/reports
 use case diagram.
