@@ -1,12 +1,3 @@
-Share-Steer (Online ride sharing application)
+Project Summary for Share-Steer (Online Rideshare App)
 
-The system will present a portal for passengers, drivers as well as and anonymous users as per their aspect.
-Authentication has been provided to all concerning their registration with the system.
-Registered passengers will be able to promote their ride for booking maintained by drivers,
-able to cancel booked booking before 4 hours of travelling, get booking history, and can give a rating to the particular
-driver they have travelled with. Rides listing will be provided based on their category, fare, distance, and vehicle types.
-The driver will be able to add new rides to the ride log, update ride details which have been already posted,
-able to approve or reject the request for booking rides from a catalogue by passengers, and get previous ride history.
-Passengers and drivers can track their route as well as can give feedback and complaint about the ride.
-Any anonymous User will be able to view different Rides available for booking. Any User will be able to select rides 
-available based on categories and can only promote further after registration.
+Share-Steer is the online marketplace for carpooling. Its website connects drivers and passengers willing to travel together between cities and shares the cost of the journey. In This Application A dashboard will present for passengers Who want to travel as well as drivers who are fond of a companion to travel with them. Authentication of all users is based on the verification with the system at the time of registration. Passengers will be able to book their rides from a portal updated by drivers and maintained by the system, Rides listing will be provided based on their category, fare, distance, and vehicle types, they can cancel the booking before the commencement of the journey, they can get booking history, the rating system is also available for the particular driver they have travelled with. The driver will be able to add new rides to the ride log, update ride details which have been already posted, able to approve or reject a request for booking rides from the catalogue by passengers, and get previous ride history also. A Real-Time Route Tracking system is provided for both users.  Any anonymous User will be able to view different Rides available for booking. Any User will be able to select rides available based on categories and can promote further after registration only. To facilitate, perfect ride users are available with feedback and a rating system which will ultimately aim to choose a perfect companion for the journey.
