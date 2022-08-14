@@ -16,6 +16,61 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `booking`
+--
+
+DROP TABLE IF EXISTS `booking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `booking` (
+  `booking_id` int NOT NULL AUTO_INCREMENT,
+  `ride_id` int DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `number_of_seats` int DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  `booking_date` date DEFAULT NULL,
+  `amount` int NOT NULL,
+  PRIMARY KEY (`booking_id`),
+  KEY `ride_id` (`ride_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`ride_id`) REFERENCES `ride` (`ride_id`),
+  CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `booking`
+--
+
+LOCK TABLES `booking` WRITE;
+/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `city`
+--
+
+DROP TABLE IF EXISTS `city`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `city` (
+  `city_id` int NOT NULL,
+  `city_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`city_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `city`
+--
+
+LOCK TABLES `city` WRITE;
+/*!40000 ALTER TABLE `city` DISABLE KEYS */;
+/*!40000 ALTER TABLE `city` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `rating`
 --
 
@@ -56,15 +111,23 @@ CREATE TABLE `ride` (
   `vehicle_id` int DEFAULT NULL,
   `date_of_journey` date NOT NULL,
   `time_of_journey` time NOT NULL,
-  `from_city` varchar(20) NOT NULL,
-  `to_city` varchar(20) NOT NULL,
+  `from_city` int NOT NULL,
+  `to_city` int NOT NULL,
   `total_seats` int NOT NULL,
   `available_seats` int NOT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  `ride_cost` int NOT NULL,
+  `description` varchar(300) DEFAULT NULL,
+  `only_females` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`ride_id`),
   KEY `fk_1` (`user_id`),
   KEY `fk_2` (`vehicle_id`),
+  KEY `from_city` (`from_city`),
+  KEY `to_city` (`to_city`),
   CONSTRAINT `fk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `fk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`vehicle_id`)
+  CONSTRAINT `fk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`vehicle_id`),
+  CONSTRAINT `ride_ibfk_1` FOREIGN KEY (`from_city`) REFERENCES `city` (`city_id`),
+  CONSTRAINT `ride_ibfk_2` FOREIGN KEY (`to_city`) REFERENCES `city` (`city_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -120,6 +183,10 @@ CREATE TABLE `user` (
   `gender` varchar(5) DEFAULT NULL,
   `email_id` varchar(30) NOT NULL,
   `contact` varchar(12) NOT NULL,
+  `aadhar_image` blob,
+  `user_image` blob NOT NULL,
+  `driving_licence` blob,
+  `is_verified` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_name` (`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -144,9 +211,10 @@ DROP TABLE IF EXISTS `vehicle`;
 CREATE TABLE `vehicle` (
   `vehicle_id` int NOT NULL,
   `user_id` int DEFAULT NULL,
-  `vehicle_name` varchar(20) NOT NULL,
-  `vehicle_number` int NOT NULL,
-  `rc` varchar(20) DEFAULT NULL,
+  `vehicle_model` varchar(20) NOT NULL,
+  `vehicle_reg_number` int NOT NULL,
+  `capacity` int NOT NULL,
+  `vehicle_image` blob NOT NULL,
   PRIMARY KEY (`vehicle_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `vehicle_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
@@ -171,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-31 21:41:40
+-- Dump completed on 2022-08-14 20:25:48
