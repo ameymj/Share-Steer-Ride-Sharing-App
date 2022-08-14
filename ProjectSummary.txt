@@ -1,5 +1,6 @@
 Project Summary for Share-Steer (Online Rideshare App)
 
+
 Share-Steer is the online marketplace for carpooling. 
 Its website connects drivers and passengers willing to travel together between cities and shares the cost of the journey. 
 In This Application A dashboard will present for passengers Who want to travel as well as drivers who are fond of a companion to travel with them. 
