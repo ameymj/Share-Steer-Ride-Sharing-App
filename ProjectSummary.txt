@@ -10,3 +10,4 @@ The driver will be able to add new rides to the ride log, update ride details wh
 A Real-Time Route Tracking system is provided for both users.  
 Any anonymous User will be able to view different Rides available for booking. Any User will be able to select rides available based on categories and can promote further after registration only. 
 To facilitate, perfect ride users are available with feedback and a rating system which will ultimately aim to choose a perfect companion for the journey.
+...
