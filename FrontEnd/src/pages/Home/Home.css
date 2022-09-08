@@ -2,3 +2,7 @@
     width: 100%;
     background-color: lightblue;
 }
+option{
+    width: 100%;
+    border-radius: 10px;
+}

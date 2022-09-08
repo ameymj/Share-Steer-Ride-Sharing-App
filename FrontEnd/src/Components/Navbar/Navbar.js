@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import $ from 'jquery';
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
   function animation(){
     var tabsNewAnim = $('#navbarSupportedContent');
@@ -110,10 +110,11 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/login" exact>
+              <NavLink className="nav-link" to="/login" onClick={props.login} exact>
                 <i 
                 className="far fa-copy">
-                </i>Login
+                </i>
+                {props.status ? "Logout":"Login"}
               </NavLink>
             </li>
         </ul>
