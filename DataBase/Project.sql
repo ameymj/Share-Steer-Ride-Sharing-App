@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
--- Host: localhost    Database: project
+-- Host: localhost    Database: dotnetproject
 -- ------------------------------------------------------
 -- Server version	8.0.29
 
@@ -48,13 +48,13 @@ LOCK TABLES `booking` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `city`
+-- Table structure for table `from_city`
 --
 
-DROP TABLE IF EXISTS `city`;
+DROP TABLE IF EXISTS `from_city`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `city` (
+CREATE TABLE `from_city` (
   `city_id` int NOT NULL,
   `city_name` varchar(30) NOT NULL,
   PRIMARY KEY (`city_id`)
@@ -62,12 +62,13 @@ CREATE TABLE `city` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `city`
+-- Dumping data for table `from_city`
 --
 
-LOCK TABLES `city` WRITE;
-/*!40000 ALTER TABLE `city` DISABLE KEYS */;
-/*!40000 ALTER TABLE `city` ENABLE KEYS */;
+LOCK TABLES `from_city` WRITE;
+/*!40000 ALTER TABLE `from_city` DISABLE KEYS */;
+INSERT INTO `from_city` VALUES (1,'Pune'),(2,'Mumbai'),(3,'Aurangabad'),(4,'Nashik'),(5,'Nagpur'),(6,'Thane'),(7,'Pimpri-Chinchwad'),(8,'Alibag'),(9,'Ahmednagar'),(10,'Kolhapur'),(11,'Solapur'),(12,'Satara'),(13,'Sangli'),(14,'Amravati'),(15,'Akola'),(16,'Wardha'),(17,'Yeotmal'),(18,'Buldhana'),(19,'Gondia'),(20,'Gadchiroli'),(21,'Chandrapur'),(22,'Nanded'),(23,'Jalgaon'),(24,'Usmanabad'),(25,'Latur'),(26,'Beed'),(27,'Sindhudurg'),(28,'Ratnagiri'),(29,'Jalna'),(30,'Dhule'),(31,'Nadurbar'),(32,'Washim'),(33,'Palghar'),(34,'Bhandara'),(35,'Parbhani'),(36,'Hingoli');
+/*!40000 ALTER TABLE `from_city` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -126,9 +127,9 @@ CREATE TABLE `ride` (
   KEY `to_city` (`to_city`),
   CONSTRAINT `fk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   CONSTRAINT `fk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`vehicle_id`),
-  CONSTRAINT `ride_ibfk_1` FOREIGN KEY (`from_city`) REFERENCES `city` (`city_id`),
-  CONSTRAINT `ride_ibfk_2` FOREIGN KEY (`to_city`) REFERENCES `city` (`city_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `ride_ibfk_1` FOREIGN KEY (`from_city`) REFERENCES `from_city` (`city_id`),
+  CONSTRAINT `ride_ibfk_2` FOREIGN KEY (`to_city`) REFERENCES `from_city` (`city_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,6 +138,7 @@ CREATE TABLE `ride` (
 
 LOCK TABLES `ride` WRITE;
 /*!40000 ALTER TABLE `ride` DISABLE KEYS */;
+INSERT INTO `ride` VALUES (1,1,1,'2022-09-07','22:20:00',1,2,4,4,0,560,'Casual',0),(2,1,1,'2022-09-08','16:11:04',5,7,8,8,0,960,'Dairy Service',0),(3,2,1,'2022-09-10','16:12:26',8,9,5,5,0,440,'trip',0);
 /*!40000 ALTER TABLE `ride` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,6 +169,29 @@ LOCK TABLES `ride_status` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `to_city`
+--
+
+DROP TABLE IF EXISTS `to_city`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `to_city` (
+  `city_id` int NOT NULL,
+  `city_name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `to_city`
+--
+
+LOCK TABLES `to_city` WRITE;
+/*!40000 ALTER TABLE `to_city` DISABLE KEYS */;
+INSERT INTO `to_city` VALUES (1,'Pune'),(2,'Mumbai'),(3,'Aurangabad'),(4,'Nashik'),(5,'Nagpur'),(6,'Thane'),(7,'Pimpri-Chinchwad'),(8,'Alibag'),(9,'Ahmednagar'),(10,'Kolhapur'),(11,'Solapur'),(12,'Satara'),(13,'Sangli'),(14,'Amravati'),(15,'Akola'),(16,'Wardha'),(17,'Yeotmal'),(18,'Buldhana'),(19,'Gondia'),(20,'Gadchiroli'),(21,'Chandrapur'),(22,'Nanded'),(23,'Jalgaon'),(24,'Usmanabad'),(25,'Latur'),(26,'Beed'),(27,'Sindhudurg'),(28,'Ratnagiri'),(29,'Jalna'),(30,'Dhule'),(31,'Nadurbar'),(32,'Washim'),(33,'Palghar'),(34,'Bhandara'),(35,'Parbhani'),(36,'Hingoli');
+/*!40000 ALTER TABLE `to_city` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -180,14 +205,15 @@ CREATE TABLE `user` (
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `birth_date` date NOT NULL,
-  `gender` varchar(5) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
   `email_id` varchar(30) NOT NULL,
   `contact` varchar(12) NOT NULL,
-  `aadhar_image` blob,
-  `user_image` blob NOT NULL,
-  `driving_licence` blob,
+  `aadhar_image` longblob,
+  `user_image` longblob,
+  `driving_licence` longblob,
   `is_verified` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`user_id`),
+  UNIQUE KEY `last_name_UNIQUE` (`last_name`),
   UNIQUE KEY `user_name` (`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -198,6 +224,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'tushar','root','Tushar','Sthul','1998-06-09','Male','tusharsthul121@gmail.com','7397909355',NULL,NULL,NULL,0),(2,'mahima','mima','Mahima','Ingole','2004-09-24','Female','mimaingole@gmail.com','8080036934',NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,6 +254,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
+INSERT INTO `vehicle` VALUES (1,1,'Volvo-250',123456,4,_binary '0');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -239,4 +267,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-14 20:25:48
+-- Dump completed on 2022-09-09 18:05:20
