@@ -4,9 +4,6 @@ import FirstSlide from './FirstSlide.jpg';
 import SecondSlide from './SecondSlide.jpg';
 import ThirdSlide from './ThirdSlide.jpg';
 import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
 import './Home.css'
 import GetAllRide from '../Ride/GetAllRide';
 const Home = (props) => {
@@ -71,35 +68,54 @@ const Home = (props) => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <section>
+        <div className="container py-5 h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col col-xl-10">
+              <div className="card" style={{ "border-radius": " 1rem" }}>
+                <div className="row g-0">
+                  <div className="col-md-6 col-lg-5 d-none d-md-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                      alt="login form" className="img-fluid" style={{ "border-radius": " 1rem 0 0 1rem" }} />
+                  </div>
+                  <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                    <div className="card-body p-4 p-lg-5 text-black">
 
-
-      <center style={{ padding: 75 }}>
-        <div style={{ borderStyle: 'double', width: 400 }}>
-          <Form onSubmit={validate}>
-            <Form.Label style={{ fontSize: 50 }}>Search Ride</Form.Label><br/>
-            <Form.Group className="mb-3" controlId="date">
-            <Form.Label><b>Source</b></Form.Label>
-            <Form.Select onSelect={(e) => { setSource(e.target.value)} }>
-                {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="date">
-            <Form.Label><b>Destination</b></Form.Label>
-              <Form.Select className='citya' onSelect={(e)=>{setDestination(e.target.value)}}>
-                {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="date">
-              <Form.Label><b>DATE OF JOURNEY</b></Form.Label>
-              <Form.Control type="date" placeholder="date of journey" required onBlur={(e) => { setDate(e.target.value); console.log(e);}} />
-            </Form.Group>
-            <Button variant="primary" onClick={validate}>
-              Submit
-            </Button><br />
-          </Form>
+                      <form onSubmit={validate}>
+                        <div className="d-flex align-items-center mb-3 pb-1">
+                        <i class="fas fa-route fa-2x me-3"></i>
+                          <span className="h1 fw-bold mb-0">SEARCH RIDE</span>
+                        </div>
+                        <div>
+                        <b>SOURCE</b>
+                        <select class="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setSource(e.target.value) }}>
+                          {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                          </select>
+                        </div>
+                        <div>
+                        <b>DESTINATION</b>
+                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setDestination(e.target.value) }}>
+                          {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                          </select>
+                        </div>
+                        <div>
+                          <b>DATE</b><input type='date' className='btn btn-dark btn-lg btn-block' />
+                          <br/>
+                        </div>
+                        
+                        <div className="pt-1 mb-4">
+                          <button className="btn btn-dark btn-lg btn-block" type="button" onClick={validate}>Search</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        {check && ReqRide.map((ri, index) => <GetAllRide key={index} ride={ri} />)}
-      </center>
+      </section>
+      {check && ReqRide.map((ri, index) => <GetAllRide key={index} ride={ri} />)}
     </div>
   )
 }

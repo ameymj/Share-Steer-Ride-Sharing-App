@@ -16,6 +16,7 @@ import Navbar from './Components/Navbar/Navbar';
 import { ReactSession } from 'react-client-session';
 import Login from './pages/Login/Login';
 import './App.css';
+import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
 
 ReactSession.setStoreType("localStorage");
 
@@ -61,27 +62,22 @@ class App extends Component {
     // })
 
   }
-  loginHandler = () => {
-    this.setState({ auth: !this.state.auth })
-  }
   render() {
     return (
       <Router>
-        <Navbar login={this.loginHandler} status={this.state.auth} />
+        <Navbar/>
         <main className='container'>
           <Switch>
             <Route path="/" exact><Home ride={this.state.rides} city={this.state.cities} /></Route>
             <Route path="/home" exact><Home /></Route>
-            <Route path="/about" exact>
-              {this.state.auth === false ?
-                 <Login/>:
-                <About />
-              }</Route>
+            <Route path="/about" exact><About /></Route>
             <Route path="/service" exact><Services /></Route>
             <Route path="/testimonial" exact><Testimonial /></Route>
             <Route path="/contact" exact><Contact /></Route>
             <Route path="/login" exact><Login/></Route>
             <Route path="/register" exact><Register /></Route>
+            <Route path="/forgetpassword" exact><ForgetPassword /></Route>
+
           </Switch>
         </main>
       </Router>

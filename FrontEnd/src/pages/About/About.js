@@ -15,9 +15,7 @@ function About() {
         <Card.Body>
           <Card.Title>Travel Safe</Card.Title>
           <Card.Text>
-          We provide safe travel experience
-          Your safety,Our responsibility!
-          verified drivers with good reviews
+          Yaha Bhi Kuchh Likhna Hai
           </Card.Text>
         </Card.Body>
         <Card.Footer>
@@ -29,10 +27,7 @@ function About() {
         <Card.Body>
           <Card.Title>Ontime Boarding</Card.Title>
           <Card.Text>
-          PickUp and Drop on time
-          Easy Booking and less Worry
-          Fully Secure Ride 
-          Money and Time saving
+          Yaha Bhi Kuchh Likhna Hai
           </Card.Text>
         </Card.Body>
         <Card.Footer>
@@ -44,10 +39,7 @@ function About() {
         <Card.Body>
           <Card.Title>Collaboration</Card.Title>
           <Card.Text>
-           Trust is our first Priority
-           Customer Support available
-           Give feedback to our drivers
-           Strict actions against mulpractices
+            Yaha Bhi Kuchh Likhna Hai
           </Card.Text>
         </Card.Body>
         <Card.Footer>
