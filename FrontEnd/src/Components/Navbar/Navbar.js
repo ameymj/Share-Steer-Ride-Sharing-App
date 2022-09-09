@@ -48,7 +48,7 @@ const Navbar = (props) => {
     <div>
   <nav className="navbar navbar-expand-lg navbar-mainbg">
     
-    <img src='./logo.png' alt='logo' height='60px' width='60px'/>
+    <img src='./logo.jpg' alt='logo' height='60px' width='60px'/>
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
         Share Steer
       </NavLink>

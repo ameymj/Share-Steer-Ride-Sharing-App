@@ -17,6 +17,7 @@ import { ReactSession } from 'react-client-session';
 import Login from './pages/Login/Login';
 import './App.css';
 import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
+import PostRide from './pages/Ride/PostRide';
 
 ReactSession.setStoreType("localStorage");
 
@@ -53,13 +54,13 @@ class App extends Component {
     })
 
 
-    // axios.get("http://localhost:8080/sharesteer/getAllUsers")
-    // .then((response)=>{
-    //   this.setState({users:response.data})
-    // })
-    // .catch((error)=>{
-    //   console.log(error);
-    // })
+    axios.get("http://localhost:8080/sharesteer/getAllUsers")
+    .then((response)=>{
+      this.setState({users:response.data})
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
 
   }
   render() {
@@ -69,7 +70,7 @@ class App extends Component {
         <main className='container'>
           <Switch>
             <Route path="/" exact><Home ride={this.state.rides} city={this.state.cities} /></Route>
-            <Route path="/home" exact><Home /></Route>
+            <Route path="/home" exact><Home ride={this.state.rides} city={this.state.cities}/></Route>
             <Route path="/about" exact><About /></Route>
             <Route path="/service" exact><Services /></Route>
             <Route path="/testimonial" exact><Testimonial /></Route>
@@ -77,7 +78,7 @@ class App extends Component {
             <Route path="/login" exact><Login/></Route>
             <Route path="/register" exact><Register /></Route>
             <Route path="/forgetpassword" exact><ForgetPassword /></Route>
-
+            <Route path="/postride" exact><PostRide city={this.state.cities} /></Route>
           </Switch>
         </main>
       </Router>

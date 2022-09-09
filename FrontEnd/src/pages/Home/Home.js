@@ -6,9 +6,14 @@ import ThirdSlide from './ThirdSlide.jpg';
 import { useEffect, useState } from 'react';
 import './Home.css'
 import GetAllRide from '../Ride/GetAllRide';
+import PostRide from '../Ride/PostRide';
+import SearchRide from './searchride.jpg'
+import Waiting from './waiting.jpg'
+
 const Home = (props) => {
 
-  const cities = props.city;
+  let cities = props.city;
+  const [checkt, setCheckt] = useState(false);
   const rides = props.ride;
   const [source, setSource] = useState("");
   const [destination, setDestination] = useState("");
@@ -16,18 +21,24 @@ const Home = (props) => {
   const [check, setCheck] = useState(false);
   const [ReqRide, setReqRide] = useState([]);
 
+
+  useEffect(() => {
+    cities=props.city;
+    console.log("called");
+    setCheckt(true)
+  });
+
   function validate() {
+
     setCheck(true);
-    let arr = rides.filter(checkRoute);
+    // let arr = rides.filter(checkRoute);
+    let arr = rides;
     setReqRide(arr);
-    console.log(arr);
+    // console.log(arr);
   }
-  function checkRoute(ride) {
-    console.log(ride);
-    console.log(source);
-    console.log(destination);
-    return (ride.from_city == source && ride.to_city == destination);
-  }
+  // function checkRoute(ride) {
+  //   return (ride.from_city == source && ride.to_city == destination);
+  // }
 
   return (
     <div className="container">
@@ -75,34 +86,36 @@ const Home = (props) => {
               <div className="card" style={{ "border-radius": " 1rem" }}>
                 <div className="row g-0">
                   <div className="col-md-6 col-lg-5 d-none d-md-block">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                      alt="login form" className="img-fluid" style={{ "border-radius": " 1rem 0 0 1rem" }} />
+                    <img src={SearchRide}
+                      alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} /><br /><br /><br />
+                    <img src={Waiting}
+                      alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} />
                   </div>
                   <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                    <div className="card-body p-4 p-lg-5 text-black">
+                    <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
 
                       <form onSubmit={validate}>
                         <div className="d-flex align-items-center mb-3 pb-1">
-                        <i class="fas fa-route fa-2x me-3"></i>
+                          <i className="fas fa-route fa-2x me-3"></i>
                           <span className="h1 fw-bold mb-0">SEARCH RIDE</span>
                         </div>
                         <div>
-                        <b>SOURCE</b>
-                        <select class="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setSource(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                          <b>SOURCE</b>
+                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setSource(e.target.value) }}>
+                            {checkt && cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
                           </select>
                         </div>
                         <div>
-                        <b>DESTINATION</b>
-                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setDestination(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                          <b>DESTINATION</b>
+                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setDestination(e.target.value) }}>
+                            {checkt && cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
                           </select>
                         </div>
                         <div>
-                          <b>DATE</b><input type='date' className='btn btn-dark btn-lg btn-block' />
-                          <br/>
+                          <b>DATE</b><input type='date' className='btn btn-dark btn-lg btn-block' onChange={(e) => { setDate(e.target.value) }} />
+                          <br />
                         </div>
-                        
+
                         <div className="pt-1 mb-4">
                           <button className="btn btn-dark btn-lg btn-block" type="button" onClick={validate}>Search</button>
                         </div>
@@ -116,6 +129,9 @@ const Home = (props) => {
         </div>
       </section>
       {check && ReqRide.map((ri, index) => <GetAllRide key={index} ride={ri} />)}
+      <div>
+        <PostRide city={props.city} />
+      </div>
     </div>
   )
 }
