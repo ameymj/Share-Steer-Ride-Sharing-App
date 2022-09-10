@@ -22,7 +22,7 @@ import study.projects.entity.City;
 	@GetMapping("/getAllCities")
 	public ArrayList<City> f1()
 	{
-		List<City> list=temp.query("select * from from_city", (rs,rownum)->{return new City(rs.getString(2));});
+		List<City> list=temp.query("select * from from_city", (rs,rownum)->{return new City(rs.getInt(1),rs.getString(2));});
 		
 		return (ArrayList<City>) list;
 	}

@@ -27,16 +27,13 @@ public class VehicleController {
 		try {
 			temp.update("insert into vehicle (user_id,vehicle_model,vehicle_reg_number,capacity,vehicle_image) values(?,?,?,?,?)",vehicle.getUser_id(),vehicle.getVehicle_model(),vehicle.getVehicle_reg_number(),vehicle.getCapacity(),vehicle.getVehicle_image());
 
-			message="Ride Posted Successfully";
+			int id = temp.queryForObject("select vehicle_id from vehicle where vehicle_reg_number="+"'"+vehicle.getVehicle_reg_number()+"'", Integer.class);			
+			message=id+"";
 
 		} catch (DataAccessException e) {
 			message="Posting Ride Fail"+e.getMessage();
 			e.printStackTrace();
 		}
-
-
-
-
 
 		return message;
 

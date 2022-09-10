@@ -6,9 +6,9 @@ public class User {
 
 	private int user_id;
 	private String user_name,password,first_name,last_name,birth_date,email_id,
-					contact;
-	private boolean is_verified;
-	private Blob aadhar_image,user_image,driving_licence;
+					contact,gender;
+	private boolean is_varified;
+	private String aadhar_image,user_image,driving_licence;
 	
 	public User()
 	{
@@ -18,7 +18,7 @@ public class User {
 	
 	public User(int user_id, String user_name, String password, String first_name, String last_name, String birth_date,
 			String email_id, String contact, Blob aadhar_image, Blob user_image, Blob driving_licence,
-			boolean is_verified) {
+			boolean is_varified) {
 		super();
 		this.user_id = user_id;
 		this.user_name = user_name;
@@ -28,11 +28,26 @@ public class User {
 		this.birth_date = birth_date;
 		this.email_id = email_id;
 		this.contact = contact;
-		this.aadhar_image = aadhar_image;
-		this.user_image = user_image;
-		this.driving_licence = driving_licence;
-		this.is_verified = is_verified;
+//		this.aadhar_image = aadhar_image;
+//		this.user_image = user_image;
+//		this.driving_licence = driving_licence;
+		this.is_varified = is_varified;
 	}
+	
+	public User(int user_id, String user_name, String password, String first_name, String last_name, String birth_date,
+			String email_id, String contact,boolean is_varified) {
+		super();
+		this.user_id = user_id;
+		this.user_name = user_name;
+		this.password = password;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.birth_date = birth_date;
+		this.email_id = email_id;
+		this.contact = contact;
+		this.is_varified = is_varified;
+	}
+	
 	
 	public User(String user_name, String password) {
 		super();
@@ -47,11 +62,11 @@ public class User {
 		this.aadhar_image = null;
 		this.user_image = null;
 		this.driving_licence = null;
-		this.is_verified = false;
+		this.is_varified = false;
 	}
 
 
-	public User(int user_id, String user_name, String password, String first_name, String last_name, String birth_date, String email_id,
+	public User(int user_id, String user_name, String password, String first_name, String last_name, String birth_date,String gender, String email_id,
 			String contact) {
 		this.user_id = user_id;
 		this.user_name = user_name;
@@ -61,7 +76,18 @@ public class User {
 		this.birth_date = birth_date;
 		this.email_id = email_id;
 		this.contact = contact;
+		this.gender=gender;
 		
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 
@@ -144,44 +170,44 @@ public class User {
 		this.contact = contact;
 	}
 
+//
+//	public Blob getAadhar_image() {
+//		return aadhar_image;
+//	}
+//
+//
+//	public void setAadhar_image(Blob aadhar_image) {
+//		this.aadhar_image = aadhar_image;
+//	}
+//
+//
+//	public Blob getUser_image() {
+//		return user_image;
+//	}
+//
+//
+//	public void setUser_image(Blob user_image) {
+//		this.user_image = user_image;
+//	}
+//
+//
+//	public Blob getDriving_licence() {
+//		return driving_licence;
+//	}
+//
+//
+//	public void setDriving_licence(Blob driving_licence) {
+//		this.driving_licence = driving_licence;
+//	}
 
-	public Blob getAadhar_image() {
-		return aadhar_image;
+
+	public boolean isIs_varified() {
+		return is_varified;
 	}
 
 
-	public void setAadhar_image(Blob aadhar_image) {
-		this.aadhar_image = aadhar_image;
-	}
-
-
-	public Blob getUser_image() {
-		return user_image;
-	}
-
-
-	public void setUser_image(Blob user_image) {
-		this.user_image = user_image;
-	}
-
-
-	public Blob getDriving_licence() {
-		return driving_licence;
-	}
-
-
-	public void setDriving_licence(Blob driving_licence) {
-		this.driving_licence = driving_licence;
-	}
-
-
-	public boolean isIs_verified() {
-		return is_verified;
-	}
-
-
-	public void setIs_verified(boolean is_verified) {
-		this.is_verified = is_verified;
+	public void setIs_varified(boolean is_varified) {
+		this.is_varified = is_varified;
 	}
 	
 	

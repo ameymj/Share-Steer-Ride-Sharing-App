@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Welcome from './welcome.webp';
 import Reception from './reception.webp';
 import Journey from './journey.jpg';
+import axios from 'axios';
 
 
 function Login() {
@@ -20,14 +21,29 @@ function Login() {
 
     function addData()
     {
+        const user={}
+        user.first_name=firstName;
+        user.last_name=lastName;
+        user.birth_date=birthdate;
+        user.gender=gender;
+        user.email_id=email;
+        user.contact=contact;
+        user.username=username;
+        user.password=password;
+        user.aadhar_card=aadhar;
+        user.user_image=photo;
+        user.driving_licence=licence;
+        user.is_varified=false;
+        console.log(user);
+        axios.post("http://localhost:8080/sharesteer/signup", user)
+      .then((response) => {
+        console.log(response);    
+      })
+      .catch((error) => {
+        console.log(error);
+      })
 
     }
-
-    useEffect(() => {
-        fetch('http://localhost:8080/sharesteer/addUser', { method: 'Get' })
-            .then((response) => response.json())
-            .then((data) => setUsers(data));
-    }, [])
 
     return (
         <section>

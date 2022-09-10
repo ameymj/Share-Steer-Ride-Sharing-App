@@ -9,6 +9,8 @@ export default function PostRide(props) {
 
   const cities=ReactSession.get("cities");
   const user=ReactSession.get("user");
+  const [messege,setMessege]=useState()
+
   const [user_id,setUser_id]=useState()
   const [date_of_journey, setDate_of_journey] = useState("");
   const [time_of_journey, setTime_of_journey] = useState("");
@@ -60,7 +62,7 @@ export default function PostRide(props) {
   
       console.log(ride);
   
-
+setTimeout(()=>{
     axios.post("http://localhost:8080/sharesteer/addride", ride)
       .then((response) => {
         console.log(response);
@@ -68,7 +70,23 @@ export default function PostRide(props) {
       .catch((error) => {
         console.log(error);
       })
+   setMessege("Successfully Added");
+    },2000)
+
+
+    
+    axios.get("http://localhost:8080/sharesteer/getAllrides")
+    .then((response)=>{
+      ReactSession.set("rides",response.data);
+
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+
+
   }
+
 
   return (
     <section>
@@ -107,13 +125,13 @@ export default function PostRide(props) {
 
                       <div>
                         <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setFrom_city(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityId}</option>))}
+                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                         </select>
                         <b>SOURCE</b><br /><br />
                       </div>
                       <div>
-                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setTo_city(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityId}</option>))}
+                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setTo_city(e.target.value);console.log(e); }}>
+                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                         </select>
                         <b>DESTINATION</b><br /><br />
                       </div>
@@ -152,6 +170,12 @@ export default function PostRide(props) {
                       <div className="pt-1 mb-4">
                         <button className="btn btn-dark btn-lg btn-block" type="button" onClick={addRide}>Post Ride</button>
                       </div>
+
+                      <div className="pt-1 mb-4">
+                        <button className="btn btn-dark btn-lg btn-block" type="Reset">Reset</button>
+                      </div>
+
+                      <b>{messege}</b>
                     </form>
                   </div>
                 </div>
