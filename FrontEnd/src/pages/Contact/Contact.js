@@ -15,7 +15,11 @@ const Contact = () => {
         <Card.Body>
           <Card.Title>Customer Support</Card.Title>
           <Card.Text>
-          Ithe Changl Kahitri Lihaych aahe
+          Reach out to us:
+          Email-sharesteer@support.com
+          Telephone-02187 223456
+          We are available 24/7
+          Live Support!
           </Card.Text>
         </Card.Body>
         <Card.Footer>
@@ -27,7 +31,9 @@ const Contact = () => {
         <Card.Body>
           <Card.Title>Customer Queries</Card.Title>
           <Card.Text>
-          Ithe Changl Kahitri Lihaych aahe
+          Do you facing problems? we are here
+          Email your queries at sharesteer@queries.com
+          or contact us at 02134 786756
           </Card.Text>
         </Card.Body>
         <Card.Footer>
@@ -37,9 +43,11 @@ const Contact = () => {
       <Card>
         <Card.Img variant="top" src={emergency} />
         <Card.Body>
-          <Card.Title>Customer Emergrncy</Card.Title>
+          <Card.Title>Customer Emergency</Card.Title>
           <Card.Text>
-            Ithe Changl Kahitri Lihaych aahe
+            For emergency inquiry
+            Contact at sharesteer@emergnecy.com
+            or give missed call to 1800-1234-6755
           </Card.Text>
         </Card.Body>
         <Card.Footer>

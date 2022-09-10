@@ -15,7 +15,7 @@ const Services = () => {
             </div>
             <h3>Trusted Drivers</h3>
             <p>
-              Write Something Here
+              Verified drivers by our experts!
             </p>
           </div>
         </div>
@@ -26,7 +26,7 @@ const Services = () => {
             </div>
             <h3>Emergency Service</h3>
             <p>
-            Write Something Here
+            Full customer support in emergency!
             </p>
           </div>
         </div>
@@ -37,7 +37,7 @@ const Services = () => {
             </div>
             <h3>Maintained Vehicle</h3>
             <p>
-            Write Something Here
+            Vehicles in good condition and insured safely!
             </p>
           </div>
         </div>
@@ -48,7 +48,7 @@ const Services = () => {
             </div>
             <h3>Live Tracking</h3>
             <p>
-            Write Something Here
+            Track your ride on our website!
             </p>
           </div>
         </div>
@@ -59,7 +59,7 @@ const Services = () => {
             </div>
             <h3>Feedback System</h3>
             <p>
-            Write Something Here
+            Give feedback and improve our service.
             </p>
           </div>
         </div>
@@ -70,7 +70,7 @@ const Services = () => {
             </div>
             <h3>Ontime </h3>
             <p>
-            Write Something Here
+            Drop and PickUp ontime.
             </p>
           </div>
         </div>
