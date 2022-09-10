@@ -18,6 +18,7 @@ import Login from './pages/Login/Login';
 import './App.css';
 import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
 import PostRide from './pages/Ride/PostRide';
+import Logout from './pages/Logout/Logout';
 
 ReactSession.setStoreType("localStorage");
 
@@ -37,8 +38,9 @@ class App extends Component {
   {
     axios.get("http://localhost:8080/sharesteer/getAllrides")
     .then((response)=>{
-      this.setState({rides:response.data})
-      console.log(this.state.rides);
+      ReactSession.set("rides",response.data);
+      console.log(ReactSession.get("rides"));
+
     })
     .catch((error)=>{
       console.log(error);
@@ -46,8 +48,10 @@ class App extends Component {
 
     axios.get("http://localhost:8080/sharesteer/getAllCities")
     .then((response)=>{
-      this.setState({cities:response.data})
-      console.log(this.state.cities);
+      ReactSession.set("cities",response.data);
+      console.log(ReactSession.get("cities"));
+
+
     })
     .catch((error)=>{
       console.log(error);
@@ -56,7 +60,8 @@ class App extends Component {
 
     axios.get("http://localhost:8080/sharesteer/getAllUsers")
     .then((response)=>{
-      this.setState({users:response.data})
+      ReactSession.set("allUser",response.data);
+      console.log(ReactSession.get("allUser"));
     })
     .catch((error)=>{
       console.log(error);
@@ -69,8 +74,8 @@ class App extends Component {
         <Navbar/>
         <main className='container'>
           <Switch>
-            <Route path="/" exact><Home ride={this.state.rides} city={this.state.cities} /></Route>
-            <Route path="/home" exact><Home ride={this.state.rides} city={this.state.cities}/></Route>
+            <Route path="/" exact><Home/></Route>
+            <Route path="/home" exact><Home/></Route>
             <Route path="/about" exact><About /></Route>
             <Route path="/service" exact><Services /></Route>
             <Route path="/testimonial" exact><Testimonial /></Route>
@@ -78,7 +83,9 @@ class App extends Component {
             <Route path="/login" exact><Login/></Route>
             <Route path="/register" exact><Register /></Route>
             <Route path="/forgetpassword" exact><ForgetPassword /></Route>
-            <Route path="/postride" exact><PostRide city={this.state.cities} /></Route>
+            <Route path="/postride" exact><PostRide/></Route>
+            <Route path="/logout" exact><Logout/></Route>
+
           </Switch>
         </main>
       </Router>

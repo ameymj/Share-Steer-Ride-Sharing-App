@@ -24,7 +24,7 @@ function Login() {
     }
 
     useEffect(() => {
-        fetch('https://reqres.in/api/users?page=2', { method: 'Get' })
+        fetch('http://localhost:8080/sharesteer/addUser', { method: 'Get' })
             .then((response) => response.json())
             .then((data) => setUsers(data));
     }, [])

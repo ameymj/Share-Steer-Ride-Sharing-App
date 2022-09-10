@@ -9,19 +9,20 @@ function Login() {
     const [username, setusername] = useState("");
     const [password, setPassword] = useState("");
     const [messege, setMesssge] = useState("");
-    const [users, setUsers] = useState([]);
-
+    const users=ReactSession.get("allUser");
     function verify() {
+        console.log(users.length);
         for (let i = 0; i < users.length; i++) {
-            if (users[i].username === username) {
+            if (users[i].user_name === username) {
                 if (users[i].password === password) {
                     setMesssge("Successfully Login");
-                    ReactSession.set("username", users[i].username);
+                    ReactSession.set("username", users[i].user_name);
                     setMesssge("login successs");
                     return true;
                 }
                 else {
                     setMesssge("Invalid Username Or Password");
+                    console.log("else");
                     return false;
                 }
             }
@@ -29,11 +30,11 @@ function Login() {
 
     }
 
-    useEffect(() => {
-        fetch('http://localhost:8080/sharesteer/getAllUsers', { method: 'Get' })
-            .then((response) => response.json())
-            .then((data) => setUsers(data));
-    }, [])
+    // useEffect(() => {
+    //     fetch('http://localhost:8080/sharesteer/getAllUsers', { method: 'Get' })
+    //         .then((response) => response.json())
+    //         .then((data) => setUsers(data));
+    // }, [])
 
     return (
         <section>
@@ -52,7 +53,6 @@ function Login() {
                                 <div className="card-body p-4 p-lg-5 text-black" style={{'backgroundColor':'rgb(5, 101, 134)'}}>
 
                                         <form>
-
                                             <div className="d-flex align-items-center mb-3 pb-1">
                                                 <i className="fas fa-lock fa-2x me-3"></i>
                                                 <span className="h1 fw-bold mb-0">LOGIN</span>
@@ -70,16 +70,15 @@ function Login() {
                                             </div>
 
                                             <div className="pt-1 mb-4">
+                                            <b>{messege}</b>
                                                 <button className="btn btn-dark btn-lg btn-block" type="button" onClick={verify}>Login</button>
                                             </div>
-
                                             <a href="/forgetpassword" style={{ "color": "black" }}>Forgot password?</a>
                                             <p className="mb-5 pb-lg-2" style={{ "color": " #393f81" }}>Don't have an account? <a href="/register"
                                                 style={{ "color": " #000" }}>Register here</a></p>
                                             <a href="#!" className="small text-muted">Terms of use.</a>
                                             <a href="#!" className="small text-muted">Privacy policy</a>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>

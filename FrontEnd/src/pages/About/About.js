@@ -56,7 +56,6 @@ function About() {
           <Card.Text>
             Real time ride sharing app.
             Car Sharing reduces trafic.
-            Reduces carbon immissions and
             also reduces the fuel cost.
           </Card.Text>
         </Card.Body>

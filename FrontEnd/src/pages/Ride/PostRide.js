@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import van from './van.jpeg';
 import cab from './cab.jpeg'
 import share from './share.jpeg'
+import { ReactSession } from 'react-client-session';
 
 export default function PostRide(props) {
 
-  const cities = props.city;
+  const cities=ReactSession.get("cities");
+
   const [date_of_journey, setDate_of_journey] = useState("");
   const [time_of_journey, setTime_of_journey] = useState("");
   const [from_city, setFrom_city] = useState("");
@@ -21,8 +23,26 @@ export default function PostRide(props) {
   const [capacity, setCapacity] = useState("");
 
   function addRide() {
+    console.log(new Date());
     const ride = {};
+    ride.date_of_journey=date_of_journey;
+    ride.time_of_journey=time_of_journey;
+    ride.from_city=from_city;
+    ride.to_city=to_city;
+    ride.total_seat=total_seat;
+    ride.available_seat=available_seat;
+    ride.ride_cost=ride_cost;
+    ride.description=description;
+
+    console.log(ride);
+
     const vehicle = {};
+    vehicle.user_id=
+    vehicle.vehicle_model=vehicle_model;
+    vehicle.vehicle_reg_number=vehicle_reg_number;
+    vehicle.capacity=total_seat;
+
+    console.log(vehicle);
 
     axios.post("http://localhost:8080/sharesteer/addVehicle", ride)
       .then((response) => {
@@ -32,7 +52,7 @@ export default function PostRide(props) {
         console.log(error);
       })
 
-    axios.post("http://localhost:8080/sharesteer/AddRide", vehicle)
+    axios.post("http://localhost:8080/sharesteer/addride", vehicle)
       .then((response) => {
         console.log(response);
       })
@@ -67,7 +87,7 @@ export default function PostRide(props) {
                       </div>
 
                       <div className="form-outline mb-4">
-                        <input type="date" className="form-control form-control-lg" required min={new Date()} onBlur={(e) => { setDate_of_journey(e.target.value) }} />
+                        <input type="date" className="form-control form-control-lg" required min={new Date().toJSON().slice(0,10).replace(/-/g,'-')} onBlur={(e) => { setDate_of_journey(e.target.value) }} />
                         <label className="form-label"><b>Date-Of-Journey</b></label>
                       </div>
 
@@ -77,20 +97,20 @@ export default function PostRide(props) {
                       </div>
 
                       <div>
-                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setFrom_city(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setFrom_city(e.target.value) }}>
+                          {cities.map((city) => (<option key={city.cityName} value={city.cityName}>{city.cityName}</option>))}
                         </select>
                         <b>SOURCE</b><br /><br />
                       </div>
                       <div>
-                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setTo_city(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setTo_city(e.target.value) }}>
+                          {cities.map((city) => (<option key={city.cityName} value={city.cityName}>{city.cityName}</option>))}
                         </select>
                         <b>DESTINATION</b><br /><br />
                       </div>
 
                       <div className="form-outline mb-4">
-                        <input type="number"  className="form-control form-control-lg" required onBlur={(e) => { setTotal_seats(e.target.value) }} />
+                        <input type="number"  className="form-control form-control-lg" required min={1} onBlur={(e) => { setTotal_seats(e.target.value) }} />
                         <label className="form-label"><b>Total Seat</b></label>
                       </div>
 
