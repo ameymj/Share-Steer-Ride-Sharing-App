@@ -11,13 +11,15 @@ function Login() {
     const [messege, setMesssge] = useState("");
     const users=ReactSession.get("allUser");
     function verify() {
-        console.log(users.length);
         for (let i = 0; i < users.length; i++) {
             if (users[i].user_name === username) {
                 if (users[i].password === password) {
                     setMesssge("Successfully Login");
                     ReactSession.set("username", users[i].user_name);
+                    ReactSession.set("user", users[i]);
+
                     setMesssge("login successs");
+                    window. location. reload(false);
                     return true;
                 }
                 else {
@@ -52,7 +54,7 @@ function Login() {
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                 <div className="card-body p-4 p-lg-5 text-black" style={{'backgroundColor':'rgb(5, 101, 134)'}}>
 
-                                        <form>
+                                        <form action='/'>
                                             <div className="d-flex align-items-center mb-3 pb-1">
                                                 <i className="fas fa-lock fa-2x me-3"></i>
                                                 <span className="h1 fw-bold mb-0">LOGIN</span>

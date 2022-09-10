@@ -18,7 +18,7 @@ import Login from './pages/Login/Login';
 import './App.css';
 import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
 import PostRide from './pages/Ride/PostRide';
-import Logout from './pages/Logout/Logout';
+import Profile from './pages/Profile/Profile';
 
 ReactSession.setStoreType("localStorage");
 
@@ -79,12 +79,12 @@ class App extends Component {
             <Route path="/about" exact><About /></Route>
             <Route path="/service" exact><Services /></Route>
             <Route path="/testimonial" exact><Testimonial /></Route>
-            <Route path="/contact" exact><Contact /></Route>
+            <Route path="/contact" exact><Contact/></Route>
             <Route path="/login" exact><Login/></Route>
             <Route path="/register" exact><Register /></Route>
             <Route path="/forgetpassword" exact><ForgetPassword /></Route>
             <Route path="/postride" exact><PostRide/></Route>
-            <Route path="/logout" exact><Logout/></Route>
+            <Route path="/profile" exact><Profile/></Route>
 
           </Switch>
         </main>

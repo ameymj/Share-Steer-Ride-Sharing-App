@@ -46,6 +46,12 @@ const Navbar = (props) => {
 
   }, []);
 
+  function logout()
+  {
+    ReactSession.set('username',null);
+    window. location. reload(false);
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-mainbg">
@@ -116,7 +122,7 @@ const Navbar = (props) => {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/login" exact>
                     <i
-                      className="far fa-copy">
+                      className="far fa-user">
                     </i>Login
                   </NavLink>
                 </li> :
@@ -129,7 +135,7 @@ const Navbar = (props) => {
                       </i>{ReactSession.get("username").toUpperCase()}
                     </NavLink> </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/logout" exact>
+                    <NavLink className="nav-link" onClick={logout} to='/' exact>
                       <i
                         className="fas fa-power-off">
                       </i>LOGOUT

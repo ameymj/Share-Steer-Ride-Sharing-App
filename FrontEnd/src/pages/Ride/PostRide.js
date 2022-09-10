@@ -8,7 +8,8 @@ import { ReactSession } from 'react-client-session';
 export default function PostRide(props) {
 
   const cities=ReactSession.get("cities");
-
+  const user=ReactSession.get("user");
+  const [user_id,setUser_id]=useState()
   const [date_of_journey, setDate_of_journey] = useState("");
   const [time_of_journey, setTime_of_journey] = useState("");
   const [from_city, setFrom_city] = useState("");
@@ -25,6 +26,7 @@ export default function PostRide(props) {
   function addRide() {
     console.log(new Date());
     const ride = {};
+    ride.user_id=user.user_id;
     ride.date_of_journey=date_of_journey;
     ride.time_of_journey=time_of_journey;
     ride.from_city=from_city;
@@ -37,7 +39,7 @@ export default function PostRide(props) {
     console.log(ride);
 
     const vehicle = {};
-    vehicle.user_id=
+    vehicle.user_id=ReactSession.get('')
     vehicle.vehicle_model=vehicle_model;
     vehicle.vehicle_reg_number=vehicle_reg_number;
     vehicle.capacity=total_seat;
