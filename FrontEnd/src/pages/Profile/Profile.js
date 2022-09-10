@@ -5,8 +5,6 @@ import { ReactSession } from 'react-client-session';
 
 function Profile() {
   const user=ReactSession.get("user");
-  console.log("Mu User");
-  console.log(user);
   return (
     <div id='ride'>
       <div className="card">
@@ -21,7 +19,7 @@ function Profile() {
         </ul>
         <div className="card-body">
           <a href="/UpdateProfile" className="card-link">update Profile</a>
-          <a href="/MyRides" className="card-link">Show all Rides Published by me</a>
+          <a href="/ridehistory" className="card-link">Show all Rides Published by me</a>
           <a href="/MyBookings" className="card-link">Show all Bookings done by me</a>
         </div>
       </div>

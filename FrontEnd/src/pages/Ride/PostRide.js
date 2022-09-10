@@ -19,42 +19,49 @@ export default function PostRide(props) {
   const [ride_cost, setRide_cost] = useState("");
   const [description, setDescription] = useState("");
 
+  const [vehicle_id, setVehicle_id] = useState("");
   const [vehicle_model, setVehicle_model] = useState("");
   const [vehicle_reg_number, setVehicle_reg_number] = useState("");
   const [capacity, setCapacity] = useState("");
 
-  function addRide() {
-    console.log(new Date());
-    const ride = {};
-    ride.user_id=user.user_id;
-    ride.date_of_journey=date_of_journey;
-    ride.time_of_journey=time_of_journey;
-    ride.from_city=from_city;
-    ride.to_city=to_city;
-    ride.total_seat=total_seat;
-    ride.available_seat=available_seat;
-    ride.ride_cost=ride_cost;
-    ride.description=description;
-
-    console.log(ride);
-
+  function addRide() { 
     const vehicle = {};
-    vehicle.user_id=ReactSession.get('')
+    vehicle.user_id=user.user_id;
     vehicle.vehicle_model=vehicle_model;
     vehicle.vehicle_reg_number=vehicle_reg_number;
     vehicle.capacity=total_seat;
 
     console.log(vehicle);
 
-    axios.post("http://localhost:8080/sharesteer/addVehicle", ride)
+    axios.post("http://localhost:8080/sharesteer/addvehicle", vehicle)
       .then((response) => {
         console.log(response);
+        setVehicle_id(response.data);
+    
       })
       .catch((error) => {
         console.log(error);
       })
 
-    axios.post("http://localhost:8080/sharesteer/addride", vehicle)
+
+      const ride = {};
+      ride.user_id=user.user_id;
+      ride.date_of_journey=date_of_journey;
+      ride.time_of_journey=time_of_journey;
+      ride.from_city=from_city;
+      ride.to_city=to_city;
+      ride.total_seat=total_seat;
+      ride.available_seat=available_seat;
+      ride.ride_cost=ride_cost;
+      ride.description=description;
+      ride.only_females=0;
+      ride.status=false;
+      ride.vehicle_id=vehicle_id;
+  
+      console.log(ride);
+  
+
+    axios.post("http://localhost:8080/sharesteer/addride", ride)
       .then((response) => {
         console.log(response);
       })
@@ -100,13 +107,13 @@ export default function PostRide(props) {
 
                       <div>
                         <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setFrom_city(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName} value={city.cityName}>{city.cityName}</option>))}
+                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityId}</option>))}
                         </select>
                         <b>SOURCE</b><br /><br />
                       </div>
                       <div>
                         <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setTo_city(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName} value={city.cityName}>{city.cityName}</option>))}
+                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityId}</option>))}
                         </select>
                         <b>DESTINATION</b><br /><br />
                       </div>

@@ -19,6 +19,7 @@ import './App.css';
 import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
 import PostRide from './pages/Ride/PostRide';
 import Profile from './pages/Profile/Profile';
+import RideHistory from './pages/Profile/RideHistory';
 
 ReactSession.setStoreType("localStorage");
 
@@ -39,7 +40,6 @@ class App extends Component {
     axios.get("http://localhost:8080/sharesteer/getAllrides")
     .then((response)=>{
       ReactSession.set("rides",response.data);
-      console.log(ReactSession.get("rides"));
 
     })
     .catch((error)=>{
@@ -51,7 +51,6 @@ class App extends Component {
       ReactSession.set("cities",response.data);
       console.log(ReactSession.get("cities"));
 
-
     })
     .catch((error)=>{
       console.log(error);
@@ -61,7 +60,6 @@ class App extends Component {
     axios.get("http://localhost:8080/sharesteer/getAllUsers")
     .then((response)=>{
       ReactSession.set("allUser",response.data);
-      console.log(ReactSession.get("allUser"));
     })
     .catch((error)=>{
       console.log(error);
@@ -85,7 +83,7 @@ class App extends Component {
             <Route path="/forgetpassword" exact><ForgetPassword /></Route>
             <Route path="/postride" exact><PostRide/></Route>
             <Route path="/profile" exact><Profile/></Route>
-
+            <Route path="/ridehistory" exact><RideHistory/></Route>
           </Switch>
         </main>
       </Router>
