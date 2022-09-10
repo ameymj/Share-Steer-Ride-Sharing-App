@@ -2,12 +2,14 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import van from './van.jpeg';
 import cab from './cab.jpeg'
-import share from './share.jpeg'
+import share from './share.jpeg';
+import { ReactSession } from 'react-client-session';
+
 
 export default function UpdateRide(props) {
 
-    const id=props.id;
-  const cities = props.city;
+  const id = props.id;
+  const cities = ReactSession.get("cites");
   const [date_of_journey, setDate_of_journey] = useState("");
   const [time_of_journey, setTime_of_journey] = useState("");
   const [from_city, setFrom_city] = useState("");
@@ -35,7 +37,7 @@ export default function UpdateRide(props) {
         console.log(error);
       })
 
-      axios.get("http://localhost:8080/sharesteer/getride"/+id)
+    axios.get("http://localhost:8080/sharesteer/getride" / +id)
       .then((response) => {
         console.log(response);
       })
@@ -44,7 +46,7 @@ export default function UpdateRide(props) {
       })
 
 
-      axios.get("http://localhost:8080/sharesteer/getvehicle"/+id)
+    axios.get("http://localhost:8080/sharesteer/getvehicle" / +id)
       .then((response) => {
         console.log(response);
       })
@@ -72,12 +74,12 @@ export default function UpdateRide(props) {
                   <img src={cab}
                     alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} /><br /><br /><br />
                   <img src={van}
-                    alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} /><br/><br/><br/>
-                    <img src={share}
-                      alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} />
+                    alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} /><br /><br /><br />
+                  <img src={share}
+                    alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} />
                 </div>
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                <div className="card-body p-4 p-lg-5 text-black" style={{'backgroundColor':'rgb(5, 101, 134)'}}>
+                  <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
 
                     <form>
 

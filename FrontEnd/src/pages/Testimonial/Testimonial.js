@@ -7,7 +7,7 @@ import Amey from './images/amey.jpeg';
 import Mahesh from './images/mahesh.jpeg';
 import Naman from './images/naman.jpg';
 import Prajakta from './images/prajakta.png';
-// import Swapnil from './images/swapnil.jpg';
+import Swapnil from './images/swapnil.jpg';
 
 
 export default class Testimonials extends Component {
@@ -82,7 +82,7 @@ export default class Testimonials extends Component {
         </div>
 
         <div>
-        <img src={null} />
+        <img src={Swapnil} />
           <div className="myCarousel">
             <h3>Swapnil Kalange</h3>
             <h4>Designer</h4>

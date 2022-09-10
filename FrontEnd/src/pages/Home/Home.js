@@ -9,24 +9,19 @@ import GetAllRide from '../Ride/GetAllRide';
 import PostRide from '../Ride/PostRide';
 import SearchRide from './searchride.jpg'
 import Waiting from './waiting.jpg'
+import { ReactSession } from 'react-client-session';
+
 
 const Home = (props) => {
 
-  let cities = props.city;
-  const [checkt, setCheckt] = useState(false);
-  const rides = props.ride;
+ const cities=ReactSession.get("cities");
+
+  const rides = ReactSession.get("rides");
   const [source, setSource] = useState("");
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("");
   const [check, setCheck] = useState(false);
   const [ReqRide, setReqRide] = useState([]);
-
-
-  useEffect(() => {
-    cities=props.city;
-    console.log("called");
-    setCheckt(true)
-  });
 
   function validate() {
 
@@ -83,7 +78,7 @@ const Home = (props) => {
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
-              <div className="card" style={{ "border-radius": " 1rem" }}>
+              <div className="card" style={{ "borderRadius": " 1rem" }}>
                 <div className="row g-0">
                   <div className="col-md-6 col-lg-5 d-none d-md-block">
                     <img src={SearchRide}
@@ -102,13 +97,13 @@ const Home = (props) => {
                         <div>
                           <b>SOURCE</b>
                           <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setSource(e.target.value) }}>
-                            {checkt && cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                            {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
                           </select>
                         </div>
                         <div>
                           <b>DESTINATION</b>
                           <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setDestination(e.target.value) }}>
-                            {checkt && cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                            {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
                           </select>
                         </div>
                         <div>
@@ -130,7 +125,7 @@ const Home = (props) => {
       </section>
       {check && ReqRide.map((ri, index) => <GetAllRide key={index} ride={ri} />)}
       <div>
-        <PostRide city={props.city} />
+        <PostRide city={cities} />
       </div>
     </div>
   )
