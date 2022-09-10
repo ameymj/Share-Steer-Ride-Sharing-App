@@ -27,9 +27,9 @@ public class LoginController {
 	@PostMapping("/signup")
 	public String f3(@RequestBody User u)
 	{
-		temp.update("insert into user values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)","default",u.getUser_name(),u.getPassword(),u.getFirst_name(),
-				u.getLast_name(),u.getBirth_date(),u.getGender(),u.getEmail_id(),u.getContact(),u.getAadhar_image(),u.getUser_image(),
-				u.getDriving_licence(),"default");
+		temp.update("insert into user values(?,?,?,?,?,?,?,?,?,?,?,?,?)","default",u.getUser_name(),u.getPassword(),u.getFirst_name(),
+				u.getLast_name(),u.getBirth_date(),u.getEmail_id(),u.getContact(),u.getAadhar_image(),u.getUser_image(),
+				u.getDriving_licence(),u.isIs_verified());
 		
 		return "User added successfully";
 	}
@@ -40,9 +40,7 @@ public class LoginController {
 		String messege="";
 		try
 		{
-		User user=temp.queryForObject("select * from user where uname ="+username+"and password="+password, (rs,rownum)->
-		{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),
-				rs.getString(7),rs.getString(8),rs.getString(9),rs.getBoolean(10),rs.getBlob(11),rs.getBlob(12),rs.getBlob(13));});
+		User user=temp.queryForObject("select * from user where uname ="+username+"and password="+password, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getBlob(9),rs.getBlob(10),rs.getBlob(11),rs.getBoolean(12));});
 		
 		if(user!=null)
 			messege= "Login Successful";
@@ -57,24 +55,17 @@ public class LoginController {
 		return messege;
 	}
 	
-	@GetMapping("/getDetail")
-	public User f5(@PathVariable int id)
+	@GetMapping("/getDetail/{username}")
+	public User f5(@PathVariable String username)
 	{
-		User user=temp.queryForObject("select * from user where user_id="+id, (rs,rownum)->
-		{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
-				rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),
-				rs.getBoolean(10),rs.getBlob(11),rs.getBlob(12),rs.getBlob(13)
-				);});
-		
+		User user=temp.queryForObject("select * from user where user_name="+username, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));});
 		return user;
 	}
 	
 	@GetMapping("/getAllUsers")
 	public ArrayList<User> f6()
 	{
-		List<User> list=temp.query("select * from user",  (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),
-				rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),
-				rs.getBoolean(10),rs.getBlob(11),rs.getBlob(12),rs.getBlob(13));});
+		List<User> list=temp.query("select * from user",  (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));});
 		return (ArrayList<User>) list;
 	}
 

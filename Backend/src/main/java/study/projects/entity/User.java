@@ -5,7 +5,7 @@ import java.sql.Blob;
 public class User {
 
 	private int user_id;
-	private String user_name,password,first_name,last_name,birth_date,gender,email_id,
+	private String user_name,password,first_name,last_name,birth_date,email_id,
 					contact;
 	private boolean is_verified;
 	private Blob aadhar_image,user_image,driving_licence;
@@ -16,11 +16,9 @@ public class User {
 	}
 	
 	
-	
-	
 	public User(int user_id, String user_name, String password, String first_name, String last_name, String birth_date,
-			String gender, String email_id, String contact, boolean is_verified, Blob aadhar_image, Blob user_image,
-			Blob driving_licence) {
+			String email_id, String contact, Blob aadhar_image, Blob user_image, Blob driving_licence,
+			boolean is_verified) {
 		super();
 		this.user_id = user_id;
 		this.user_name = user_name;
@@ -28,18 +26,14 @@ public class User {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.birth_date = birth_date;
-		this.gender = gender;
 		this.email_id = email_id;
 		this.contact = contact;
-		this.is_verified = is_verified;
 		this.aadhar_image = aadhar_image;
 		this.user_image = user_image;
 		this.driving_licence = driving_licence;
+		this.is_verified = is_verified;
 	}
-
-
-
-
+	
 	public User(String user_name, String password) {
 		super();
 		this.user_id = 0;
@@ -57,6 +51,18 @@ public class User {
 	}
 
 
+	public User(int user_id, String user_name, String password, String first_name, String last_name, String birth_date, String email_id,
+			String contact) {
+		this.user_id = user_id;
+		this.user_name = user_name;
+		this.password = password;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.birth_date = birth_date;
+		this.email_id = email_id;
+		this.contact = contact;
+		
+	}
 
 
 	public int getUser_id() {
@@ -64,13 +70,9 @@ public class User {
 	}
 
 
-
-
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-
-
 
 
 	public String getUser_name() {
@@ -78,13 +80,9 @@ public class User {
 	}
 
 
-
-
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-
-
 
 
 	public String getPassword() {
@@ -92,13 +90,9 @@ public class User {
 	}
 
 
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 
 
 	public String getFirst_name() {
@@ -106,13 +100,9 @@ public class User {
 	}
 
 
-
-
 	public void setFirst_name(String first_name) {
 		this.first_name = first_name;
 	}
-
-
 
 
 	public String getLast_name() {
@@ -120,13 +110,9 @@ public class User {
 	}
 
 
-
-
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
-
-
 
 
 	public String getBirth_date() {
@@ -134,27 +120,9 @@ public class User {
 	}
 
 
-
-
 	public void setBirth_date(String birth_date) {
 		this.birth_date = birth_date;
 	}
-
-
-
-
-	public String getGender() {
-		return gender;
-	}
-
-
-
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-
 
 
 	public String getEmail_id() {
@@ -162,13 +130,9 @@ public class User {
 	}
 
 
-
-
 	public void setEmail_id(String email_id) {
 		this.email_id = email_id;
 	}
-
-
 
 
 	public String getContact() {
@@ -176,27 +140,9 @@ public class User {
 	}
 
 
-
-
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-
-
-
-
-	public boolean isIs_verified() {
-		return is_verified;
-	}
-
-
-
-
-	public void setIs_verified(boolean is_verified) {
-		this.is_verified = is_verified;
-	}
-
-
 
 
 	public Blob getAadhar_image() {
@@ -204,13 +150,9 @@ public class User {
 	}
 
 
-
-
 	public void setAadhar_image(Blob aadhar_image) {
 		this.aadhar_image = aadhar_image;
 	}
-
-
 
 
 	public Blob getUser_image() {
@@ -218,13 +160,9 @@ public class User {
 	}
 
 
-
-
 	public void setUser_image(Blob user_image) {
 		this.user_image = user_image;
 	}
-
-
 
 
 	public Blob getDriving_licence() {
@@ -232,13 +170,19 @@ public class User {
 	}
 
 
-
-
 	public void setDriving_licence(Blob driving_licence) {
 		this.driving_licence = driving_licence;
 	}
 
 
+	public boolean isIs_verified() {
+		return is_verified;
+	}
+
+
+	public void setIs_verified(boolean is_verified) {
+		this.is_verified = is_verified;
+	}
 	
 	
 }

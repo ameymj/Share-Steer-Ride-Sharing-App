@@ -23,9 +23,9 @@ public class JavaConfig {
 	{
 		DriverManagerDataSource obj = new DriverManagerDataSource();
 		obj.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		obj.setUrl("jdbc:mysql://localhost:3306/sep22");
+		obj.setUrl("jdbc:mysql://localhost:3306/dotnetproject");
 		obj.setUsername("root");
-		obj.setPassword("amey");
+		obj.setPassword("C@stleking786");
 		
 		return obj;
 	}

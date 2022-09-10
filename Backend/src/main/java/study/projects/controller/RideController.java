@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import study.projects.entity.Ride;
+import study.projects.entity.Vehicle;
 
 
 @CrossOrigin
@@ -25,10 +26,8 @@ public class RideController {
 	
 	@PostMapping("/addride")
 	public String f1(@RequestBody Ride r)
-	{
-		
-		
-		temp.update("insert into ride (ride_id,user_id,vehicle_id,date_of_journey,time_of_journey,from_city,to_city,total_seats,available_seats,Status,ride_cost,description,Only_females) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",1,r.getUser_id(),r.getVehicle_id(),r.getDate_of_journey(),
+	{		
+		temp.update("insert into ride (user_id,vehicle_id,date_of_journey,time_of_journey,from_city,to_city,total_seats,available_seats,Status,ride_cost,description,Only_females) values(?,?,?,?,?,?,?,?,?,?,?,?)",1,r.getUser_id(),r.getVehicle_id(),r.getDate_of_journey(),
 				r.getTime_of_journey(),r.getFrom_city(),r.getTo_city(),r.getTotal_seats(),r.getAvailable_seats(),r.isStatus(),
 				r.getRide_cost(),r.getDescription(),r.isOnly_females());
 		
