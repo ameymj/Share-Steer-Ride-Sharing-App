@@ -20,6 +20,7 @@ import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
 import PostRide from './pages/Ride/PostRide';
 import Profile from './pages/Profile/Profile';
 import RideHistory from './pages/Profile/RideHistory';
+import UpdateProfile from './pages/Profile/UpdateProfile';
 
 ReactSession.setStoreType("localStorage");
 
@@ -84,6 +85,9 @@ class App extends Component {
             <Route path="/postride" exact><PostRide/></Route>
             <Route path="/profile" exact><Profile/></Route>
             <Route path="/ridehistory" exact><RideHistory/></Route>
+            <Route path="/updateprofile" exact><UpdateProfile/></Route>
+
+            
           </Switch>
         </main>
       </Router>

@@ -48,5 +48,14 @@ public class LoginController {
 		System.out.println(list);
 		return (ArrayList<User>) list;
 	}
+	
+	
+	@PostMapping("/updateprofile")
+	public String f4(@RequestBody User u)
+	{
+		temp.update("update user set password='"+u.getPassword()+"',first_name='"+u.getFirst_name()+"',last_name='"+u.getLast_name()+"',birth_date='"+u.getBirth_date()+"',gender='"+u.getGender()+"',contact='"+u.getContact()+"' where user_name= '"+u.getUser_name()+"'");
+		
+		return "User Update successfully";
+	}
 
 }

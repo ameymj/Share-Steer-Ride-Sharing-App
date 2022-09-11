@@ -17,7 +17,6 @@ function Login() {
     const [aadhar, setAadhar] = useState("");
     const [photo, setPhoto] = useState("");
     const [licence, setLicence] = useState("");
-    const [users, setUsers] = useState([]);
 
     function addData()
     {
