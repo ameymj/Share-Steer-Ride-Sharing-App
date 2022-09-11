@@ -10,6 +10,7 @@ import PostRide from '../Ride/PostRide';
 import SearchRide from './searchride.jpg'
 import Waiting from './waiting.jpg'
 import { ReactSession } from 'react-client-session';
+import axios from 'axios';
 
 
 const Home = (props) => {
@@ -22,6 +23,8 @@ const Home = (props) => {
   const [date, setDate] = useState("");
   const [check, setCheck] = useState(false);
   const [ReqRide, setReqRide] = useState([]);
+
+ 
 
   function validate() {
 

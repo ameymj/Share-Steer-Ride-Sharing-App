@@ -79,15 +79,13 @@ class App extends Component {
             <Route path="/service" exact><Services /></Route>
             <Route path="/testimonial" exact><Testimonial /></Route>
             <Route path="/contact" exact><Contact/></Route>
-            <Route path="/login" exact><Login/></Route>
-            <Route path="/register" exact><Register /></Route>
             <Route path="/forgetpassword" exact><ForgetPassword /></Route>
             <Route path="/postride" exact><PostRide/></Route>
             <Route path="/profile" exact><Profile/></Route>
             <Route path="/ridehistory" exact><RideHistory/></Route>
             <Route path="/updateprofile" exact><UpdateProfile/></Route>
-
-            
+            <Route path="/login" exact><Login/></Route>
+            <Route path="/register" exact><Register /></Route>
           </Switch>
         </main>
       </Router>

@@ -50,6 +50,9 @@ const Navbar = (props) => {
   {
     ReactSession.set('username',null);
     window. location. reload(false);
+    // localStorage.removeItem('user');
+    // localStorage.removeItem('username');
+
   }
 
   return (

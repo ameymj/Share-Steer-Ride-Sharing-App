@@ -106,7 +106,7 @@ setTimeout(()=>{
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                 <div className="card-body p-4 p-lg-5 text-black" style={{'backgroundColor':'rgb(5, 101, 134)'}}>
 
-                    <form>
+                    <form action={user!=null?'/book':'/login'} >
 
                       <div className="d-flex align-items-center mb-3 pb-1">
                         <i className="fas fa-taxi fa-2x me-3" style={{ "color": " #000" }}></i>

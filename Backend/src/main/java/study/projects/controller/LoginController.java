@@ -45,7 +45,6 @@ public class LoginController {
 	public ArrayList<User> f6()
 	{
 		List<User> list=temp.query("select * from user",(rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));});
-		System.out.println(list);
 		return (ArrayList<User>) list;
 	}
 	
@@ -55,6 +54,13 @@ public class LoginController {
 	{
 		temp.update("update user set password='"+u.getPassword()+"',first_name='"+u.getFirst_name()+"',last_name='"+u.getLast_name()+"',birth_date='"+u.getBirth_date()+"',gender='"+u.getGender()+"',contact='"+u.getContact()+"' where user_name= '"+u.getUser_name()+"'");
 		
+		return "User Update successfully";
+	}
+	
+	@PostMapping("/forgetpassword")
+	public String f5(@RequestBody User u)
+	{
+		temp.update("update user set password='"+u.getPassword()+"' where user_name='"+u.getUser_name()+"' and email_id='"+u.getEmail_id()+"'");
 		return "User Update successfully";
 	}
 

@@ -6,10 +6,28 @@ import { ReactSession } from 'react-client-session';
 
 
 function BookRide(props) {
-    const [userid, setUserId] = useState("");
-    const [rideid, setRideId] = useState("");
     const [bookedSeat, setBookedSeat] = useState(0);
-    function Book() {
+    const [amount, setAmount] = useState(0);
+
+   const user=ReactSession.get('user');
+    
+    function Book()
+    {
+        const bookride={}
+        bookride.user_id=user.user_id;
+        bookride.ride_id=props.ride_id;
+        bookride.number_of_seats=bookedSeat;
+        bookride.booking_date=
+        bookride.amount=amount;
+    
+        console.log(bookride);
+        axios.post("http://localhost:8080/sharesteer/bookride", bookride)
+      .then((response) => {
+        console.log(response);    
+      })
+      .catch((error) => {
+        console.log(error);
+      })
 
     }
 
