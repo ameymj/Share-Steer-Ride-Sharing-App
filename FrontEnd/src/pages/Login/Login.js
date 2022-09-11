@@ -31,13 +31,6 @@ function Login() {
         }
 
     }
-
-    // useEffect(() => {
-    //     fetch('http://localhost:8080/sharesteer/getAllUsers', { method: 'Get' })
-    //         .then((response) => response.json())
-    //         .then((data) => setUsers(data));
-    // }, [])
-
     return (
         <section>
             <div className="container py-5 h-100">
@@ -62,12 +55,12 @@ function Login() {
 
 
                                             <div className="form-outline mb-4">
-                                                <input type="text" id="form2Example17" className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
+                                                <input type="text" id="form2Example17" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
                                                 <label className="form-label">Username</label>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="password" id="form2Example27" className="form-control form-control-lg" required minLength={3} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} />
+                                                <input type="password" id="form2Example27" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} />
                                                 <label className="form-label">Password</label>
                                             </div>
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,13 @@ import study.projects.entity.City;
 	@GetMapping("/getAllCities")
 	public ArrayList<City> f1()
 	{
-		List<City> list=temp.query("select * from from_city", (rs,rownum)->{return new City(rs.getInt(1),rs.getString(2));});
+		List<City> list=new ArrayList<>();
+		try {
+			list = temp.query("select * from from_city", (rs,rownum)->{return new City(rs.getInt(1),rs.getString(2));});
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return (ArrayList<City>) list;
 	}

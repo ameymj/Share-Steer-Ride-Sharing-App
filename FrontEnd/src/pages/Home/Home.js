@@ -110,7 +110,7 @@ const Home = (props) => {
                           </select>
                         </div>
                         <div>
-                          <b>DATE</b><input type='date' className='btn btn-dark btn-lg btn-block' onChange={(e) => { setDate(e.target.value) }} />
+                          <b>DATE</b><input type='date' className='btn btn-dark btn-lg btn-block' required min={new Date().toJSON().slice(0,10).replace(/-/g,'-')} onChange={(e) => { setDate(e.target.value) }} />
                           <br />
                         </div>
 

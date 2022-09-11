@@ -18,9 +18,9 @@ function Profile() {
           <li className="list-group-item">Contact No : {user.contact}</li>
         </ul>
         <div className="card-body">
-          <a href="/UpdateProfile" className="card-link">update Profile</a>
-          <a href="/ridehistory" className="card-link">Show all Rides Published by me</a>
-          <a href="/MyBookings" className="card-link">Show all Bookings done by me</a>
+          <a href="/UpdateProfile" className="card-link">Update Profile</a>
+          <a href="/ridehistory" className="card-link">My Rides</a>
+          <a href="/MyBookings" className="card-link">My Bookings</a>
         </div>
       </div>
 

@@ -17,30 +17,34 @@ function Login() {
     const [aadhar, setAadhar] = useState("");
     const [photo, setPhoto] = useState("");
     const [licence, setLicence] = useState("");
+    const [messege, setMessege] = useState("");
 
-    function addData()
-    {
-        const user={}
-        user.first_name=firstName;
-        user.last_name=lastName;
-        user.birth_date=birthdate;
-        user.gender=gender;
-        user.email_id=email;
-        user.contact=contact;
-        user.username=username;
-        user.password=password;
-        user.aadhar_card=aadhar;
-        user.user_image=photo;
-        user.driving_licence=licence;
-        user.is_varified=false;
+
+    function addData() {
+        const user = {}
+        user.first_name = firstName;
+        user.last_name = lastName;
+        user.birth_date = birthdate;
+        user.gender = gender;
+        user.email_id = email;
+        user.contact = contact;
+        user.username = username;
+        user.password = password;
+        user.aadhar_card = aadhar;
+        user.user_image = photo;
+        user.driving_licence = licence;
+        user.is_varified = false;
         console.log(user);
         axios.post("http://localhost:8080/sharesteer/signup", user)
-      .then((response) => {
-        console.log(response);    
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+            .then((response) => {
+                setMessege("Sign Up Successfull")
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+                setMessege("enter Valid Data")
+
+            })
 
     }
 
@@ -56,11 +60,11 @@ function Login() {
                                         alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} /><br /><br /><br />
                                     <img src={Welcome}
                                         alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} /><br /><br /><br />
-                                     <img src={Journey}
+                                    <img src={Journey}
                                         alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} />
-                                 </div>
+                                </div>
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                                    <div className="card-body p-4 p-lg-5 text-black" style={{'backgroundColor':'rgb(5, 101, 134)'}}>
+                                    <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
 
                                         <form>
 
@@ -70,28 +74,33 @@ function Login() {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="text"  className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setFirstName(e.target.value) }} />
+                                                <input type="text" className="form-control form-control-lg" required minLength={1} maxLength={16} onBlur={(e) => { setFirstName(e.target.value) }} />
                                                 <label className="form-label">First Name</label>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="text" className="form-control form-control-lg" required minLength={3} maxLength={16} onBlur={(e) => { setLastName(e.target.value) }} />
+                                                <input type="text" className="form-control form-control-lg" required minLength={1} maxLength={16} onBlur={(e) => { setLastName(e.target.value) }} />
                                                 <label className="form-label">Last Name</label>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="date"  className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setBirthdate(e.target.value) }} />
+                                                <input type="date" className="form-control form-control-lg" required max={new Date().toJSON().slice(0, 10).replace(/-/g, '-')} onBlur={(e) => { setBirthdate(e.target.value) }} />
                                                 <label className="form-label">Birthdate</label>
                                             </div>
 
-                                            <div className="form-outline mb-4">
-                                                <input type="text" className="form-control form-control-lg" required minLength={3} maxLength={16} onBlur={(e) => { setGender(e.target.value) }} />
+                                            <div>
+                                                <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setGender(e.target.value); }}>
+                                                    <option value="Male">Select</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
                                                 <label className="form-label">gender</label>
                                             </div>
 
-                                            
+
                                             <div className="form-outline mb-4">
-                                                <input type="mail"  className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setEmail(e.target.value) }} />
+                                                <input type="mail" className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setEmail(e.target.value) }} />
                                                 <label className="form-label">E-mail</label>
                                             </div>
 
@@ -101,33 +110,37 @@ function Login() {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" required  onBlur={(e) => { setPhoto(e.target.value) }} />
+                                                <input type="file" className="form-control form-control-lg" required onBlur={(e) => { setPhoto(e.target.value) }} />
                                                 <label className="form-label">Upload Your-Photo</label>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg"  onBlur={(e) => { setAadhar(e.target.value) }} />
+                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setAadhar(e.target.value) }} />
                                                 <label className="form-label">Upload Aadhar-Image</label>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file"  className="form-control form-control-lg"  onBlur={(e) => { setLicence(e.target.value) }} />
+                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setLicence(e.target.value) }} />
                                                 <label className="form-label">Upload Licence</label>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="password" className="form-control form-control-lg" required minLength={3} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} />
+                                                <input type="password" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} />
                                                 <label className="form-label">Password</label>
                                             </div>
 
-                                            
+
                                             <div className="form-outline mb-4">
-                                                <input type="text"  className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
+                                                <input type="text" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
                                                 <label className="form-label">Username</label>
                                             </div>
 
                                             <div className="pt-1 mb-4">
                                                 <button className="btn btn-dark btn-lg btn-block" type="button" onClick={addData}>Register</button>
+                                            </div>
+
+                                            <div className="pt-1 mb-4">
+                                                <button className="btn btn-dark btn-lg btn-block" type="Reset">Reset</button>
                                             </div>
 
                                             <a className="small text-muted" href="/forgetpassword">Forgot password?</a>

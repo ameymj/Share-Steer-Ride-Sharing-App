@@ -49,23 +49,23 @@ export default function ForgetPassword() {
 
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="text" className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
+                                                    <input type="text" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
                                                     <label className="form-label">Username</label>
                                                 </div>
 
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="email" className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setEmail(e.target.value) }} />
+                                                    <input type="email" className="form-control form-control-lg" required onBlur={(e) => { setEmail(e.target.value) }} />
                                                     <label className="form-label">Registered Email</label>
                                                 </div>
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="password" className="form-control form-control-lg" required minLength={3} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} />
+                                                    <input type="password" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} />
                                                     <label className="form-label">New Password</label>
                                                 </div>
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="password" className="form-control form-control-lg" required minLength={3} maxLength={16} onBlur={(e) => { setConfirmPassword(e.target.value) }} />
+                                                    <input type="password" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setConfirmPassword(e.target.value) }} />
                                                     <label className="form-label">Confirm Password</label>
                                                 </div>
 
