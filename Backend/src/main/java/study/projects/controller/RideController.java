@@ -42,7 +42,7 @@ public class RideController {
 	return messege;
 	}
 
-	@GetMapping("/getrides")
+	@PostMapping("/getrides")
 	public ArrayList<Ride> f2(@RequestBody Ride r)
 	{
 		String c1=r.getFrom_city();
@@ -51,7 +51,7 @@ public class RideController {
 
 		List<Ride> al=new ArrayList<>();
 		try {
-			al = temp.query("select * from ride where from_city="+c1+" and to_city="+c2+" and date_of_journey='"+d+"'",(rs,rownum)->{return new Ride(rs.getInt(1),
+			al = temp.query("select * from ride where from_city='"+c1+"' and to_city='"+c2+"' and date_of_journey>='"+d+"'",(rs,rownum)->{return new Ride(rs.getInt(1),
 					rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getBoolean(10),rs.getInt(11),
 					rs.getString(12),rs.getBoolean(13));});
 		} catch (DataAccessException e) {

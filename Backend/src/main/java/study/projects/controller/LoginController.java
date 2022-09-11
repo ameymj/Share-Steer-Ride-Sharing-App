@@ -56,6 +56,20 @@ public class LoginController {
 		return user;
 	}
 
+	
+	@GetMapping("/getdetailsbyid/{user_id}")
+	public User f6(@PathVariable int user_id)
+	{
+		User user=null;
+		try {
+			user = temp.queryForObject("select * from user where user_id="+user_id, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));});
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	
 	@GetMapping("/getAllUsers")
 	public ArrayList<User> f6()
 	{

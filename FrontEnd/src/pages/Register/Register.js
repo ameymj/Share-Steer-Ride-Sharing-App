@@ -28,7 +28,7 @@ function Login() {
         user.gender = gender;
         user.email_id = email;
         user.contact = contact;
-        user.username = username;
+        user.user_name = username;
         user.password = password;
         user.aadhar_card = aadhar;
         user.user_image = photo;
@@ -37,7 +37,7 @@ function Login() {
         console.log(user);
         axios.post("http://localhost:8080/sharesteer/signup", user)
             .then((response) => {
-                setMessege("Sign Up Successfull")
+                setMessege("Sign Up Successfull");
                 console.log(response);
             })
             .catch((error) => {
@@ -66,7 +66,7 @@ function Login() {
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                     <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
 
-                                        <form>
+                                        <form action='/login'>
 
                                             <div className="d-flex align-items-center mb-3 pb-1">
                                                 <i className="fas fa-key fa-2x me-3" style={{ "color": " #000" }}></i>
@@ -100,7 +100,7 @@ function Login() {
 
 
                                             <div className="form-outline mb-4">
-                                                <input type="mail" className="form-control form-control-lg" required minLength={5} maxLength={16} onBlur={(e) => { setEmail(e.target.value) }} />
+                                                <input type="mail" className="form-control form-control-lg" required minLength={5} maxLength={70} onBlur={(e) => { setEmail(e.target.value) }} />
                                                 <label className="form-label">E-mail</label>
                                             </div>
 
@@ -110,7 +110,7 @@ function Login() {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" required onBlur={(e) => { setPhoto(e.target.value) }} />
+                                                <input type="file" className="form-control form-control-lg"  onBlur={(e) => { setPhoto(e.target.value) }} />
                                                 <label className="form-label">Upload Your-Photo</label>
                                             </div>
 
@@ -134,9 +134,10 @@ function Login() {
                                                 <input type="text" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
                                                 <label className="form-label">Username</label>
                                             </div>
+                                            <b>{messege}</b>
 
                                             <div className="pt-1 mb-4">
-                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={addData}>Register</button>
+                                                <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={addData}>Register</button>
                                             </div>
 
                                             <div className="pt-1 mb-4">

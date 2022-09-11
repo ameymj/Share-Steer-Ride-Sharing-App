@@ -9,7 +9,9 @@ function About() {
   return (
     
     <div className='about'>
-      <h1 style={{textAlign:'center'}}>What is sharesteer</h1>
+      <h1 style={{textAlign:'center'}}>
+      <i className="fas fa-taxi"></i>
+              What is Share-Steer</h1>
       <h3>Share your empty car seats and reduce your travelling costs. 
       meet new people every day in on your route, grow your network and make your rides interesting
       </h3>

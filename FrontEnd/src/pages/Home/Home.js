@@ -15,28 +15,59 @@ import axios from 'axios';
 
 const Home = (props) => {
 
- const cities=ReactSession.get("cities");
+  const cities = ReactSession.get("cities");
 
   const rides = ReactSession.get("rides");
-  const [source, setSource] = useState("");
-  const [destination, setDestination] = useState("");
+  const [source, setSource] = useState("Pune");
+  const [destination, setDestination] = useState("Pune");
   const [date, setDate] = useState("");
   const [check, setCheck] = useState(false);
   const [ReqRide, setReqRide] = useState([]);
+  const [messge, setMessege] = useState("");
 
- 
+
+
+
+  // function validate() {
+
+  //   setCheck(true);
+  //   // let arr = rides.filter(checkRoute);
+  //   let arr = rides;
+  //   setReqRide(arr);
+  //   // console.log(arr);
+  // }
+  // // function checkRoute(ride) {
+  // //   return (ride.from_city == source && ride.to_city == destination);
+  // // }
+
 
   function validate() {
+    const ride = {}
+    ride.from_city = source;
+    ride.to_city = destination;
+    ride.date_of_journey = date;
 
-    setCheck(true);
-    // let arr = rides.filter(checkRoute);
-    let arr = rides;
-    setReqRide(arr);
-    // console.log(arr);
+    if (source == destination) {
+      setMessege("Source And Destination Cannot Be Same!");
+      return;
+    }
+
+    axios.post("http://localhost:8080/sharesteer/getrides", ride)
+      .then((response) => {
+        setCheck(true);
+        setReqRide(response.data);
+
+        if(response.data.length==0)
+          setMessege("No Record Found");
+          setMessege("");
+
+      })
+      .catch((error) => {
+        console.log(error);
+        setCheck(false);
+      })
   }
-  // function checkRoute(ride) {
-  //   return (ride.from_city == source && ride.to_city == destination);
-  // }
+
 
   return (
     <div className="container">
@@ -99,20 +130,21 @@ const Home = (props) => {
                         </div>
                         <div>
                           <b>SOURCE</b>
-                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setSource(e.target.value) }}>
-                            {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setSource(e.target.value) }}>
+                            {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityId}-{city.cityName}</option>))}
                           </select>
                         </div>
                         <div>
                           <b>DESTINATION</b>
-                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onSelect={(e) => { setDestination(e.target.value) }}>
-                            {cities.map((city) => (<option key={city.cityName}>{city.cityName}</option>))}
+                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setDestination(e.target.value) }}>
+                            {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityId}-{city.cityName}</option>))}
                           </select>
                         </div>
                         <div>
-                          <b>DATE</b><input type='date' className='btn btn-dark btn-lg btn-block' required min={new Date().toJSON().slice(0,10).replace(/-/g,'-')} onChange={(e) => { setDate(e.target.value) }} />
+                          <b>DATE</b><input type='date' className='btn btn-dark btn-lg btn-block' required min={new Date().toJSON().slice(0, 10).replace(/-/g, '-')} onChange={(e) => { setDate(e.target.value) }} />
                           <br />
                         </div>
+                        <b>{messge}</b>
 
                         <div className="pt-1 mb-4">
                           <button className="btn btn-dark btn-lg btn-block" type="button" onClick={validate}>Search</button>
@@ -126,7 +158,7 @@ const Home = (props) => {
           </div>
         </div>
       </section>
-      {check && ReqRide.map((ri, index) => <GetAllRide key={index} ride={ri} />)}
+      {check && ReqRide.map((ri, index) => <GetAllRide key={index} ride={ri} city={cities} />)}
       <div>
         <PostRide city={cities} />
       </div>
