@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import ContactDriver from './ContactDriver';
+import BookRide from './BookRide';
+import ReactSession from 'react-client-session';
 
 function GetAllRide(props) {
   const rides=props.ride;
   const [check,setCheck]=useState(false);
+  const [booker,setBooker]=useState(false);
   const [user,setUser]=useState("");
+
+
 
   for (let index = 0; index < props.city.length; index++) {
     
@@ -18,6 +23,14 @@ function GetAllRide(props) {
       rides.to_city=props.city[index].cityName;
     }
     
+  }
+  function book()
+  {
+    console.log("book Called");
+    if(true)
+      setBooker(true)
+      else
+      setBooker(false)
   }
 
   function getDetails()
@@ -51,9 +64,11 @@ function GetAllRide(props) {
           <li className="list-group-item"><b>Fare</b> : {rides.ride_cost}</li>
         </ul>
         <div className="card-body">
-          <a href="#" className='btn btn-dark btn-lg btn-block'>Book Ride</a>
+          <a href={booker?'/bookride':'/login'} className='btn btn-dark btn-lg btn-block' onMouseMove={book}>Book Ride</a>
           <b className='btn btn-dark btn-lg btn-block' onClick={getDetails}>Contact Driver</b>
           {check && <ContactDriver user={user}/>}
+          {/* {booker? <BookRide user={user}/>:  <Login/>} */}
+
         </div>
       </div>
 

@@ -52,8 +52,8 @@ export default function PostRide(props) {
       ride.time_of_journey=time_of_journey;
       ride.from_city=from_city;
       ride.to_city=to_city;
-      ride.total_seat=total_seat;
-      ride.available_seat=available_seat;
+      ride.total_seats=total_seat;
+      ride.available_seats=available_seat;
       ride.ride_cost=ride_cost;
       ride.description=description;
       ride.only_females=0;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import Welcome from './welcome.jpg';
-import Welcom from './welcom.webp'
+import Welcome from '../Login/welcome.jpg';
+import Welcom from '../Login/welcom.webp';
+import axios from 'axios';
+
 
 import { ReactSession } from 'react-client-session';
 
@@ -9,25 +11,24 @@ function BookRide(props) {
     const [bookedSeat, setBookedSeat] = useState(0);
     const [amount, setAmount] = useState(0);
 
-   const user=ReactSession.get('user');
-    
-    function Book()
-    {
-        const bookride={}
-        bookride.user_id=user.user_id;
-        bookride.ride_id=props.ride_id;
-        bookride.number_of_seats=bookedSeat;
-        bookride.booking_date=
-        bookride.amount=amount;
-    
+    const user = ReactSession.get('user');
+
+    function Book() {
+        const bookride = {}
+        bookride.user_id = user.user_id;
+        bookride.ride_id = props.ride_id;
+        bookride.number_of_seats = bookedSeat;
+        bookride.booking_date =
+        bookride.amount = amount;
+
         console.log(bookride);
         axios.post("http://localhost:8080/sharesteer/bookride", bookride)
-      .then((response) => {
-        console.log(response);    
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
 
     }
 
@@ -60,7 +61,7 @@ function BookRide(props) {
                                             </div>
 
                                             <div className="pt-1 mb-4">
-                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={Book}>BookRide</button>
+                                                <a href={user?'/bookRide':'/login'} className="btn btn-dark btn-lg btn-block" type="button" onClick={Book}>BookRide</a>
                                             </div>
                                         </form>
 

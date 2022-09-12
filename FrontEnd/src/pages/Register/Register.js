@@ -5,7 +5,7 @@ import Journey from './journey.jpg';
 import axios from 'axios';
 
 
-function Login() {
+function Register() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [birthdate, setBirthdate] = useState("");
@@ -43,7 +43,6 @@ function Login() {
             .catch((error) => {
                 console.log(error);
                 setMessege("enter Valid Data")
-
             })
 
     }
@@ -131,7 +130,7 @@ function Login() {
 
 
                                             <div className="form-outline mb-4">
-                                                <input type="text" className="form-control form-control-lg" required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
+                                                <input type="text" className="form-control form-control-lg"  required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
                                                 <label className="form-label">Username</label>
                                             </div>
                                             <b>{messege}</b>
@@ -162,4 +161,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;

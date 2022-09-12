@@ -22,6 +22,7 @@ import Profile from './pages/Profile/Profile';
 import RideHistory from './pages/Profile/RideHistory';
 import UpdateProfile from './pages/Profile/UpdateProfile';
 import TermsAndCondition from './pages/terms/TermsAndCondition';
+import BookRide from './pages/Ride/BookRide';
 
 ReactSession.setStoreType("localStorage");
 
@@ -30,7 +31,6 @@ class App extends Component {
     super(props)
 
     this.state = {
-      auth: false,
       rides:null,
       users:null,
       cities:null
@@ -51,7 +51,6 @@ class App extends Component {
     axios.get("http://localhost:8080/sharesteer/getAllCities")
     .then((response)=>{
       ReactSession.set("cities",response.data);
-      console.log(ReactSession.get("cities"));
 
     })
     .catch((error)=>{
@@ -88,7 +87,7 @@ class App extends Component {
             <Route path="/login" exact><Login/></Route>
             <Route path="/register" exact><Register /></Route>
             <Route path="/termsAndCondition" exact><TermsAndCondition /></Route>
-
+            <Route path="/bookride" exact><BookRide /></Route>
           </Switch>
         </main>
       </Router>

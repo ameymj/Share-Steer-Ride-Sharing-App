@@ -4,6 +4,7 @@ import { ReactSession } from 'react-client-session';
 function RideHistory(props) {
   const rides1=ReactSession.get('rides');
   const user=ReactSession.get("user");
+  console.log(rides1)
 
   const rides =rides1.filter((r)=>{
     return r.user_id == user.user_id 

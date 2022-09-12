@@ -5,11 +5,11 @@ import { ReactSession } from 'react-client-session';
 
 function Profile() {
   const user=ReactSession.get("user");
+  console.log(user);
   return (
     <div id='ride'>
       <div className="card">
         <div className="card-body">
-         <img src={user.photo} />  
           <h5 className="card-title">Name : {user.first_name} {user.last_name}</h5>
         </div>
         <ul className="list-group list-group-flush">

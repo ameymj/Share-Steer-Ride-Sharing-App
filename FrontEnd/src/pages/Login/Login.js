@@ -9,6 +9,7 @@ function Login() {
     const [username, setusername] = useState("");
     const [password, setPassword] = useState("");
     const [messege, setMesssge] = useState("");
+    const [loggedIn,setLoggedIn]=useState(false);
     const users=ReactSession.get("allUser");
     function verify() {
         for (let i = 0; i < users.length; i++) {
@@ -17,14 +18,14 @@ function Login() {
                     setMesssge("Successfully Login");
                     ReactSession.set("username", users[i].user_name);
                     ReactSession.set("user", users[i]);
-
+                    setLoggedIn(true);
                     setMesssge("login successs");
                     window. location. reload(false);
                     return true;
                 }
                 else {
                     setMesssge("Invalid Username Or Password");
-                    console.log("else");
+                    setLoggedIn(false);
                     return false;
                 }
             }
@@ -47,7 +48,7 @@ function Login() {
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                 <div className="card-body p-4 p-lg-5 text-black" style={{'backgroundColor':'rgb(5, 101, 134)'}}>
 
-                                        <form action='/'>
+                                        <form action={'/home'}>
                                             <div className="d-flex align-items-center mb-3 pb-1">
                                                 <i className="fas fa-lock fa-2x me-3"></i>
                                                 <span className="h1 fw-bold mb-0">LOGIN</span>
@@ -66,7 +67,7 @@ function Login() {
 
                                             <div className="pt-1 mb-4">
                                             <b>{messege}</b>
-                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={verify}>Login</button>
+                                                <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={verify}>Login</button>
                                             </div>
                                             <a href="/forgetpassword" style={{ "color": "black" }}>Forgot password?</a>
                                             <p className="mb-5 pb-lg-2" style={{ "color": " #393f81" }}>Don't have an account? <a href="/register"

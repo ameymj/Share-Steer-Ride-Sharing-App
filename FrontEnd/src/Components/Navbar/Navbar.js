@@ -3,6 +3,7 @@ import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import { ReactSession } from 'react-client-session';
+// import { useNavigate } from "react-router-dom";
 
 
 
@@ -48,7 +49,12 @@ const Navbar = (props) => {
 
   function logout()
   {
+    // let navigate=useNavigate();
     ReactSession.set('username',null);
+
+    // useEffect(()=>{
+    //   navigate("/")
+    // })
     window. location. reload(false);
     // localStorage.removeItem('user');
     // localStorage.removeItem('username');
