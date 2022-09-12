@@ -71,8 +71,6 @@ function Login() {
                                             <a href="/forgetpassword" style={{ "color": "black" }}>Forgot password?</a>
                                             <p className="mb-5 pb-lg-2" style={{ "color": " #393f81" }}>Don't have an account? <a href="/register"
                                                 style={{ "color": " #000" }}>Register here</a></p>
-                                            <a href="#!" className="small text-muted">Terms of use.</a>
-                                            <a href="#!" className="small text-muted">Privacy policy</a>
                                         </form>
                                     </div>
                                 </div>

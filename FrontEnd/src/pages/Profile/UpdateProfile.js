@@ -14,6 +14,8 @@ function UpdateProfile() {
     const [contact, setContact] = useState(user.contact);
     const [password, setPassword] = useState(user.password);
     const [photo, setPhoto] = useState();
+    const [messege, setMessge] = useState("");
+
 
 
     function updateData() {
@@ -31,9 +33,13 @@ function UpdateProfile() {
         axios.post("http://localhost:8080/sharesteer/updateprofile", updatedUser)
             .then((response) => {
                 console.log(response);
+                setMessge(response.data);
+                
             })
             .catch((error) => {
                 console.log(error);
+                setMessge(error.data);
+
             })
 
     }
@@ -52,7 +58,7 @@ function UpdateProfile() {
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                     <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
 
-                                        <form>
+                                        <form action='/profile'>
 
                                             <div className="d-flex align-items-center mb-3 pb-1">
                                                 <i className="fas fa-key fa-2x me-3" style={{ "color": " #000" }}></i>
@@ -96,7 +102,7 @@ function UpdateProfile() {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" required onBlur={(e) => { setPhoto(e.target.value) }} />
+                                                <input type="file" className="form-control form-control-lg"/>
                                                 <label className="form-label">Upload Your-Photo</label>
                                             </div>
 
@@ -120,10 +126,10 @@ function UpdateProfile() {
                                                 <input type="password" className="form-control form-control-lg" defaultValue={user.password} required minLength={8} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} />
                                                 <label className="form-label">Password</label>
                                             </div>
-
+                                             <b>{messege}</b>
 
                                             <div className="pt-1 mb-4">
-                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={updateData}>Update Profile</button>
+                                                <button className="btn btn-dark btn-lg btn-block" type='submit' onClick={updateData}>Update Profile</button>
                                             </div>
                                         </form>
                                     </div>

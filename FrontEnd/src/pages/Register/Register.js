@@ -110,7 +110,7 @@ function Login() {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg"  onBlur={(e) => { setPhoto(e.target.value) }} />
+                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setPhoto(e.target.value) }} />
                                                 <label className="form-label">Upload Your-Photo</label>
                                             </div>
 
@@ -147,6 +147,9 @@ function Login() {
                                             <a className="small text-muted" href="/forgetpassword">Forgot password?</a>
                                             <p className="mb-5 pb-lg-2" style={{ "color": " #393f81" }}>Already't have an account? <a href="/login"
                                                 style={{ "color": " #393f81" }}>Login here</a></p>
+
+                                            <a href="/termsAndCondition" className="small text-muted">Terms and Conditions.</a>
+
                                         </form>
                                     </div>
                                 </div>

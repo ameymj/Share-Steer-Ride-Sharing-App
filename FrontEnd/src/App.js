@@ -21,6 +21,7 @@ import PostRide from './pages/Ride/PostRide';
 import Profile from './pages/Profile/Profile';
 import RideHistory from './pages/Profile/RideHistory';
 import UpdateProfile from './pages/Profile/UpdateProfile';
+import TermsAndCondition from './pages/terms/TermsAndCondition';
 
 ReactSession.setStoreType("localStorage");
 
@@ -86,6 +87,8 @@ class App extends Component {
             <Route path="/updateprofile" exact><UpdateProfile/></Route>
             <Route path="/login" exact><Login/></Route>
             <Route path="/register" exact><Register /></Route>
+            <Route path="/termsAndCondition" exact><TermsAndCondition /></Route>
+
           </Switch>
         </main>
       </Router>
