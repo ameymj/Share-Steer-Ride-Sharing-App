@@ -11,6 +11,8 @@ import SearchRide from './searchride.jpg'
 import Waiting from './waiting.jpg'
 import { ReactSession } from 'react-client-session';
 import axios from 'axios';
+import Logo from './logos.png'
+
 
 
 const Home = (props) => {
@@ -25,20 +27,6 @@ const Home = (props) => {
   const [ReqRide, setReqRide] = useState([]);
   const [messge, setMessege] = useState("");
 
-
-
-
-  // function validate() {
-
-  //   setCheck(true);
-  //   // let arr = rides.filter(checkRoute);
-  //   let arr = rides;
-  //   setReqRide(arr);
-  //   // console.log(arr);
-  // }
-  // // function checkRoute(ride) {
-  // //   return (ride.from_city == source && ride.to_city == destination);
-  // // }
 
 
   function validate() {
@@ -59,7 +47,6 @@ const Home = (props) => {
 
         if(response.data.length==0)
           setMessege("No Record Found");
-          setMessege("");
 
       })
       .catch((error) => {
@@ -79,8 +66,8 @@ const Home = (props) => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Travel with</h3>
-            <p>Trust</p>
+            <h2>Travel with</h2>
+            <b>Trust</b>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -91,8 +78,8 @@ const Home = (props) => {
           />
 
           <Carousel.Caption>
-            <h3>Travel with</h3>
-            <p>Smile</p>
+            <h2>Travel with</h2>
+            <b>Smile</b>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -103,8 +90,20 @@ const Home = (props) => {
           />
 
           <Carousel.Caption>
-            <h3>Travel with</h3>
-            <p>Comfort</p>
+            <h2>Travel with</h2>
+            <b>Comfort</b>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <img
+            className="d-block w-100 h-25"
+            src={Logo}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h2>Travel with</h2>
+            <b>Us</b>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
@@ -131,13 +130,13 @@ const Home = (props) => {
                         <div>
                           <b>SOURCE</b>
                           <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setSource(e.target.value) }}>
-                            {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityId}-{city.cityName}</option>))}
+                            {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                           </select>
                         </div>
                         <div>
                           <b>DESTINATION</b>
                           <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setDestination(e.target.value) }}>
-                            {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityId}-{city.cityName}</option>))}
+                            {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                           </select>
                         </div>
                         <div>
