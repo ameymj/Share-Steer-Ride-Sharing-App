@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
--- Host: localhost    Database: dotnetproject
+-- Host: localhost    Database: sep22
 -- ------------------------------------------------------
 -- Server version	8.0.29
 
@@ -199,7 +199,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `user_id` int NOT NULL,
+  `user_id` int NOT NULL AUTO_INCREMENT,
   `user_name` varchar(15) DEFAULT NULL,
   `password` varchar(15) NOT NULL,
   `first_name` varchar(30) NOT NULL,
@@ -215,7 +215,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `last_name_UNIQUE` (`last_name`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +224,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'tushar','root','Tushar','Sthul','1998-06-09','Male','tusharsthul121@gmail.com','7397909355',NULL,NULL,NULL,0),(2,'mahima','mima','Mahima','Ingole','2004-09-24','Female','mimaingole@gmail.com','8080036934',NULL,NULL,NULL,0);
+INSERT INTO `user` VALUES (1,'tushar','root','Tushar','Sthul','1998-06-09','Male','tusharsthul121@gmail.com','7397909355',NULL,NULL,NULL,0),(2,'mahima','mima','Mahima','Ingole','2004-09-24','Female','mimaingole@gmail.com','8080036934',NULL,NULL,NULL,0),(3,'amey_joshi','amney12345','amey','joshi','2022-09-07','Male','','7020369904',NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,4 +267,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-09 18:05:20
+-- Dump completed on 2022-09-13  9:17:51
