@@ -30,10 +30,11 @@ function Register() {
         user.contact = contact;
         user.user_name = username;
         user.password = password;
-        user.aadhar_card = aadhar;
+        user.aadhar_image = aadhar;
         user.user_image = photo;
         user.driving_licence = licence;
         user.is_varified = false;
+        user.user_image=photo;
         console.log(user);
         axios.post("http://localhost:8080/sharesteer/signup", user)
             .then((response) => {
@@ -65,7 +66,7 @@ function Register() {
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                     <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
 
-                                        <form action='/login'>
+                                        <form>
 
                                             <div className="d-flex align-items-center mb-3 pb-1">
                                                 <i className="fas fa-key fa-2x me-3" style={{ "color": " #000" }}></i>
@@ -109,7 +110,7 @@ function Register() {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setPhoto(e.target.value) }} />
+                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setPhoto(e.target.value);console.log(e.target); }} />
                                                 <label className="form-label">Upload Your-Photo</label>
                                             </div>
 

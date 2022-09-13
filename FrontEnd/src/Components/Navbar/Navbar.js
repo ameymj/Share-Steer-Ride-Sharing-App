@@ -51,11 +51,13 @@ const Navbar = (props) => {
   {
     // let navigate=useNavigate();
     ReactSession.set('username',null);
+    ReactSession.set('user',null);
+
 
     // useEffect(()=>{
     //   navigate("/")
     // })
-    window. location. reload(false);
+    window. location. reload(true);
     // localStorage.removeItem('user');
     // localStorage.removeItem('username');
 
@@ -127,7 +129,7 @@ const Navbar = (props) => {
               </NavLink>
             </li>
             {
-              ReactSession.get("username") == null ?
+              ReactSession.get("user") == null ?
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/login" exact>
                     <i

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Welcome from './welcome.jpg';
-import Welcom from './welcom.webp'
+import Welcom from './welcom.webp';
+import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 import { ReactSession } from 'react-client-session';
 
@@ -9,9 +11,20 @@ function Login() {
     const [username, setusername] = useState("");
     const [password, setPassword] = useState("");
     const [messege, setMesssge] = useState("");
-    const [loggedIn,setLoggedIn]=useState(false);
-    const users=ReactSession.get("allUser");
+    const [loggedIn, setLoggedIn] = useState(false);
     function verify() {
+
+        axios.get("http://localhost:8080/sharesteer/getAllUsers")
+            .then((response) => {
+                ReactSession.set("allUser", response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+        const users = ReactSession.get("allUser");
+
+console.log(users);
         for (let i = 0; i < users.length; i++) {
             if (users[i].user_name === username) {
                 if (users[i].password === password) {
@@ -20,7 +33,7 @@ function Login() {
                     ReactSession.set("user", users[i]);
                     setLoggedIn(true);
                     setMesssge("login successs");
-                    window. location. reload(false);
+                    window.location.reload(false);
                     return true;
                 }
                 else {
@@ -46,7 +59,7 @@ function Login() {
                                         alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} />
                                 </div>
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                                <div className="card-body p-4 p-lg-5 text-black" style={{'backgroundColor':'rgb(5, 101, 134)'}}>
+                                    <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
 
                                         <form action={'/home'}>
                                             <div className="d-flex align-items-center mb-3 pb-1">
@@ -66,7 +79,7 @@ function Login() {
                                             </div>
 
                                             <div className="pt-1 mb-4">
-                                            <b>{messege}</b>
+                                                <b>{messege}</b>
                                                 <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={verify}>Login</button>
                                             </div>
                                             <a href="/forgetpassword" style={{ "color": "black" }}>Forgot password?</a>

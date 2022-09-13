@@ -23,6 +23,7 @@ import RideHistory from './pages/Profile/RideHistory';
 import UpdateProfile from './pages/Profile/UpdateProfile';
 import TermsAndCondition from './pages/terms/TermsAndCondition';
 import BookRide from './pages/Ride/BookRide';
+import RenderImage from './pages/ZImage/RenderImage';
 
 ReactSession.setStoreType("localStorage");
 
@@ -35,6 +36,27 @@ class App extends Component {
       users:null,
       cities:null
     }
+  }
+
+  componentDidUpdate(){
+    
+    axios.get("http://localhost:8080/sharesteer/getAllUsers")
+    .then((response)=>{
+      ReactSession.set("allUser",response.data);
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+
+    axios.get("http://localhost:8080/sharesteer/getAllrides")
+    .then((response)=>{
+      ReactSession.set("rides",response.data);
+
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+
   }
 
   componentDidMount()
@@ -88,6 +110,8 @@ class App extends Component {
             <Route path="/register" exact><Register /></Route>
             <Route path="/termsAndCondition" exact><TermsAndCondition /></Route>
             <Route path="/bookride" exact><BookRide /></Route>
+            <Route path="/imga" exact><RenderImage /></Route>
+
           </Switch>
         </main>
       </Router>

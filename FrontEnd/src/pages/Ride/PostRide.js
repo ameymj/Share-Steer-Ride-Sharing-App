@@ -8,8 +8,10 @@ import { ReactSession } from 'react-client-session';
 export default function PostRide(props) {
 
   const cities=ReactSession.get("cities");
-  const user=ReactSession.get("user");
-  const [messege,setMessege]=useState()
+  const [messege,setMessege]=useState();
+  const [isLoggedIn,setIsLoggedIn]=useState(true);
+
+  let user=null;
 
   const [user_id,setUser_id]=useState()
   const [date_of_journey, setDate_of_journey] = useState("");
@@ -26,7 +28,17 @@ export default function PostRide(props) {
   const [vehicle_reg_number, setVehicle_reg_number] = useState("");
   const [capacity, setCapacity] = useState("");
 
+
+  function loginfirst()
+  {
+    setIsLoggedIn(false);
+    setMessege("Login First");
+  }
+
   function addRide() { 
+ 
+   user=ReactSession.get("user");
+
     const vehicle = {};
     vehicle.user_id=user.user_id;
     vehicle.vehicle_model=vehicle_model;
@@ -71,7 +83,7 @@ setTimeout(()=>{
         console.log(error);
       })
    setMessege("Successfully Added");
-    },2000)
+    },3000)
 
 
     
@@ -168,12 +180,16 @@ setTimeout(()=>{
                       </div>
 
                       <div className="pt-1 mb-4">
-                        <button className="btn btn-dark btn-lg btn-block" type="button" onClick={addRide}>Post Ride</button>
+                        <button className="btn btn-dark btn-lg btn-block" type="button" onClick={user!=null?loginfirst:addRide}>Post Ride</button>
                       </div>
 
                       <div className="pt-1 mb-4">
                         <button className="btn btn-dark btn-lg btn-block" type="Reset">Reset</button>
                       </div>
+
+                      {isLoggedIn?<></>:<><div className="pt-1 mb-4">
+                        <a href='/login' className="btn btn-dark btn-lg btn-block" type="Reset">Log In</a>
+                      </div></>}
 
                       <b>{messege}</b>
                     </form>

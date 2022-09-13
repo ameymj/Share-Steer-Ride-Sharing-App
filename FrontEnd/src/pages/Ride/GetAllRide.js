@@ -27,7 +27,7 @@ function GetAllRide(props) {
   function book()
   {
     console.log("book Called");
-    if(true)
+    if(true)//ReactSession.get('user')!=null)
       setBooker(true)
       else
       setBooker(false)
