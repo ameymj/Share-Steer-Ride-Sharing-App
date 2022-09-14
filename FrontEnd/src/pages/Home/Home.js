@@ -157,7 +157,7 @@ const Home = (props) => {
           </div>
         </div>
       </section>
-      {check && ReqRide.map((ri, index) => <GetAllRide key={index} ride={ri} city={cities} />)}
+      {check && ReqRide.map((r, index) => <GetAllRide key={index} ride={r} city={cities} />)}
       <div>
         <PostRide city={cities} />
       </div>

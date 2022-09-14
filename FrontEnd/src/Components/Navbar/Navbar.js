@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './Navbar.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import $ from 'jquery';
 import { ReactSession } from 'react-client-session';
 // import { useNavigate } from "react-router-dom";
@@ -47,20 +47,15 @@ const Navbar = (props) => {
 
   }, []);
 
+  const history = useHistory();
+
   function logout()
   {
-    // let navigate=useNavigate();
     ReactSession.set('username',null);
     ReactSession.set('user',null);
 
-
-    // useEffect(()=>{
-    //   navigate("/")
-    // })
+    history.push("/home");
     window. location. reload(true);
-    // localStorage.removeItem('user');
-    // localStorage.removeItem('username');
-
   }
 
   return (

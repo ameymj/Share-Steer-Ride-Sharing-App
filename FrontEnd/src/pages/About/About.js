@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './About.css'
-import safe from './safe.jpg'
+import safe from './safe.jpeg'
 import secure from './secure.jpg'
 import trusted from './trusted.jpeg'
 

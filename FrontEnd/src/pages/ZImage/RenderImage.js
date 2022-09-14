@@ -12,6 +12,7 @@ export default function RenderImage() {
     }
     return (
         <div>
+            <input type='file' name='image' onBlur={(e)=>{console.log(e);}} />
             <div className="pt-1 mb-4">
                 <button className="btn btn-dark btn-lg btn-block" type="button" onClick={getData}>Get Image</button>
             </div>

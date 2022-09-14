@@ -2,32 +2,50 @@ import { useEffect, useState } from 'react';
 import Welcome from '../Login/welcome.jpg';
 import Welcom from '../Login/welcom.webp';
 import axios from 'axios';
-
-
 import { ReactSession } from 'react-client-session';
+import { useLocation } from 'react-router-dom';
 
 
 function BookRide(props) {
-    const [bookedSeat, setBookedSeat] = useState(0);
-    const [amount, setAmount] = useState(0);
-
     const user = ReactSession.get('user');
+
+    const [messege,setMessege] =useState("");
+    const [myRide,setMyRide] =useState("");
+    const [bookedSeat, setBookedSeat] = useState(0);
+
+
+    function SecondPage(){
+        const location = useLocation();
+      
+        useEffect(() => {
+           setMyRide(location.state); 
+        }, [location]);
+      
+      };
+      SecondPage(); 
+
 
     function Book() {
         const bookride = {}
         bookride.user_id = user.user_id;
-        bookride.ride_id = props.ride_id;
+        bookride.ride_id = myRide.ride_id;
         bookride.number_of_seats = bookedSeat;
-        bookride.booking_date =
-        bookride.amount = amount;
-
+        bookride.booking_date = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
+        bookride.amount = myRide.ride_cost;
         console.log(bookride);
-        axios.post("http://localhost:8080/sharesteer/bookride", bookride)
+
+        if(bookedSeat>myRide.available_seats)
+        {
+            setMessege("There is No Enough Seats");
+            return;
+        }
+
+        axios.post("http://localhost:8080/sharesteer/bookride",bookride)
             .then((response) => {
-                console.log(response);
+                setMessege(response.data);
             })
             .catch((error) => {
-                console.log(error);
+                setMessege(error.data);
             })
 
     }
@@ -56,12 +74,35 @@ function BookRide(props) {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="number" className="form-control form-control-lg" required onBlur={(e) => { setBookedSeat(e.target.value) }} />
+                                                <input type="number" className="form-control form-control-lg" max={myRide.available_seats} required onBlur={(e) => { setBookedSeat(e.target.value) }} />
                                                 <label className="form-label">Number Of Seat</label>
                                             </div>
 
+                                            <div className="form-outline mb-4">
+                                                <input type="number" className="form-control form-control-lg" value={myRide.available_seats} readOnly/>
+                                                <label className="form-label">Available  Seat</label>
+                                            </div>
+
+
+                                            <div className="form-outline mb-4">
+                                                <input type="number" className="form-control form-control-lg" value={myRide.ride_cost} readOnly />
+                                                <label className="form-label">Fare per head</label>
+                                            </div>
+
+                                            <div className="form-outline mb-4">
+                                                <input type="number" className="form-control form-control-lg" value={myRide.ride_cost * bookedSeat} readOnly />
+                                                <label className="form-label">Total Amount</label>
+                                            </div>
+
+                                            <div className="form-outline mb-4">
+                                                <input type="date" className="form-control form-control-lg" value={new Date().toJSON().slice(0, 10).replace(/-/g, '-')} readOnly />
+                                                <label className="form-label">Date</label>
+                                            </div>
+
+                                            <b>{messege}</b>
+
                                             <div className="pt-1 mb-4">
-                                                <a href={user?'/bookRide':'/login'} className="btn btn-dark btn-lg btn-block" type="button" onClick={Book}>BookRide</a>
+                                                <b className="btn btn-dark btn-lg btn-block" type="button" onClick={Book}>BookRide</b>
                                             </div>
                                         </form>
 

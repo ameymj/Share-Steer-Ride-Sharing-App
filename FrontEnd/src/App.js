@@ -24,20 +24,12 @@ import UpdateProfile from './pages/Profile/UpdateProfile';
 import TermsAndCondition from './pages/terms/TermsAndCondition';
 import BookRide from './pages/Ride/BookRide';
 import RenderImage from './pages/ZImage/RenderImage';
+import MyBookings from './pages/Profile/MyBookings';
 
 ReactSession.setStoreType("localStorage");
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      rides:null,
-      users:null,
-      cities:null
-    }
-  }
-
+  
   componentDidUpdate(){
     
     axios.get("http://localhost:8080/sharesteer/getAllUsers")
@@ -89,6 +81,12 @@ class App extends Component {
     })
 
   }
+
+  componentWillUnmount()
+  {
+
+  }
+
   render() {
     return (
       <Router>
@@ -106,12 +104,15 @@ class App extends Component {
             <Route path="/profile" exact><Profile/></Route>
             <Route path="/ridehistory" exact><RideHistory/></Route>
             <Route path="/updateprofile" exact><UpdateProfile/></Route>
-            <Route path="/login" exact><Login/></Route>
-            <Route path="/register" exact><Register /></Route>
             <Route path="/termsAndCondition" exact><TermsAndCondition /></Route>
             <Route path="/bookride" exact><BookRide /></Route>
             <Route path="/imga" exact><RenderImage /></Route>
-
+            <Route path="/login" exact><Login/></Route>
+            <Route path="/register" exact><Register /></Route>
+            <Route path="/mybookings" exact><MyBookings /></Route>
+            <Redirect to="/home" />
+            {ReactSession.get('user')!=null?<></>:<><Route path="/login" exact><Login/></Route>
+            <Route path="/register" exact><Register /></Route></>}
           </Switch>
         </main>
       </Router>

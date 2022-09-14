@@ -24,7 +24,7 @@ function Profile() {
         <div className="card-body">
           <a href="/UpdateProfile" className="btn btn-dark btn-lg btn-block"><b>Update Profile</b></a>
           <a href="/ridehistory" className="btn btn-dark btn-lg btn-block"><b>My Rides</b></a>
-          <a href="/MyBookings" className="btn btn-dark btn-lg btn-block"><b>My Bookings</b></a>
+          <a href="/mybookings" className="btn btn-dark btn-lg btn-block"><b>My Bookings</b></a>
         </div>
       </div>
 
