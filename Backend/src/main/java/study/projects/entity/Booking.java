@@ -7,6 +7,11 @@ public class Booking {
 	private String booking_date;
 	private int amount;
 	
+	public Booking()
+	{
+		
+	}
+	
 	public Booking(int booking_id, int ride_id, int user_id, int number_of_seats, boolean status, String booking_date,
 			int amount) {
 		super();
@@ -17,6 +22,13 @@ public class Booking {
 		this.status = status;
 		this.booking_date = booking_date;
 		this.amount = amount;
+	}
+
+	@Override
+	public String toString() {
+		return "Booking [booking_id=" + booking_id + ", ride_id=" + ride_id + ", user_id=" + user_id
+				+ ", number_of_seats=" + number_of_seats + ", status=" + status + ", booking_date=" + booking_date
+				+ ", amount=" + amount + "]";
 	}
 
 	public int getBooking_id() {
