@@ -23,6 +23,22 @@ public class ReviewController {
 	@Autowired
 	JdbcTemplate temp;
 	
+	
+	@GetMapping("/getRating/{driver_id}")
+	public Rating f3(@PathVariable int driver_id )
+	{
+		Rating rating=null;
+		try {
+		//	int avg = temp.queryForObject("select user_id from ride where ride_id="+ride_id,Integer.class);
+			rating = temp.queryForObject("select * from rating where driver_id="+driver_id, 
+					(rs,rownum)->{return new Rating(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(3));});
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		return rating;
+		
+	}
+	
 	@GetMapping("/getUser/{ride_id}")
 	public User f1(@PathVariable int ride_id)
 	{
