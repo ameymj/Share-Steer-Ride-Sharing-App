@@ -113,6 +113,7 @@ class App extends Component {
             <Route path="/register" exact><Register /></Route>
             <Route path="/mybookings" exact><MyBookings /></Route>
             <Route path="/rate" exact><Rate /></Route>
+            <Route path="/review" exact><Review /></Route>
 
             <Redirect to="/home" />
             {ReactSession.get('user')!=null?<></>:<><Route path="/login" exact><Login/></Route>
