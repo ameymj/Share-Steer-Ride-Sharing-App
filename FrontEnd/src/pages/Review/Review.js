@@ -2,20 +2,55 @@ import { useEffect, useState } from 'react';
 import Rating from './rating.jpg';
 import Reviews from './review.jpg';
 import { useNavigate } from 'react-router';
+import {useLocation } from 'react-router-dom';
 import axios from 'axios';
-
 import { ReactSession } from 'react-client-session';
 
 export default function Review()
 {
+    const user = ReactSession.get('user');
 
-    const [rating, setRating] = useState("");
+    const [star, setStar] = useState("");
     const [review, setReview] = useState("");
-    const [messege, setMesssge] = useState("");
+    const [message, setMessage] = useState("");
 
-    function verify() {
+    const [driver,setDriver]= useState("");
+    const [ride,setRide] = useState("");
 
+    function rate()
+    {
+        const rating = {}
+        rating.driver_id = driver.user_id;
+        rating.user_id = user.user_id;
+        rating.rating = star;
+        rating.comment= review;
+
+    axios.post("http://localhost:8080/sharesteer/giverating/"+rating)
+    .then((response)=>{setMessage(response.data)})
+    .catch((error)=>{console.log(error)})
     }
+
+    function SecondPage(){
+        const location = useLocation();
+      
+        useEffect(() => {
+           setRide(location.state); 
+           console.log(ride);
+        }, [location]);
+        
+        useEffect(()=>{
+
+            axios.get("http://localhost:8080/sharesteer/getUser/"+ride)
+            .then((response)=>{setDriver(response.data)})
+            .catch((error)=>{console.log(error)})
+            
+        },[])
+      
+      };
+      SecondPage();
+      
+      
+    
 
     return(
     <section>
@@ -39,14 +74,18 @@ export default function Review()
                                                 <span className="h1 fw-bold mb-0">Give Feedback</span>
                                             </div>
 
+                                            <div className="form-outline mb-4">
+                                                <input type="text" id="form2Example27" className="form-control form-control-lg" value={driver.first_name} />
+                                                <label className="form-label">Driver Name</label>
+                                            </div>   
 
                                             <div className="form-outline mb-4">
-                                            <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onBlur={(e) => { setRating(e.target.value) }}>
-                                                        <option value="1">*</option>
-                                                        <option value="2">* *</option>
-                                                        <option value="3">* * *</option>
-                                                        <option value="4">* * * *</option>
-                                                        <option value="5">* * * * *</option>
+                                            <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onBlur={(e) => { setStar(e.target.value) }}>
+                                                        <option value="1">&#11088;</option>
+                                                        <option value="2">&#11088; &#11088;</option>
+                                                        <option value="3">&#11088; &#11088; &#11088;</option>
+                                                        <option value="4">&#11088; &#11088; &#11088; &#11088;</option>
+                                                        <option value="5">&#11088; &#11088; &#11088; &#11088; &#11088;</option>
                                                     </select>
                                                 <label className="form-label">Rate out of 5 </label>
                                             </div>
@@ -57,8 +96,8 @@ export default function Review()
                                             </div>
 
                                             <div className="pt-1 mb-4">
-                                                <b>{messege}</b>
-                                                <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={verify}>Submit Review</button>
+                                                <b>{message}</b>
+                                                <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={rate}>Submit Review</button>
                                             </div>
     
                                         </form>
