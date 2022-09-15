@@ -23,8 +23,9 @@ import RideHistory from './pages/Profile/RideHistory';
 import UpdateProfile from './pages/Profile/UpdateProfile';
 import TermsAndCondition from './pages/terms/TermsAndCondition';
 import BookRide from './pages/Ride/BookRide';
-import RenderImage from './pages/ZImage/RenderImage';
 import MyBookings from './pages/Profile/MyBookings';
+import Footer from './Components/Navbar/Footer';
+import Rate from './pages/RateYourDriver/Rate';
 
 ReactSession.setStoreType("localStorage");
 
@@ -89,6 +90,8 @@ class App extends Component {
 
   render() {
     return (
+      <div>
+        <div>
       <Router>
         <Navbar/>
         <main className='container'>
@@ -106,16 +109,22 @@ class App extends Component {
             <Route path="/updateprofile" exact><UpdateProfile/></Route>
             <Route path="/termsAndCondition" exact><TermsAndCondition /></Route>
             <Route path="/bookride" exact><BookRide /></Route>
-            <Route path="/imga" exact><RenderImage /></Route>
             <Route path="/login" exact><Login/></Route>
             <Route path="/register" exact><Register /></Route>
             <Route path="/mybookings" exact><MyBookings /></Route>
+            <Route path="/rate" exact><Rate /></Route>
+
             <Redirect to="/home" />
             {ReactSession.get('user')!=null?<></>:<><Route path="/login" exact><Login/></Route>
             <Route path="/register" exact><Register /></Route></>}
           </Switch>
         </main>
       </Router>
+      </div>
+      <div className='footer'>
+        <Footer/>
+      </div>
+      </div>
     );
   }
 }
