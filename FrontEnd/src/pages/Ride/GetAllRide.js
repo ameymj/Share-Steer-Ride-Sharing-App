@@ -3,16 +3,12 @@ import axios from 'axios';
 import ContactDriver from './ContactDriver';
 import ReactSession from 'react-client-session';
 import { useHistory } from 'react-router-dom';
-import ViewDriverProfile from '../Review/ViewDriverProfile';
 
 function GetAllRide(props) {
   const rides=props.ride;
   console.log(rides);
   const [check,setCheck]=useState(false);
-  const [check1,setCheck1]=useState(false);
-  const [driver,setDriver]=useState("");
-  const [rating,setRating] = useState("");
-  const user=ReactSession.get("user");
+  const [user,setUser]=useState("");
 
   for (let index = 0; index < props.city.length; index++) {
     
@@ -44,41 +40,12 @@ function GetAllRide(props) {
     axios.get("http://localhost:8080/sharesteer/getdetailsbyid/"+rides.user_id,)
       .then((response) => {
         setCheck(!check);
-        setDriver(response.data);
+        setUser(response.data);
 
       })
       .catch((error) => {
         console.log(error);
         setCheck(false);
-      })
-
-
-
-  }
-
-  function driverprofile()
-  {
-    axios.get("http://localhost:8080/sharesteer/getdetailsbyid/"+rides.user_id,)
-      .then((response) => {
-        setCheck1(!check1);
-        setDriver(response.data);
-
-      })
-      .catch((error) => {
-        console.log(error);
-        setCheck1(false);
-      })
-
-      // you have to write here
-      axios.get("http://localhost:8080/sharesteer/getRatings/"+rides.user_id,)
-      .then((response) => {
-        console.log(rating)
-        setRating(response.data);
-
-      })
-      .catch((error) => {
-        console.log(error);
-        
       })
 
   }
@@ -100,9 +67,7 @@ function GetAllRide(props) {
           {/* <a href={booker?'/bookride':'/login'} className='btn btn-dark btn-lg btn-block' onClick={book}>Book Ride</a> */}
           <b className='btn btn-dark btn-lg btn-block' onClick={book}>Book Ride</b>
           <b className='btn btn-dark btn-lg btn-block' onClick={getDetails}>Contact Driver</b>
-          <b className='btn btn-dark btn-lg btn-block' onClick={driverprofile}>View Driver Profile/rating</b>
-          {check && <ContactDriver user={driver}/>}
-          {check1 && <ViewDriverProfile user={driver} rating={rating}/>}
+          {check && <ContactDriver user={user}/>}
           {/* {booker? <BookRide user={user}/>:  <Login/>} */}
 
         </div>
