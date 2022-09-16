@@ -25,7 +25,7 @@ public class JavaConfig {
 		obj.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		obj.setUrl("jdbc:mysql://localhost:3306/dotnetproject");
 		obj.setUsername("root");
-		obj.setPassword("C@stleking786");
+		obj.setPassword("");
 		
 		return obj;
 	}

@@ -1,3 +1,13 @@
 .container{
     background-color: lightblue;
 }
+.footer{
+padding-top: 500px;
+
+}
+.maintained{
+    height: 550px;
+}
+h6{
+    color: black;
+}
