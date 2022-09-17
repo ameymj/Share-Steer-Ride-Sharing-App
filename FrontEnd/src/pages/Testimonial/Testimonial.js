@@ -17,12 +17,12 @@ export default class Testimonials extends Component {
 
 <div className="row d-flex justify-content-center">
     <div className="col-md-10 col-xl-8 text-center">
-      <h3 className="mb-4">Testimonials</h3>
-      <p className="mb-4 pb-2 mb-md-5 pb-md-0">
+      <h1 className="mb-4">Testimonials</h1>
+      <h3 className="mb-4 pb-2 mb-md-5 pb-md-0">
         A testimonial is an honest endorsement of your product or service that usually comes 
         from a customer, colleague, or peer who has benefited from or experienced success as a 
         result of the work you did for them.
-      </p>
+      </h3>
     </div>
   </div>
       <Carousel

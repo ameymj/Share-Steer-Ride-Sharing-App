@@ -4,6 +4,7 @@ import van from './van.jpeg';
 import cab from './cab.jpeg'
 import share from './share.jpeg'
 import { ReactSession } from 'react-client-session';
+import './ride.css';
 
 export default function PostRide(props) {
 
@@ -14,30 +15,34 @@ export default function PostRide(props) {
   let user = null;
 
   const [user_id, setUser_id] = useState()
-  const [date_of_journey, setDate_of_journey] = useState("");
-  const [time_of_journey, setTime_of_journey] = useState("");
-  const [from_city, setFrom_city] = useState("");
-  const [to_city, setTo_city] = useState("");
-  const [total_seat, setTotal_seats] = useState("");
-  const [available_seat, setAvailable_seat] = useState("");
-  const [ride_cost, setRide_cost] = useState("");
-  const [description, setDescription] = useState("");
+  const [date_of_journey, setDate_of_journey] = useState(null);
+  const [time_of_journey, setTime_of_journey] = useState(null);
+  const [from_city, setFrom_city] = useState(null);
+  const [to_city, setTo_city] = useState(null);
+  const [total_seat, setTotal_seats] = useState(null);
+  const [available_seat, setAvailable_seat] = useState(null);
+  const [ride_cost, setRide_cost] = useState(null);
+  const [description, setDescription] = useState(null);
 
-  const [vehicle_id, setVehicle_id] = useState("");
-  const [vehicle_model, setVehicle_model] = useState("");
-  const [vehicle_reg_number, setVehicle_reg_number] = useState("");
+  const [vehicle_id, setVehicle_id] = useState(null);
+  const [vehicle_model, setVehicle_model] = useState(null);
+  const [vehicle_reg_number, setVehicle_reg_number] = useState(null);
   const [checkVehicle, setCheckVehicle] = useState(false);
-
-
-  function loginfirst() {
-    setIsLoggedIn(false);
-    setMessege("Login First");
-  }
-
-
 
   function addVehicle(){
     user = ReactSession.get("user");
+
+    if(user==null)
+    {
+      setMessege("Login First");
+      return;
+    }
+
+    if( vehicle_model==null || vehicle_reg_number==null || total_seat==null)
+    {
+      setMessege("All Fields Are Mandatory");
+      return;
+    }
 
     const vehicle = {};
     vehicle.user_id = user.user_id;
@@ -45,7 +50,6 @@ export default function PostRide(props) {
     vehicle.vehicle_reg_number = vehicle_reg_number;
     vehicle.capacity = total_seat;
 
-    console.log(vehicle);
 
     axios.post("http://localhost:8080/sharesteer/addvehicle", vehicle)
       .then((response) => {
@@ -61,6 +65,17 @@ export default function PostRide(props) {
 
   function addRide() {
     user = ReactSession.get("user");
+    if(user==null)
+    {
+      setMessege("Login First");
+      return;
+    }
+
+    if(date_of_journey==null || time_of_journey==null || from_city==null || to_city==null || total_seat==null || available_seat==null || ride_cost==null || vehicle_id==null )
+    {
+      setMessege("All Fields Are Mandatory");
+      return;
+    }
     const ride = {};
     ride.user_id = user.user_id;
     ride.date_of_journey = date_of_journey;
@@ -74,7 +89,6 @@ export default function PostRide(props) {
     ride.only_females = 0;
     ride.status = false;
     ride.vehicle_id = vehicle_id;
-    console.log(ride);
 
     axios.post("http://localhost:8080/sharesteer/addride", ride)
       .then((response) => {
@@ -130,18 +144,18 @@ export default function PostRide(props) {
                       </div>
 
                       <div className="form-outline mb-4">
-                        <input type="time" className="form-control form-control-lg" onBlur={(e) => { setTime_of_journey(e.target.value) }} />
+                        <input type="time" className="form-control form-control-lg"  required onBlur={(e) => { setTime_of_journey(e.target.value) }} />
                         <label className="form-label"><b>Time-Of-Departure</b></label>
                       </div>
 
                       <div>
-                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setFrom_city(e.target.value) }}>
+                        <select className="form-select btn btn-dark btn-lg btn-block" required aria-label="Default select example" onChange={(e) => { setFrom_city(e.target.value) }}>
                           {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                         </select>
                         <b>SOURCE</b><br /><br />
                       </div>
                       <div>
-                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setTo_city(e.target.value); console.log(e); }}>
+                        <select className="form-select btn btn-dark btn-lg btn-block" required aria-label="Default select example" onChange={(e) => { setTo_city(e.target.value); console.log(e); }}>
                           {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                         </select>
                         <b>DESTINATION</b><br /><br />
@@ -184,7 +198,7 @@ export default function PostRide(props) {
                       </div>
 
                       {checkVehicle && <><div className="pt-1 mb-4">
-                        <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={user != null ? loginfirst : addRide}>Post Ride</button>
+                        <button className="btn btn-dark btn-lg btn-block" type="button" onClick={addRide}>Post Ride</button>
                       </div></>}
 
                       <div className="pt-1 mb-4">
@@ -192,10 +206,10 @@ export default function PostRide(props) {
                       </div>
 
                       {isLoggedIn ? <></> : <><div className="pt-1 mb-4">
-                        <a href='/login' className="btn btn-dark btn-lg btn-block" type="Reset">Log In</a>
+                        <a href='/login' className="btn btn-dark btn-lg btn-block">Log In</a>
                       </div></>}
 
-                      <b>{messege}</b>
+                      <b style={{'color':'red'}}>{messege}</b>
                     </form>
                   </div>
                 </div>

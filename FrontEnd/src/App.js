@@ -54,6 +54,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    ReactSession.set("user",null);
     axios.get("http://localhost:8080/sharesteer/getAllrides")
       .then((response) => {
         ReactSession.set("rides", response.data);
@@ -84,6 +85,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    ReactSession.set("user",null);
 
   }
 

@@ -12,9 +12,9 @@ const Contact = () => {
   }
   return (
     <div className="container">
-      <h2 className="h1-responsive font-weight-bold text-center my-4">
+      <h1 className="h1-responsive font-weight-bold text-center my-4">
       <i className="far fa-address-card"></i>
-        Contact Us</h2>
+        Contact Us</h1>
       <div className='about'>
         <CardGroup>
           <Card>

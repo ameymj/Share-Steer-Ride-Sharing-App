@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+
 @Configuration
 public class JavaConfig {
 	
@@ -25,7 +26,7 @@ public class JavaConfig {
 		obj.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		obj.setUrl("jdbc:mysql://localhost:3306/dotnetproject");
 		obj.setUsername("root");
-		obj.setPassword("");
+		obj.setPassword("C@stleking786");
 		
 		return obj;
 	}

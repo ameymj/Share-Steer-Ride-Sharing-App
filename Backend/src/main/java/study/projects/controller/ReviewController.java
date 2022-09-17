@@ -67,4 +67,19 @@ public class ReviewController {
 		
 		return message;
 	}
+	
+	
+	
+	@GetMapping("/getMyrating/{id}")
+	public double myrating(@PathVariable int id)
+	{
+		double rating=0;
+		try {
+			rating =temp.queryForObject("select avg(rating) from rating group by driver_id having driver_id="+id,Double.class);
+			} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		
+		return rating;
+	}
 }

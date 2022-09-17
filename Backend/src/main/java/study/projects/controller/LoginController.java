@@ -139,11 +139,7 @@ public class LoginController {
 	
 	@GetMapping("/getImage/{id}")
 	public void getPhotoById(@PathVariable int id) {
-//		String query = "select user_image from user where user_id=15";
-//		Blob photo = temp.queryForObject(query, Blob.class);
-//		return photo;
-		
-//		obj.setDriverClassName("com.mysql.cj.jdbc.Driver");
+
 		String url="jdbc:mysql://localhost:3306/dotnetproject";
 		String Username="root";
 		String Password="C@stleking786";
@@ -153,7 +149,9 @@ public class LoginController {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con=DriverManager.getConnection(url,Username,Password);
-			File file=new File("D:\\IET_JAVA_Script\\Z2_FrontEnd\\share-steer\\src\\pages\\profile\\images\\user.jpg");
+//			File file=new File("D:\\IET_JAVA_Script\\Z2_FrontEnd\\share-steer\\src\\pages\\profile\\images\\user.jpg");
+			File file=new File("D:\\IET_JAVA_Script\\Z2_FrontEnd\\steer\\src\\pages\\profile\\images\\user.jpg");
+
 			FileOutputStream fos=new FileOutputStream(file);
 			byte b[];
 			Blob blob;

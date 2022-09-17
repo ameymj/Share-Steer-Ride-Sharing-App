@@ -56,6 +56,20 @@ public class BookingController {
 		
 		return (ArrayList<Booking>) bookings;
 	}
+	
+	@GetMapping("/getAllBooking")
+	public ArrayList<Booking> trial()
+	{
+		List<Booking>bookings=new ArrayList<Booking>();
+		try {
+		bookings=temp.query("select * from Booking",(rs,row_num)->{return new Booking(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getBoolean(5),rs.getString(6),rs.getInt(7));});
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return (ArrayList<Booking>) bookings;
+	}
 
 
 }

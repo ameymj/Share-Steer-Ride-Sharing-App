@@ -12,6 +12,7 @@ import Waiting from './waiting.jpg'
 import { ReactSession } from 'react-client-session';
 import axios from 'axios';
 import Logo from './logos.png'
+import Footer from '../../Components/Navbar/Footer';
 
 
 
@@ -107,7 +108,7 @@ const Home = (props) => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-  <section>
+      <section>
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
@@ -135,7 +136,7 @@ const Home = (props) => {
                         </div>
                         <div>
                           <b>DESTINATION</b>
-						   <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setDestination(e.target.value) }}>
+                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setDestination(e.target.value) }}>
                             {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                           </select>
                         </div>

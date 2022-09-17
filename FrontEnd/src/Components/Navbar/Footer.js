@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Footer() {
+    //
     return (
         <div className="container my-5 footer">
             <footer
@@ -78,7 +79,7 @@ export default function Footer() {
 
                 <div
                     className="text-center p-3"
-                    style={{"background-color": "rgba(0, 0, 0, 0.2)"}}
+                    style={{"backgroundColor": "rgba(0, 0, 0, 0.2)"}}
                 >
                     © 2022 Copyright:
                     <a className="text-white" href="https://mdbootstrap.com/"

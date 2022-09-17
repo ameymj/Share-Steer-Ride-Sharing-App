@@ -6,7 +6,7 @@ import {useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { ReactSession } from 'react-client-session';
 
-export default function Review()
+export default function Review(props)
 {
     const user = ReactSession.get('user');
 
@@ -15,8 +15,21 @@ export default function Review()
     const [message, setMessage] = useState("");
 
     const [driver,setDriver]= useState("");
-    const [ride,setRide] = useState("");
+    const ride=props.myd;
 
+
+     function ThirdPage(){
+        console.log(ride);
+        useEffect(()=>{
+        axios.get("http://localhost:8080/sharesteer/getUser/"+ride)
+        .then((response)=>{setDriver(response.data)})
+        .catch((error)=>{console.log(error)})
+        
+    },[])
+}
+
+      ThirdPage();
+      
     function rate()
     {
         const rating = {}
@@ -25,30 +38,11 @@ export default function Review()
         rating.rating = star;
         rating.comment= review;
 
-    axios.post("http://localhost:8080/sharesteer/giverating/"+rating)
+    axios.post("http://localhost:8080/sharesteer/giverating/",rating)
     .then((response)=>{setMessage(response.data)})
     .catch((error)=>{console.log(error)})
     }
 
-    function SecondPage(){
-        const location = useLocation();
-      
-        useEffect(() => {
-           setRide(location.state); 
-           console.log(ride);
-        }, [location]);
-        
-        useEffect(()=>{
-
-            axios.get("http://localhost:8080/sharesteer/getUser/"+ride)
-            .then((response)=>{setDriver(response.data)})
-            .catch((error)=>{console.log(error)})
-            
-        },[])
-      
-      };
-      SecondPage();
-      
       
     
 
@@ -68,19 +62,19 @@ export default function Review()
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                     <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
 
-                                        <form >
+                                        <form action='/profile' >
                                             <div className="d-flex align-items-center mb-3 pb-1">
                                                 <i className="fas fa-lock fa-2x me-3"></i>
                                                 <span className="h1 fw-bold mb-0">Give Feedback</span>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="text" id="form2Example27" className="form-control form-control-lg" value={driver.first_name} />
+                                                <input type="text" id="form2Example27" className="form-control form-control-lg" readOnly value={driver.first_name+" "+driver.last_name} />
                                                 <label className="form-label">Driver Name</label>
                                             </div>   
 
                                             <div className="form-outline mb-4">
-                                            <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onBlur={(e) => { setStar(e.target.value) }}>
+                                            <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setStar(e.target.value) }}>
                                                         <option value="1">&#11088;</option>
                                                         <option value="2">&#11088; &#11088;</option>
                                                         <option value="3">&#11088; &#11088; &#11088;</option>

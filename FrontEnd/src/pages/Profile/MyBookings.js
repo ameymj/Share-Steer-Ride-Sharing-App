@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ReactSession } from 'react-client-session'
 import ContactDriver from '../Ride/ContactDriver';
 import { useHistory } from 'react-router-dom';
+import Review from '../Review/Review';
 
 export default function MyBookings() {
     const user = ReactSession.get("user");
@@ -11,7 +12,7 @@ export default function MyBookings() {
     const [driver, setDriver] = useState("")
     const [check, setCheck] = useState(false)
 
-
+    console.log(myBookings);
 
     useEffect(() => {
         console.log("useEffect Clled");
@@ -32,25 +33,16 @@ export default function MyBookings() {
             })
     }, [])
 
-    const rating=useHistory();
-    const giverating = event => {
-      
-      rating.push({
-        pathname:'review',
-        state:MyBookings.ride_id
-      });
-  
-   };
+    function giverating() {
+        setCheck(!check)
+    }
 
     return (
         <div>{
             myBookings.map((myBook, index) => (
                 <div id='ride' key={index + "ride"}>
                     <div className="card" key={index}>
-                        {/* <div className="card-body" key={index + "cardbody"}>
-                            <h5 className="card-title" key={index + "cardtitle"}>Journey : {myBook.from_city}-{myBook.to_city}</h5>
-                            <p className="card-text" key={index + "cardText"}>Description :{myBook.description}</p>
-                        </div> */
+                        {
                             <div className="card-body" key={index + "cardbody"}>
                                 <h5 className="card-title" key={index + "cardtitle"}>Journey :{myride.map((ride) => { if (ride.ride_id === myBook.ride_id) return ride.from_city })}-{myride.map((ride) => { if (ride.ride_id === myBook.ride_id) return ride.to_city })}</h5>
                                 <p className="card-text" key={index + "cardText"}>Description :{myride.map((ride) => { if (ride.ride_id === myBook.ride_id) return ride.description })}</p>
@@ -68,8 +60,9 @@ export default function MyBookings() {
                             <li className="list-group-item" key={index + "tf"}>Total Fare : {myBook.amount * myBook.number_of_seats}</li>
                         </ul>
                         <div className="pt-1 mb-4">
-                            <button className="btn btn-dark btn-lg btn-block" type="button"  onClick={giverating}>Give Rating</button>
+                            <button className="btn btn-dark btn-lg btn-block" type="button" onClick={giverating}>Give Rating</button>
                         </div>
+                        {check && <Review myd={myBook.ride_id} />}
 
                     </div>
                 </div>

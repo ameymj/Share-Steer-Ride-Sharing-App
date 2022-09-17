@@ -3,12 +3,15 @@ import axios from 'axios';
 import ContactDriver from './ContactDriver';
 import ReactSession from 'react-client-session';
 import { useHistory } from 'react-router-dom';
+import "./ride.css";
 
 function GetAllRide(props) {
   const rides=props.ride;
   console.log(rides);
   const [check,setCheck]=useState(false);
   const [user,setUser]=useState("");
+  const [messege,setMessege]=useState("");
+
 
   for (let index = 0; index < props.city.length; index++) {
     
@@ -24,12 +27,19 @@ function GetAllRide(props) {
   }
   const history=useHistory();
   const book = event => {
+      if(ReactSession?.get("user")==undefined)
+      {
+        setMessege("Login First");
+        history.push("/login")
+        return ;
+      }
+      else{
     localStorage.setItem("myRide",rides);
-
     history.push({
-      pathname:ReactSession?.get('user')?'/login':'/bookride',
+      pathname:'/bookride',
       state:rides
     });
+  }
 
  };
 
@@ -64,11 +74,10 @@ function GetAllRide(props) {
           <li className="list-group-item"><b>Fare</b> : {rides.ride_cost}</li>
         </ul>
         <div className="card-body">
-          {/* <a href={booker?'/bookride':'/login'} className='btn btn-dark btn-lg btn-block' onClick={book}>Book Ride</a> */}
+          <b>{messege}</b>
           <b className='btn btn-dark btn-lg btn-block' onClick={book}>Book Ride</b>
           <b className='btn btn-dark btn-lg btn-block' onClick={getDetails}>Contact Driver</b>
           {check && <ContactDriver user={user}/>}
-          {/* {booker? <BookRide user={user}/>:  <Login/>} */}
 
         </div>
       </div>
