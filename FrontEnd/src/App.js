@@ -25,7 +25,6 @@ import TermsAndCondition from './pages/terms/TermsAndCondition';
 import BookRide from './pages/Ride/BookRide';
 import MyBookings from './pages/Profile/MyBookings';
 import Footer from './Components/Navbar/Footer';
-import Rate from './pages/RateYourDriver/Rate';
 import Review from './pages/Review/Review'
 
 ReactSession.setStoreType("localStorage");
@@ -113,7 +112,6 @@ class App extends Component {
                 <Route path="/login" exact><Login /></Route>
                 <Route path="/register" exact><Register /></Route>
                 <Route path="/mybookings" exact><MyBookings /></Route>
-                <Route path="/rate" exact><Rate /></Route>
                 <Route path="/review" exact><Review /></Route>
 
                 <Redirect to="/home" />
