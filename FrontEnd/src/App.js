@@ -26,6 +26,8 @@ import BookRide from './pages/Ride/BookRide';
 import MyBookings from './pages/Profile/MyBookings';
 import Footer from './Components/Navbar/Footer';
 import Review from './pages/Review/Review'
+import Admin from './pages/Admin/Admin';
+import AllUser from './pages/Admin/AllUser';
 
 ReactSession.setStoreType("localStorage");
 
@@ -53,7 +55,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    ReactSession.set("user",null);
     axios.get("http://localhost:8080/sharesteer/getAllrides")
       .then((response) => {
         ReactSession.set("rides", response.data);
@@ -113,6 +114,8 @@ class App extends Component {
                 <Route path="/register" exact><Register /></Route>
                 <Route path="/mybookings" exact><MyBookings /></Route>
                 <Route path="/review" exact><Review /></Route>
+                <Route path="/admin" exact><Admin /></Route>
+                <Route path="/alluser" exact><AllUser /></Route>
 
                 <Redirect to="/home" />
                 {ReactSession.get('user') != null ? <></> : <><Route path="/login" exact><Login /></Route>

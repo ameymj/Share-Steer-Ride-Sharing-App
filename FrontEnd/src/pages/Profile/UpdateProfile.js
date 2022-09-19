@@ -45,9 +45,9 @@ function UpdateProfile() {
 
             })
 
-        axios.get("http://localhost:8080/sharesteer/getAllUsers")
+        axios.get("http://localhost:8080/sharesteer/getdetailsbyid/"+user.user_id)
             .then((response) => {
-                ReactSession.set("allUser", response.data);
+                ReactSession.set("user", response.data);
             })
             .catch((error) => {
                 console.log(error);
