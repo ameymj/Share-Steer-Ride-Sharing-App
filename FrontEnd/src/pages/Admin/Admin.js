@@ -4,7 +4,6 @@ import User from '../Profile/images/user.jpg'
 import { ReactSession } from 'react-client-session';
 function Admin() {
   const user=ReactSession.get("user");
-  console.log(user);
     axios.get("http://localhost:8080/sharesteer/getImage/"+user.user_id)
         .then(function (response) {
         });
@@ -24,8 +23,8 @@ function Admin() {
         <div className="card-body">
           <a href="/allUser" className="btn btn-dark btn-lg btn-block"><b>All User</b></a>
           <a href="/UpdateProfile" className="btn btn-dark btn-lg btn-block"><b>Update User</b></a>
-          <a href="/ridehistory" className="btn btn-dark btn-lg btn-block"><b>All Rides</b></a>
-          <a href="/mybookings" className="btn btn-dark btn-lg btn-block"><b>All Bookings</b></a>
+          <a href="/allrides" className="btn btn-dark btn-lg btn-block"><b>All Rides</b></a>
+          <a href="/allbookings" className="btn btn-dark btn-lg btn-block"><b>All Bookings</b></a>
         </div>
       </div>
 

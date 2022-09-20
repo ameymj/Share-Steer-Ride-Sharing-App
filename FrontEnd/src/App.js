@@ -28,6 +28,8 @@ import Footer from './Components/Navbar/Footer';
 import Review from './pages/Review/Review'
 import Admin from './pages/Admin/Admin';
 import AllUser from './pages/Admin/AllUser';
+import AllRides from './pages/Admin/AllRides';
+import AllBookings from './pages/Admin/AllBookings';
 
 ReactSession.setStoreType("localStorage");
 
@@ -116,6 +118,10 @@ class App extends Component {
                 <Route path="/review" exact><Review /></Route>
                 <Route path="/admin" exact><Admin /></Route>
                 <Route path="/alluser" exact><AllUser /></Route>
+                <Route path="/allrides" exact><AllRides /></Route>
+                <Route path="/allbookings" exact><AllBookings /></Route>
+
+
 
                 <Redirect to="/home" />
                 {ReactSession.get('user') != null ? <></> : <><Route path="/login" exact><Login /></Route>
