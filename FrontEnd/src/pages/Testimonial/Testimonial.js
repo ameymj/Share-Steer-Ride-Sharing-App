@@ -40,7 +40,7 @@ export default class Testimonials extends Component {
             <h4>Software Developer</h4>
             <p>
               It's freeing to be able to catch up on customized news and not be
-              distracted by a social media element on the same site
+              distracted by a social media element on the same site.
             </p>
           </div>
         </div>
@@ -63,8 +63,8 @@ export default class Testimonials extends Component {
             <h3>Naman Saxena</h3>
             <h4>Designer</h4>
             <p>
-              I enjoy catching up with Fetch on my laptop, or on my phone when
-              I'm on the go!
+              Whenever I have to go to other cities for urgent work,I book the best drivers
+              drivers available on this site and in no time,I'll be there.
             </p>
           </div>
         </div>
@@ -75,8 +75,9 @@ export default class Testimonials extends Component {
             <h3>Prajakta Mutyalwar</h3>
             <h4>Software Developer</h4>
             <p>
-              It's freeing to be able to catch up on customized news and not be
-              distracted by a social media element on the same site
+              It's freeing to be able to navigate through website smoothly and finding
+              what you need,your rides and special female allocations.
+              
             </p>
           </div>
         </div>
@@ -87,8 +88,8 @@ export default class Testimonials extends Component {
             <h3>Mahesh Shinde</h3>
             <h4>Software Developer</h4>
             <p>
-              The simple and intuitive design makes it easy for me use. I highly
-              recommend Fetch to my peers.
+              The simple and easy to surf UI makes it attractive.Specially I recommend it
+              to everyone who need to travel safely and ontime.
             </p>
           </div>
         </div>
@@ -100,7 +101,7 @@ export default class Testimonials extends Component {
             <h4>Designer</h4>
             <p>
               I enjoy catching up with Fetch on my laptop, or on my phone when
-              I'm on the go!
+              I'm on the go! and book seats in no time.
             </p>
           </div>
         </div>
@@ -176,7 +177,7 @@ you will end up making friends.
       <h5 className="mb-3">Mahesh Shinde</h5>
       <h6 className="text-primary mb-3">Marketing Specialist</h6>
       <p className="px-xl-3">
-        <i className="fas fa-quote-left pe-2"></i>This Is the Best web application I have wondered in the ride sharing Industry.
+        <i className="fas fa-quote-left pe-2"></i>This Is the Best web application I have come across in the ride sharing Industry.
       </p>
       <ul className="list-unstyled d-flex justify-content-center mb-0">
         <li>
