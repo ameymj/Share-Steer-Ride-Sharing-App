@@ -6,7 +6,7 @@ export default function Footer() {
         <div className="container my-5 footer">
             <footer
                 className="text-center text-lg-start text-white"
-                style={{"backgroundColor": "#1c2331"}}
+                style={{"backgroundColor": "blanchedalmond"}}
             >
                 <section className="maintained">
                     <div className="container text-center text-md-start mt-5">
@@ -38,7 +38,7 @@ export default function Footer() {
                                     style={{"width": "60px", "backgroundColor": "#7c4dff", "height": "2px"}}
                                 />
                                 <p>
-                                Quick Ride is India’s largest Carpool and Bike pool platform. Platform where verified professionals come together and help each other through Carpool, Bikepool, Taxipool.
+                                Share Steer is India’s largest Carpool and Bike pool platform. Platform where verified professionals come together and help each other through Carpool, Bikepool, Taxipool.
                                 </p>
                             </div>
 

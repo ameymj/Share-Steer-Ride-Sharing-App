@@ -41,18 +41,18 @@ export default function TermsAndCondition() {
       <h4>10. INTELLECTUAL PROPERTY INFRINGEMENT CLAIMS</h4>
       It is our policy to respond expeditiously to claims of intellectual property infringement. We will promptly process and investigate notices of alleged infringement and will take appropriate actions under the Digital Millennium Copyright Act ("DMCA") and other applicable intellectual property laws. Notices of claimed infringement should be directed to:
 
-      generator.lorem-ipsum.info
+      sharesteer.complaint.info
 
-      126 Electricov St.
+      Model Colony,Galleria
 
-      Kiev, Kiev 04176
+      Shivajinagar,Pune-411 004
 
-      Ukraine
+      India
 
       contact@sharesteer.info
 
       <h4>11. PLACE OF PERFORMANCE</h4>
-      This Site is controlled, operated and administered by us from our office in Kiev, Ukraine. We make no representation that materials at this site are appropriate or available for use at other locations outside of the Ukraine and access to them from territories where their contents are illegal is prohibited. If you access this Site from a location outside of the Ukraine, you are responsible for compliance with all local laws.
+      This Site is controlled, operated and administered by us from our office in Pune, India. We make no representation that materials at this site are appropriate or available for use at other locations outside of the Ukraine and access to them from territories where their contents are illegal is prohibited. If you access this Site from a location outside of the Ukraine, you are responsible for compliance with all local laws.
 
       <h4>12. GENERAL</h4>
       A. If any provision of these Terms and Conditions is held to be invalid or unenforceable, the provision shall be removed (or interpreted, if possible, in a manner as to be enforceable), and the remaining provisions shall be enforced. Headings are for reference purposes only and in no way define, limit, construe or describe the scope or extent of such section. Our failure to act with respect to a breach by you or others does not waive our right to act with respect to subsequent or similar breaches. These Terms and Conditions set forth the entire understanding and agreement between us with respect to the subject matter contained herein and supersede any other agreement, proposals and communications, written or oral, between our representatives and you with respect to the subject matter hereof, including any terms and conditions on any of customer's documents or purchase orders.
