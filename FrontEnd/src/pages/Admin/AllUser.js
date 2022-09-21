@@ -12,7 +12,6 @@ export default function AllUser() {
   const [gender, setGender] = useState(user.gender);
   const [contact, setContact] = useState(user.contact);
   const [password, setPassword] = useState(user.password);
-  const [username, setUserName] = useState(user.user_name);
   const [email, setEmailId] = useState(user.email_id);
   const [verify, setVerify] = useState(user.is_verified);
 
@@ -21,15 +20,14 @@ export default function AllUser() {
     const updatedUser = {}
     updatedUser.user_id = user.user_id;
     updatedUser.user_name = user.user_name;
-    updatedUser.first_name = firstName;
-    updatedUser.last_name = lastName;
-    updatedUser.birth_date = birthdate;
-    updatedUser.gender = gender;
-    updatedUser.contact = contact;
-    updatedUser.email_id = email;
-    updatedUser.user_name = username;
-    updatedUser.password = password;
-    updatedUser.is_verified = verify;
+    updatedUser.first_name = firstName==undefined?user.first_name:firstName;
+    updatedUser.last_name = lastName==undefined?user.last_name:lastName;
+    updatedUser.birth_date = birthdate==undefined?user.birth_date:birthdate;
+    updatedUser.gender = gender==undefined?user.gender:gender;
+    updatedUser.contact = contact==undefined?user.contact:contact;
+    updatedUser.email_id = email==undefined?user.email_id:email;
+    updatedUser.password = password==undefined?user.password:password;
+    updatedUser.is_verified = verify==undefined?user.verify:verify;
     console.log(updatedUser);
     axios.post("http://localhost:8080/sharesteer/updateprofilebyAdmin", updatedUser)
       .then((response) => {
@@ -69,7 +67,7 @@ export default function AllUser() {
               <td><input type='text' defaultValue={user.last_name} required minLength={1} maxLength={30} onBlur={(e) => { setLastName(e.target.value) }} /></td>
               <td><input type='text' defaultValue={user.gender} required minLength={1} maxLength={30} onBlur={(e) => { setGender(e.target.value) }} /></td>
               <td><input type='date' defaultValue={user.birth_date} max={new Date().toJSON().slice(0, 10).replace(/-/g, '-')} required onBlur={(e) => { setBirthdate(e.target.value) }} /></td>
-              <td><input type='text' defaultValue={user.user_name} minLength={8} maxLength={16} onBlur={(e) => { setUserName(e.target.value) }} /></td>
+              <td><input type='text' defaultValue={user.user_name} minLength={8} maxLength={16} readOnly /></td>
               <td><input type='text' defaultValue={user.password} minLength={8} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} /></td>
               <td><input type='email' defaultValue={user.email_id} minLength={8} maxLength={100} onBlur={(e) => { setEmailId(e.target.value) }} /></td>
               <td><input type='number' defaultValue={user.contact} minLength={10} maxLength={14} onBlur={(e) => { setContact(e.target.value) }} /></td>

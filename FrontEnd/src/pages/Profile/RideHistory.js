@@ -7,11 +7,13 @@ function RideHistory(props) {
   console.log(rides1)
 
   const rides =rides1.filter((r)=>{
-    return r.user_id == user.user_id 
+    return (r.user_id == user.user_id)&&(r.date_of_journey<new Date().toJSON().slice(0, 10).replace(/-/g, '-'))
   } );
 
   return (
-    <div>{  
+    <div>
+      <h1 style={{'textAlign':'center'}}><b><u>My Ride History</u></b></h1>
+      {  
     rides.map((myride,index)=>(
     <div id='ride' key={index+"ride"}>
       <div className="card" key={index}>
@@ -23,6 +25,8 @@ function RideHistory(props) {
           <li className="list-group-item" key={index+"lg"}>Date-Time:{myride.date_of_journey} {myride.time_of_journey}</li>
           <li className="list-group-item" key={index+"gi"}>Seats :{myride.available_seats}/{myride.total_seats}</li>
           <li className="list-group-item" key={index+"li"}>Fare : {myride.ride_cost}</li>
+          <li className="list-group-item" key={index+"ls"}>Status : {myride.status}</li>
+
         </ul>
       </div>
       </div>

@@ -27,18 +27,18 @@
     background-size: 100% 200%;
     background-position: 0 2.5%;
     border-radius: 5px;
-    box-shadow: 0 0 35px rgba(158, 50, 50, 0.12);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
     cursor: pointer;
     transition: 0.5s;
   }
   h3 {
     font-size: 20px;
     font-weight: 600;
-    color: #422fd0;
+    color: #1f194c;
     margin: 1em 0;
   }
   p {
-    color: #7c82c5;
+    color: #575a7b;
     font-size: 15px;
     line-height: 1.6;
     letter-spacing: 0.03em;
@@ -61,7 +61,7 @@
   }
   .card:hover .icon-wrapper {
     background-color: #ffffff;
-    color: #103e88;
+    color: #2c7bfe;
   }
   .card:hover h3 {
     color: #ffffff;

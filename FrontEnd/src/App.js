@@ -30,6 +30,10 @@ import Admin from './pages/Admin/Admin';
 import AllUser from './pages/Admin/AllUser';
 import AllRides from './pages/Admin/AllRides';
 import AllBookings from './pages/Admin/AllBookings';
+import UpComingRides from './pages/Profile/UpComingRides';
+import RequestOnRide from './pages/Profile/RequestOnRide';
+import MyBookingStatus from './pages/Profile/MyBookingStatus';
+import UploadedImage from './pages/ZUploadImage/UploadImage';
 
 ReactSession.setStoreType("localStorage");
 
@@ -109,6 +113,9 @@ class App extends Component {
                 <Route path="/postride" exact><PostRide /></Route>
                 <Route path="/profile" exact><Profile /></Route>
                 <Route path="/ridehistory" exact><RideHistory /></Route>
+                <Route path="/upcomingrides" exact><UpComingRides /></Route>
+                <Route path="/reqonride" exact><RequestOnRide /></Route>
+                <Route path="/bookingStatus" exact><MyBookingStatus /></Route>
                 <Route path="/updateprofile" exact><UpdateProfile /></Route>
                 <Route path="/termsAndCondition" exact><TermsAndCondition /></Route>
                 <Route path="/bookride" exact><BookRide /></Route>
@@ -120,6 +127,8 @@ class App extends Component {
                 <Route path="/alluser" exact><AllUser /></Route>
                 <Route path="/allrides" exact><AllRides /></Route>
                 <Route path="/allbookings" exact><AllBookings /></Route>
+                <Route path="/upload" exact><UploadedImage /></Route>
+
 
 
 
