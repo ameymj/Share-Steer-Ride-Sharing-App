@@ -17,8 +17,8 @@ const Services = () => {
             <h3>Trusted Drivers</h3>
             <p>
               We check the reviews and feedback of the drivers.
-              We verify The driving liscence of driver.
-              We also verify photoId of the travellers.
+              We verify The driving licence of driver.
+              We also verify photo-id of the treavelers.
             </p>
           </div>
         </div>
@@ -29,8 +29,8 @@ const Services = () => {
             </div>
             <h3>Emergency Service</h3>
             <p>
-            We have collaboration with SOS for highway-Safety.
-            contact our toll free number 1800-1256-7895 in case of emergency.
+            We have colaboration with SOS for highway-Safety.
+            contact our toll free number 1001001000 in case of emergency.
             </p>
           </div>
         </div>
@@ -41,8 +41,7 @@ const Services = () => {
             </div>
             <h3>Maintained Vehicle</h3>
             <p>
-            Check the photos of the vehicle with which you are travelling.
-            See the condition of vehicle and then decide to travel.
+            Check the photoes of the vehicle with wich you are travelling.
             </p>
           </div>
         </div>
@@ -53,8 +52,7 @@ const Services = () => {
             </div>
             <h3>Live Tracking</h3>
             <p>
-            Track the live location of the vehicle as soon as the driver starts the journey.
-            and check the route and time to reach live.
+            Track the live location of the vehile as soon as the driver starts the journey.
             </p>
           </div>
         </div>
@@ -65,8 +63,8 @@ const Services = () => {
             </div>
             <h3>Feedback System</h3>
             <p>
-            your feedback is important to us and other users.
-            Share your overall experience and experience with particular user.
+            your feedback are important to us and other users.
+            Share your overall experience and experience with perticular user.
             </p>
           </div>
         </div>
@@ -77,7 +75,6 @@ const Services = () => {
             </div>
             <h3>Ontime </h3>
             <p>
-            We provide good drivers which drives you to your destination in proper time.
             You can write us if the driver delays or cancels the ride on services@sharesteer.com.
             </p>
           </div>

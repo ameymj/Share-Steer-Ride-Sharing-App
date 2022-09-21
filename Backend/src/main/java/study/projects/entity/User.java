@@ -170,35 +170,35 @@ public class User {
 		this.contact = contact;
 	}
 
-//
-//	public Blob getAadhar_image() {
-//		return aadhar_image;
-//	}
-//
-//
-//	public void setAadhar_image(Blob aadhar_image) {
-//		this.aadhar_image = aadhar_image;
-//	}
-//
-//
-//	public Blob getUser_image() {
-//		return user_image;
-//	}
-//
-//
-//	public void setUser_image(Blob user_image) {
-//		this.user_image = user_image;
-//	}
-//
-//
-//	public Blob getDriving_licence() {
-//		return driving_licence;
-//	}
-//
-//
-//	public void setDriving_licence(Blob driving_licence) {
-//		this.driving_licence = driving_licence;
-//	}
+
+	public String getAadhar_image() {
+		return aadhar_image;
+	}
+
+
+	public void setAadhar_image(String aadhar_image) {
+		this.aadhar_image = aadhar_image;
+	}
+
+
+	public String getUser_image() {
+		return user_image;
+	}
+
+
+	public void setUser_image(String user_image) {
+		this.user_image = user_image;
+	}
+
+
+	public String getDriving_licence() {
+		return driving_licence;
+	}
+
+
+	public void setDriving_licence(String driving_licence) {
+		this.driving_licence = driving_licence;
+	}
 
 
 	public boolean isIs_varified() {

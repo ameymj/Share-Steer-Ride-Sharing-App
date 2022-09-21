@@ -10,6 +10,7 @@ function Profile() {
         });
   return (
     <center>
+            <h1 style={{'textAlign':'center'}}><b><u>My Profile</u></b></h1>
     <div id='ride'>
       <div className="card">
         <div className="card-body">
@@ -23,11 +24,13 @@ function Profile() {
         </ul>
         <div className="card-body">
           <a href="/UpdateProfile" className="btn btn-dark btn-lg btn-block"><b>Update Profile</b></a>
-          <a href="/ridehistory" className="btn btn-dark btn-lg btn-block"><b>My Rides</b></a>
-          <a href="/mybookings" className="btn btn-dark btn-lg btn-block"><b>My Bookings</b></a>
+          <a href="/upcomingrides" className="btn btn-dark btn-lg btn-block"><b>Upcoming Rides</b></a>
+          <a href="/ridehistory" className="btn btn-dark btn-lg btn-block"><b>Completed Rides</b></a>
+          <a href="/bookingStatus" className="btn btn-dark btn-lg btn-block"><b>Upcoming Journey Booking Status</b></a>
+          <a href="/mybookings" className="btn btn-dark btn-lg btn-block"><b>Booking History</b></a>
+          <a href="/reqonride" className="btn btn-dark btn-lg btn-block"><b>Request On Ride</b></a>
         </div>
       </div>
-
     </div>
     </center>
   )

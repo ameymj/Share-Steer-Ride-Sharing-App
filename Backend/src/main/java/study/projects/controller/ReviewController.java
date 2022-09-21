@@ -29,7 +29,6 @@ public class ReviewController {
 	{
 		Rating rating=null;
 		try {
-		//	int avg = temp.queryForObject("select user_id from ride where ride_id="+ride_id,Integer.class);
 			rating = temp.queryForObject("select * from rating where driver_id="+driver_id, 
 					(rs,rownum)->{return new Rating(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(3));});
 		} catch (DataAccessException e) {

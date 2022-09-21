@@ -27,21 +27,12 @@ function GetAllRide(props) {
   }
   const history=useHistory();
   const book = event => {
-      if(ReactSession?.get("user")==undefined)
-      {
-        setMessege("Login First");
-        history.push("/login")
-        return ;
-      }
-      else{
     localStorage.setItem("myRide",rides);
     history.push({
       pathname:'/bookride',
       state:rides
     });
   }
-
- };
 
 
 
@@ -72,6 +63,8 @@ function GetAllRide(props) {
           <li className="list-group-item"><b>Time</b>:{rides.time_of_journey}</li>
           <li className="list-group-item"><b>Seats</b> :{rides.available_seats}/{rides.total_seats}</li>
           <li className="list-group-item"><b>Fare</b> : {rides.ride_cost}</li>
+          <li className="list-group-item"><b>Only-Females</b> : {rides.only_females?"Yes":"No"}</li>
+
         </ul>
         <div className="card-body">
           <b>{messege}</b>

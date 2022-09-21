@@ -84,7 +84,7 @@ console.log(users);
                                             </div>
                                             <a href="/forgetpassword" style={{ "color": "black" }}>Forgot password?</a>
                                             <p className="mb-5 pb-lg-2" style={{ "color": " #393f81" }}>Don't have an account? <a href="/register"
-                                                style={{ "color": "#000" }}>Register here</a></p>
+                                                style={{ "color": " #000" }}>Register here</a></p>
                                         </form>
                                     </div>
                                 </div>

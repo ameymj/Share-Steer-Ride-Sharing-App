@@ -22,7 +22,7 @@ const Contact = () => {
             <Card.Body>
               <Card.Title>Customer Support</Card.Title>
               <Card.Text>
-                At Share-Steer, we define modern customer support as the act of providing timely, empathetic help that keeps customers' needs at the forefront of every interaction.
+                At Help Scout, we define modern customer support as the act of providing timely, empathetic help that keeps customers' needs at the forefront of every interaction.
               </Card.Text>
             </Card.Body>
             <Card.Footer>

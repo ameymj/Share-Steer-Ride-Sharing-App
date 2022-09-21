@@ -30,7 +30,6 @@ function UpdateProfile() {
         updatedUser.gender = gender;
         updatedUser.contact = contact;
         updatedUser.password = password;
-        updatedUser.user_image = photo;
         updatedUser.is_varified = false;
         console.log(updatedUser);
         axios.post("http://localhost:8080/sharesteer/updateprofile", updatedUser)
@@ -54,9 +53,9 @@ function UpdateProfile() {
             })
 
     }
-
     return (
        <section>
+              <h1 style={{'textAlign':'center'}}><b><u>Update Profile</u></b></h1>
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col col-xl-10">

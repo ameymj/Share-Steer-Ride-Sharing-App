@@ -5,7 +5,7 @@ public class Ride {
 	private int ride_id,user_id,vehicle_id;
 	private String date_of_journey,time_of_journey,from_city,to_city;
 	private int total_seats,available_seats;
-	private boolean status;
+	private String status;
 	private int ride_cost;
 	private String description;
 	private boolean only_females;
@@ -17,7 +17,7 @@ public class Ride {
 	
 	
 	public Ride(int ride_id, int user_id, int vehicle_id, String date_of_journey, String time_of_journey,
-			String from_city, String to_city, int total_seats, int available_seats, boolean status, int ride_cost,
+			String from_city, String to_city, int total_seats, int available_seats, String status, int ride_cost,
 			String description, boolean only_females) {
 		super();
 		this.ride_id = ride_id;
@@ -35,10 +35,10 @@ public class Ride {
 		this.only_females = only_females;
 	}
 	public Ride(int ride_id,int user_id,int vehicle_id,String doj, String toj, String fromCity, String toCity, int totalSeat, int availableSeat, int cost,
-			String description) {
-		this.ride_id=ride_id;
-		this.user_id=user_id;
-		this.vehicle_id=vehicle_id;
+			String description,String status) {
+		 this.ride_id=ride_id;
+		 this.user_id=user_id;
+		 this.vehicle_id=vehicle_id;
 		 this.date_of_journey=doj;
 		 this.time_of_journey=toj;
 		 this.from_city=fromCity;
@@ -47,8 +47,7 @@ public class Ride {
 		 this.available_seats=availableSeat;
 		 this.ride_cost=cost;
 		 this.description=description;
-		 
-		// TODO Auto-generated constructor stub
+		 this.status=status;
 	}
 
 
@@ -124,11 +123,11 @@ public class Ride {
 		this.available_seats = available_seats;
 	}
 
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
