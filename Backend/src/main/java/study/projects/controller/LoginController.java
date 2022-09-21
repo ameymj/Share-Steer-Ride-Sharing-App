@@ -1,11 +1,8 @@
 package study.projects.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,22 +11,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,7 +28,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 
-import study.projects.entity.ImageUpload;
 import study.projects.entity.User;
 
 
@@ -183,7 +173,6 @@ public class LoginController {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con=DriverManager.getConnection(url,Username,Password);
-//			File file=new File("D:\\IET_JAVA_Script\\Z2_FrontEnd\\share-steer\\src\\pages\\profile\\images\\user.jpg");
 			File file=new File("D:\\IET_JAVA_Script\\Z2_FrontEnd\\steer\\src\\pages\\profile\\images\\user.jpg");
 
 			FileOutputStream fos=new FileOutputStream(file);
@@ -198,6 +187,7 @@ public class LoginController {
 				b=blob.getBytes(1,(int)blob.length());
 				fos.write(b);
 			}
+			fos.close();
 		}
 		catch(Exception ex)
 		{
@@ -214,43 +204,6 @@ public class LoginController {
 			}
 		}
 	}
-	
-	public int uploadPhoto(String path,int id)
-	{
-		int status=0;
-		String url="jdbc:mysql://localhost:3306/dotnetproject";
-		String Username="root";
-		String Password="C@stleking786";
-		
-		Connection con=null;
-		PreparedStatement ps=null;
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con=DriverManager.getConnection(url,Username,Password);
-			File file=new File(path);
-			FileInputStream fin=new FileInputStream(file);			
-			ps=con.prepareStatement("update user set user_image=? where user_id="+id);
-			ps.setBinaryStream(1, fin,(int)file.length());
-			status=ps.executeUpdate();
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-		}
-		finally {
-			try {
-				ps.close();
-				con.close();
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return status;
-		
-	}
-	
 	
 	@PostMapping("/updateprofilebyAdmin")
 	public String adminUpdate(@RequestBody User u)

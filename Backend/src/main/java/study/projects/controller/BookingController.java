@@ -71,13 +71,46 @@ public class BookingController {
 	@GetMapping("/getmybookings/{id}")
 	public ArrayList<Booking> myBookingStatus(@PathVariable int id)
 	{
-		String queryString="select date_of_journey,time_of_journey,from_city.city_name,to_city.city_name,description,number_of_seats,booking_date,amount,booking.status from ride,from_city,to_city,booking where booking.ride_id=ride.ride_id and ride.from_city=from_city.city_id and ride.to_city=to_city.city_id and date_of_journey>=now() and booking.user_id="+id;
+		String queryString="select date_of_journey,time_of_journey,from_city.city_name,to_city.city_name,description,number_of_seats,booking_date,amount,booking.status,booking_id from ride,from_city,to_city,booking where booking.ride_id=ride.ride_id and ride.from_city=from_city.city_id and ride.to_city=to_city.city_id and date_of_journey>=now() and booking.user_id="+id;
 		List<Booking>bookings=new ArrayList<Booking>();
 		try {
-		bookings=temp.query(queryString,(rs,row_num)->{return new Booking(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9));});
+		bookings=temp.query(queryString,(rs,row_num)->{return new Booking(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),rs.getInt(10));});
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
 		return (ArrayList<Booking>) bookings;
 	}
+	
+	@GetMapping("/confirmTicket/{id}")
+	public String confirmTicket(@PathVariable int id)
+	{
+		String queryString="update booking set status='Confirmed' where booking_id="+id;
+		String messege="";
+		try {
+		temp.update(queryString);
+		messege="Seat Confirmed";
+		} catch (DataAccessException e) {
+			messege="Query Failed";
+			e.printStackTrace();
+		}
+		return messege;
+	}
+	
+	@GetMapping("/cancelTicket/{id}")
+	public String cancelTicket(@PathVariable int id)
+	{
+		String queryString="update booking set status='Cancel' where booking_id="+id;
+		String messege="";
+		try {
+		temp.update(queryString);
+		messege="Seat Rejected";
+		} catch (DataAccessException e) {
+			messege="Query Failed";
+			e.printStackTrace();
+		}
+		return messege;
+	}
+	
+	
+	
 }

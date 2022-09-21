@@ -93,12 +93,12 @@ public class RideController {
 	@GetMapping("/getRequest/{id}")
 	public ArrayList<Booking> allRequests(@PathVariable int id)
 	{
-		String queryString="select first_name,last_name,contact,email_id,number_of_seats,status from booking,user where booking.user_id=user.user_id and ride_id="+id;
+		String queryString="select first_name,last_name,contact,email_id,number_of_seats,status ,booking_id from booking,user where booking.user_id=user.user_id and ride_id="+id;
 
 		List<Booking> book=new ArrayList<Booking>();
 		try {
 			                                                              //// first_name | last_name | contact | email_id | number_of_seats | status
-			book = temp.query(queryString,(rs,rownum)->{return new Booking(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6));});
+			book = temp.query(queryString,(rs,rownum)->{return new Booking(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getInt(7));});
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -108,7 +108,7 @@ public class RideController {
 	@GetMapping("/getMyOnlyRide/{id}")
 	public ArrayList<Ride> getMyRide(@PathVariable int id)
 	{
-		String queryString="select ride_id,user_id,vehicle_id,date_of_journey,time_of_journey,from_city.city_name,to_city.city_name,total_seats,available_seats,ride_cost,description,status from ride,from_city,to_city where ride.from_city=from_city.city_id and ride.to_city=to_city.city_id  and user_id="+id;
+		String queryString="select ride_id,user_id,vehicle_id,date_of_journey,time_of_journey,from_city.city_name,to_city.city_name,total_seats,available_seats,ride_cost,description,status from ride,from_city,to_city where ride.from_city=from_city.city_id and ride.to_city=to_city.city_id and date_of_journey>=now() and user_id="+id;
 
 		List<Ride> list =new ArrayList<>();
 		try {
