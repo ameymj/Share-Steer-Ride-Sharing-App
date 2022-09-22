@@ -35,10 +35,31 @@ export default function RequestOnRide() {
                 console.log(error);
             })
     }
+    function successData(requ) {
+        console.log(requ);
+        axios.get("http://localhost:8080/sharesteer/confirmTicket/" + requ.booking_id)
+        .then((response) => {
+            alert(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
 
-    
+    }
+
+    function rejectData(requ) {
+        console.log(requ);
+        axios.get("http://localhost:8080/sharesteer/cancelTicket/" + requ.booking_id)
+        .then((response) => {
+            alert(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
     return (
         <div>
+            <h1 style={{ 'textAlign': 'center' }}><b><u>Request For My Ride</u></b></h1>
             {
                 check &&
                 <>
@@ -67,6 +88,10 @@ export default function RequestOnRide() {
                                 <li className="list-group-item" key={index + "lg"}><b>Email-Id:</b>{req.email_id}</li>
                                 <li className="list-group-item" key={index + "gi"}><b>Contact :</b>{req.contact}</li>
                                 <li className="list-group-item" key={index + "li"}><b>Status : </b>{req.status}</li>
+                                <li className="list-group-item" key={index + "la"}>
+                                    <button className='btn btn-success' onClick={() => { successData(req) }}>Confirm</button>&nbsp;
+                                    <button className='btn btn-danger' onClick={() => { rejectData(req) }}>Reject</button>
+                                </li>
                             </ul>
                         </div>
                     </div>

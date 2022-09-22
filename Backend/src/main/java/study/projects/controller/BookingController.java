@@ -33,7 +33,6 @@ public class BookingController {
 			messege="Ticket Booked Successfully You Will Get Confirmation By Driver";
 
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
 			messege="Query Failed"+e.getMessage();
 
 			e.printStackTrace();
@@ -48,7 +47,6 @@ public class BookingController {
 		try {
 		bookings=temp.query("select * from Booking where user_id="+id,(rs,row_num)->{return new Booking(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getInt(7));});
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return (ArrayList<Booking>) bookings;
@@ -61,7 +59,6 @@ public class BookingController {
 		try {
 		bookings=temp.query("select date_of_journey,time_of_journey,from_city.city_name,to_city.city_name,description,number_of_seats,booking_date,amount from ride,from_city,to_city,booking where booking.ride_id=ride.ride_id and ride.from_city=from_city.city_id and ride.to_city=to_city.city_id;",(rs,row_num)->{return new Booking(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getInt(8));});
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

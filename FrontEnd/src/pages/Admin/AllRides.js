@@ -22,6 +22,7 @@ function AllRides() {
 
   return (
     <div>
+          <h1 style={{ 'textAlign': 'center' }}><b><u>Admin Page</u></b></h1>
     {add && ride.map((rides)=>(<div id='ride'  style={{'textAlign':'center'}}>
       <div className="card">
         <div className="card-body">

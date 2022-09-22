@@ -104,7 +104,6 @@ public class LoginController {
 			messege="User Update successfully";
 
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
 			messege="Query Failed"+e.getMessage();
 
 			e.printStackTrace();
@@ -127,7 +126,6 @@ public class LoginController {
 				messege="Invalid Username Or Email";
 
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
 			messege="Query Failed"+e.getMessage();
 
 			e.printStackTrace();
@@ -173,7 +171,7 @@ public class LoginController {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con=DriverManager.getConnection(url,Username,Password);
-			File file=new File("D:\\IET_JAVA_Script\\Z2_FrontEnd\\steer\\src\\pages\\profile\\images\\user.jpg");
+			File file=new File("C:\\Users\\tusha\\OneDrive\\Desktop\\Share Steer\\Project On git\\myproject\\Share-Steer-Ride-Sharing-App\\FrontEnd\\src\\pages\\Profile\\images\\user.jpg");
 
 			FileOutputStream fos=new FileOutputStream(file);
 			byte b[];
@@ -216,7 +214,6 @@ public class LoginController {
 			messege="User Update successfully";
 
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
 			messege="Query Failed"+e.getMessage();
 
 			e.printStackTrace();

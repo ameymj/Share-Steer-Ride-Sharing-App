@@ -9,6 +9,7 @@ function Admin() {
         });
   return (
     <center>
+    <h1 style={{ 'textAlign': 'center' }}><b><u>Admin Page</u></b></h1>
     <div id='ride'>
       <div className="card">
         <div className="card-body">
