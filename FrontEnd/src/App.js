@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
+
+=======
+import React, { useEffect } from 'react';
+>>>>>>> 9554e111d8f20ff4f56879f51d980a76fa51f499
 import {
   BrowserRouter as Router,
   Route,
@@ -25,15 +30,19 @@ import TermsAndCondition from './pages/terms/TermsAndCondition';
 import BookRide from './pages/Ride/BookRide';
 import MyBookings from './pages/Profile/MyBookings';
 import Footer from './Components/Navbar/Footer';
-import Rate from './pages/RateYourDriver/Rate';
 import Review from './pages/Review/Review'
+import Admin from './pages/Admin/Admin';
+import AllUser from './pages/Admin/AllUser';
+import AllRides from './pages/Admin/AllRides';
+import AllBookings from './pages/Admin/AllBookings';
+import UpComingRides from './pages/Profile/UpComingRides';
+import RequestOnRide from './pages/Profile/RequestOnRide';
+import MyBookingStatus from './pages/Profile/MyBookingStatus';
 
 ReactSession.setStoreType("localStorage");
 
-class App extends Component {
-
-  componentDidUpdate() {
-
+function App() {
+    useEffect(()=>{
     axios.get("http://localhost:8080/sharesteer/getAllUsers")
       .then((response) => {
         ReactSession.set("allUser", response.data);
@@ -51,20 +60,7 @@ class App extends Component {
         console.log(error);
       })
 
-  }
-
-  componentDidMount() {
-    ReactSession.set("user",null);
-    axios.get("http://localhost:8080/sharesteer/getAllrides")
-      .then((response) => {
-        ReactSession.set("rides", response.data);
-
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-    axios.get("http://localhost:8080/sharesteer/getAllCities")
+        axios.get("http://localhost:8080/sharesteer/getAllCities")
       .then((response) => {
         ReactSession.set("cities", response.data);
 
@@ -73,23 +69,8 @@ class App extends Component {
         console.log(error);
       })
 
+    })
 
-    axios.get("http://localhost:8080/sharesteer/getAllUsers")
-      .then((response) => {
-        ReactSession.set("allUser", response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-  }
-
-  componentWillUnmount() {
-    ReactSession.set("user",null);
-
-  }
-
-  render() {
     return (
       <div>
         <div>
@@ -107,15 +88,20 @@ class App extends Component {
                 <Route path="/postride" exact><PostRide /></Route>
                 <Route path="/profile" exact><Profile /></Route>
                 <Route path="/ridehistory" exact><RideHistory /></Route>
+                <Route path="/upcomingrides" exact><UpComingRides /></Route>
+                <Route path="/reqonride" exact><RequestOnRide /></Route>
+                <Route path="/bookingStatus" exact><MyBookingStatus /></Route>
                 <Route path="/updateprofile" exact><UpdateProfile /></Route>
                 <Route path="/termsAndCondition" exact><TermsAndCondition /></Route>
                 <Route path="/bookride" exact><BookRide /></Route>
                 <Route path="/login" exact><Login /></Route>
                 <Route path="/register" exact><Register /></Route>
                 <Route path="/mybookings" exact><MyBookings /></Route>
-                <Route path="/rate" exact><Rate /></Route>
                 <Route path="/review" exact><Review /></Route>
-
+                <Route path="/admin" exact><Admin /></Route>
+                <Route path="/alluser" exact><AllUser /></Route>
+                <Route path="/allrides" exact><AllRides /></Route>
+                <Route path="/allbookings" exact><AllBookings /></Route>
                 <Redirect to="/home" />
                 {ReactSession.get('user') != null ? <></> : <><Route path="/login" exact><Login /></Route>
                   <Route path="/register" exact><Register /></Route></>}
@@ -129,6 +115,5 @@ class App extends Component {
       </div>
     );
   }
-}
 
 export default App;

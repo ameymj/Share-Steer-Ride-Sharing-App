@@ -27,7 +27,6 @@ import study.projects.entity.City;
 		try {
 			list = temp.query("select * from from_city", (rs,rownum)->{return new City(rs.getInt(1),rs.getString(2));});
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

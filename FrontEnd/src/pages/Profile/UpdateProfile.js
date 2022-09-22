@@ -2,13 +2,9 @@ import { useEffect, useState } from 'react';
 import Update from './images/update.webp';
 import axios from 'axios';
 import { ReactSession } from 'react-client-session';
-import Login from '../Login/Login';
 
 
 function UpdateProfile() {
-
-
-
     const user = ReactSession.get("user");
     const [firstName, setFirstName] = useState(user.first_name);
     const [lastName, setLastName] = useState(user.lastName);
@@ -16,7 +12,6 @@ function UpdateProfile() {
     const [gender, setGender] = useState(user.gender);
     const [contact, setContact] = useState(user.contact);
     const [password, setPassword] = useState(user.password);
-    const [photo, setPhoto] = useState();
     const [messege, setMessge] = useState("");
 
 
@@ -30,7 +25,6 @@ function UpdateProfile() {
         updatedUser.gender = gender;
         updatedUser.contact = contact;
         updatedUser.password = password;
-        updatedUser.user_image = photo;
         updatedUser.is_varified = false;
         console.log(updatedUser);
         axios.post("http://localhost:8080/sharesteer/updateprofile", updatedUser)
@@ -45,18 +39,18 @@ function UpdateProfile() {
 
             })
 
-        axios.get("http://localhost:8080/sharesteer/getAllUsers")
+        axios.get("http://localhost:8080/sharesteer/getdetailsbyid/"+user.user_id)
             .then((response) => {
-                ReactSession.set("allUser", response.data);
+                ReactSession.set("user", response.data);
             })
             .catch((error) => {
                 console.log(error);
             })
-
     }
 
     return (
        <section>
+              <h1 style={{'textAlign':'center'}}><b><u>Update Profile</u></b></h1>
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col col-xl-10">
@@ -93,7 +87,7 @@ function UpdateProfile() {
 
                                             <div>
                                                 <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setGender(e.target.value); }}>
-                                                    <option value="Male">Select</option>
+                                                    <option value="">Select</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                     <option value="Other">Other</option>
@@ -111,22 +105,6 @@ function UpdateProfile() {
                                                 <input type="number" className="form-control form-control-lg" defaultValue={user.contact} required minLength={10} maxLength={14} onBlur={(e) => { setContact(e.target.value) }} />
                                                 <label className="form-label">Contact</label>
                                             </div>
-
-                                            <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" />
-                                                <label className="form-label">Upload Your-Photo</label>
-                                            </div>
-
-                                            <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" readOnly />
-                                                <label className="form-label">Upload Aadhar-Image</label>
-                                            </div>
-
-                                            <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" readOnly />
-                                                <label className="form-label">Upload Licence</label>
-                                            </div>
-
 
                                             <div className="form-outline mb-4">
                                                 <input type="text" className="form-control form-control-lg" value={user.user_name} readOnly />

@@ -29,7 +29,6 @@ public class ReviewController {
 	{
 		Rating rating=null;
 		try {
-		//	int avg = temp.queryForObject("select user_id from ride where ride_id="+ride_id,Integer.class);
 			rating = temp.queryForObject("select * from rating where driver_id="+driver_id, 
 					(rs,rownum)->{return new Rating(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(3));});
 		} catch (DataAccessException e) {
@@ -45,7 +44,7 @@ public class ReviewController {
 		User user=null;
 		try {
 			int id = temp.queryForObject("select user_id from ride where ride_id="+ride_id,Integer.class);
-			user = temp.queryForObject("select * from user where user_id="+id, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));});
+			user = temp.queryForObject("select * from user where user_id="+id, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getBoolean(13));});
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}

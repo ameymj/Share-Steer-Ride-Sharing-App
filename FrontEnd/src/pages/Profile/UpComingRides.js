@@ -1,18 +1,19 @@
 import React from 'react'
 import { ReactSession } from 'react-client-session';
 
-function RideHistory(props) {
+function UpComingRides(props) {
   const rides1=ReactSession.get('rides');
   const user=ReactSession.get("user");
   console.log(rides1)
 
   const rides =rides1.filter((r)=>{
-    return (r.user_id == user.user_id)&&(r.date_of_journey<new Date().toJSON().slice(0, 10).replace(/-/g, '-'))
+    return (r.user_id == user.user_id)&&(r.date_of_journey>=new Date().toJSON().slice(0, 10).replace(/-/g, '-'))
   } );
 
   return (
     <div>
-      <h1 style={{'textAlign':'center'}}><b><u>My Ride History</u></b></h1>
+            <h1 style={{'textAlign':'center'}}><b><u>My Upcoming Rides</u></b></h1>
+
       {  
     rides.map((myride,index)=>(
     <div id='ride' key={index+"ride"}>
@@ -26,7 +27,6 @@ function RideHistory(props) {
           <li className="list-group-item" key={index+"gi"}>Seats :{myride.available_seats}/{myride.total_seats}</li>
           <li className="list-group-item" key={index+"li"}>Fare : {myride.ride_cost}</li>
           <li className="list-group-item" key={index+"ls"}>Status : {myride.status}</li>
-
         </ul>
       </div>
       </div>
@@ -37,4 +37,4 @@ function RideHistory(props) {
   )
 }
 
-export default RideHistory
+export default UpComingRides

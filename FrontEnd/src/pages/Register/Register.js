@@ -14,10 +14,9 @@ function Register() {
     const [contact, setContact] = useState("");
     const [username, setusername] = useState("");
     const [password, setPassword] = useState("");
-    const [aadhar, setAadhar] = useState("");
     const [photo, setPhoto] = useState("");
-    const [licence, setLicence] = useState("");
     const [messege, setMessege] = useState("");
+    const [userid,setUserid]=useState("");
 
 
     function addData() {
@@ -30,23 +29,36 @@ function Register() {
         user.contact = contact;
         user.user_name = username;
         user.password = password;
-        user.aadhar_image = aadhar;
-        user.user_image = photo;
-        user.driving_licence = licence;
         user.is_varified = false;
-        user.user_image=photo;
         console.log(user);
         axios.post("http://localhost:8080/sharesteer/signup", user)
             .then((response) => {
                 setMessege("Sign Up Successfull");
-                console.log(response);
+                console.log(response.data);
+                setUserid(response.data);
             })
             .catch((error) => {
                 console.log(error);
                 setMessege("enter Valid Data")
             })
-
     }
+
+
+    function onFileChangeHandler(){
+        const formData = new FormData();
+        formData.append('file', photo)
+        formData.append('id', parseInt(userid))
+
+        fetch('http://localhost:8080/sharesteer/upload', {
+            method: 'post',
+            body: formData
+        }).then(res => {
+            if (res.ok) {
+                console.log(res.data);
+                alert("File uploaded successfully.")
+            }
+        });
+    };
 
     return (
         <section>
@@ -110,18 +122,13 @@ function Register() {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setPhoto(e.target.value);console.log(e.target); }} />
+                                                <input type="file" className="form-control form-control-lg" onChange={(e) => { setPhoto(e.target.files[0]); }} />
                                                 <label className="form-label">Upload Your-Photo</label>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setAadhar(e.target.value) }} />
-                                                <label className="form-label">Upload Aadhar-Image</label>
-                                            </div>
-
-                                            <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setLicence(e.target.value) }} />
-                                                <label className="form-label">Upload Licence</label>
+                                                <input type="text" className="form-control form-control-lg"  required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
+                                                <label className="form-label">Username</label>
                                             </div>
 
                                             <div className="form-outline mb-4">
@@ -129,15 +136,13 @@ function Register() {
                                                 <label className="form-label">Password</label>
                                             </div>
 
-
-                                            <div className="form-outline mb-4">
-                                                <input type="text" className="form-control form-control-lg"  required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
-                                                <label className="form-label">Username</label>
-                                            </div>
                                             <b>{messege}</b>
 
                                             <div className="pt-1 mb-4">
-                                                <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={addData}>Register</button>
+                                                <input className="btn btn-dark btn-lg btn-block" type="checkbox" onClick={addData} value="Confirm"/>
+                                            </div>
+                                            <div className="pt-1 mb-4">
+                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={onFileChangeHandler}>Register</button>
                                             </div>
 
                                             <div className="pt-1 mb-4">

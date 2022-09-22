@@ -8,13 +8,24 @@ import './ride.css';
 
 export default function PostRide(props) {
 
-  const cities = ReactSession.get("cities");
+  const [cities, setCities] = useState([])
   const [messege, setMessege] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
+  useState(()=>{
+    axios.get("http://localhost:8080/sharesteer/getAllCities")
+    .then((response) => {
+      setCities(response.data);
+      setCheck(true);
+
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  })
   let user = null;
 
-  const [user_id, setUser_id] = useState()
+  const [check, setCheck] = useState(false)
   const [date_of_journey, setDate_of_journey] = useState(null);
   const [time_of_journey, setTime_of_journey] = useState(null);
   const [from_city, setFrom_city] = useState(null);
@@ -23,23 +34,23 @@ export default function PostRide(props) {
   const [available_seat, setAvailable_seat] = useState(null);
   const [ride_cost, setRide_cost] = useState(null);
   const [description, setDescription] = useState(null);
+  const [Type, setType] = useState(0);
+
 
   const [vehicle_id, setVehicle_id] = useState(null);
   const [vehicle_model, setVehicle_model] = useState(null);
   const [vehicle_reg_number, setVehicle_reg_number] = useState(null);
   const [checkVehicle, setCheckVehicle] = useState(false);
 
-  function addVehicle(){
+  function addVehicle() {
     user = ReactSession.get("user");
 
-    if(user==null)
-    {
+    if (user == null) {
       setMessege("Login First");
       return;
     }
 
-    if( vehicle_model==null || vehicle_reg_number==null || total_seat==null)
-    {
+    if (vehicle_model == null || vehicle_reg_number == null || total_seat == null) {
       setMessege("All Fields Are Mandatory");
       return;
     }
@@ -65,14 +76,12 @@ export default function PostRide(props) {
 
   function addRide() {
     user = ReactSession.get("user");
-    if(user==null)
-    {
+    if (user == null) {
       setMessege("Login First");
       return;
     }
 
-    if(date_of_journey==null || time_of_journey==null || from_city==null || to_city==null || total_seat==null || available_seat==null || ride_cost==null || vehicle_id==null )
-    {
+    if (date_of_journey == null || time_of_journey == null || from_city == null || to_city == null || total_seat == null || available_seat == null || ride_cost == null || vehicle_id == null) {
       setMessege("All Fields Are Mandatory");
       return;
     }
@@ -86,8 +95,8 @@ export default function PostRide(props) {
     ride.available_seats = available_seat;
     ride.ride_cost = ride_cost;
     ride.description = description;
-    ride.only_females = 0;
-    ride.status = false;
+    ride.only_females = Type;
+    ride.status = "Yet-To-Start";
     ride.vehicle_id = vehicle_id;
 
     axios.post("http://localhost:8080/sharesteer/addride", ride)
@@ -144,19 +153,19 @@ export default function PostRide(props) {
                       </div>
 
                       <div className="form-outline mb-4">
-                        <input type="time" className="form-control form-control-lg"  required onBlur={(e) => { setTime_of_journey(e.target.value) }} />
+                        <input type="time" className="form-control form-control-lg" required onBlur={(e) => { setTime_of_journey(e.target.value) }} />
                         <label className="form-label"><b>Time-Of-Departure</b></label>
                       </div>
 
                       <div>
                         <select className="form-select btn btn-dark btn-lg btn-block" required aria-label="Default select example" onChange={(e) => { setFrom_city(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
+                          {check && cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                         </select>
                         <b>SOURCE</b><br /><br />
                       </div>
                       <div>
                         <select className="form-select btn btn-dark btn-lg btn-block" required aria-label="Default select example" onChange={(e) => { setTo_city(e.target.value); console.log(e); }}>
-                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
+                          {check &&  cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                         </select>
                         <b>DESTINATION</b><br /><br />
                       </div>
@@ -192,13 +201,22 @@ export default function PostRide(props) {
                         <label className="form-label"><b>Vehicle Registration Number</b></label>
                       </div>
 
+                      <div>
+                        <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setType(e.target.value); }}>
+                          <option value="false">Select</option>
+                          <option value="true">Only-Females</option>
+                          <option value="false">None</option>
+                        </select>
+                        <label className="form-label">gender</label>
+                      </div>
+
                       <div className="form-outline mb-4">
                         <input type="checkbox" className="form-control form-control-lg" required onClick={addVehicle} />
                         <label className="form-label"><b>Confirm Ride</b></label>
                       </div>
 
                       {checkVehicle && <><div className="pt-1 mb-4">
-                        <button className="btn btn-dark btn-lg btn-block" type="button" onClick={addRide}>Post Ride</button>
+                        <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={addRide}>Post Ride</button>
                       </div></>}
 
                       <div className="pt-1 mb-4">
@@ -209,7 +227,7 @@ export default function PostRide(props) {
                         <a href='/login' className="btn btn-dark btn-lg btn-block">Log In</a>
                       </div></>}
 
-                      <b style={{'color':'red'}}>{messege}</b>
+                      <b style={{ 'color': 'red' }}>{messege}</b>
                     </form>
                   </div>
                 </div>

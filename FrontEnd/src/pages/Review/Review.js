@@ -60,7 +60,7 @@ export default function Review(props)
                                         alt="ratingimg" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} />
                                 </div>
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                                    <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'rgb(5, 101, 134)' }}>
+                                    <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'lightskyblue' }}>
 
                                         <form action='/profile' >
                                             <div className="d-flex align-items-center mb-3 pb-1">
