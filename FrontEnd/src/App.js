@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 
+=======
+import React, { useEffect } from 'react';
+>>>>>>> 9554e111d8f20ff4f56879f51d980a76fa51f499
 import {
   BrowserRouter as Router,
   Route,
@@ -34,14 +38,11 @@ import AllBookings from './pages/Admin/AllBookings';
 import UpComingRides from './pages/Profile/UpComingRides';
 import RequestOnRide from './pages/Profile/RequestOnRide';
 import MyBookingStatus from './pages/Profile/MyBookingStatus';
-import UploadedImage from './pages/ZUploadImage/UploadImage';
 
 ReactSession.setStoreType("localStorage");
 
-class App extends Component {
-
-  componentDidUpdate() {
-
+function App() {
+    useEffect(()=>{
     axios.get("http://localhost:8080/sharesteer/getAllUsers")
       .then((response) => {
         ReactSession.set("allUser", response.data);
@@ -59,19 +60,7 @@ class App extends Component {
         console.log(error);
       })
 
-  }
-
-  componentDidMount() {
-    axios.get("http://localhost:8080/sharesteer/getAllrides")
-      .then((response) => {
-        ReactSession.set("rides", response.data);
-
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-    axios.get("http://localhost:8080/sharesteer/getAllCities")
+        axios.get("http://localhost:8080/sharesteer/getAllCities")
       .then((response) => {
         ReactSession.set("cities", response.data);
 
@@ -80,23 +69,8 @@ class App extends Component {
         console.log(error);
       })
 
+    })
 
-    axios.get("http://localhost:8080/sharesteer/getAllUsers")
-      .then((response) => {
-        ReactSession.set("allUser", response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-  }
-
-  componentWillUnmount() {
-    ReactSession.set("user",null);
-
-  }
-
-  render() {
     return (
       <div>
         <div>
@@ -128,11 +102,6 @@ class App extends Component {
                 <Route path="/alluser" exact><AllUser /></Route>
                 <Route path="/allrides" exact><AllRides /></Route>
                 <Route path="/allbookings" exact><AllBookings /></Route>
-                <Route path="/upload" exact><UploadedImage /></Route>
-
-
-
-
                 <Redirect to="/home" />
                 {ReactSession.get('user') != null ? <></> : <><Route path="/login" exact><Login /></Route>
                   <Route path="/register" exact><Register /></Route></>}
@@ -146,6 +115,5 @@ class App extends Component {
       </div>
     );
   }
-}
 
 export default App;

@@ -14,9 +14,7 @@ function Register() {
     const [contact, setContact] = useState("");
     const [username, setusername] = useState("");
     const [password, setPassword] = useState("");
-    const [aadhar, setAadhar] = useState("");
     const [photo, setPhoto] = useState("");
-    const [licence, setLicence] = useState("");
     const [messege, setMessege] = useState("");
     const [userid,setUserid]=useState("");
 
@@ -129,16 +127,6 @@ function Register() {
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setAadhar(e.target.files[0]) }} />
-                                                <label className="form-label">Upload Aadhar-Image</label>
-                                            </div>
-
-                                            <div className="form-outline mb-4">
-                                                <input type="file" className="form-control form-control-lg" onBlur={(e) => { setLicence(e.target.files[0]) }} />
-                                                <label className="form-label">Upload Licence</label>
-                                            </div>
-
-                                            <div className="form-outline mb-4">
                                                 <input type="text" className="form-control form-control-lg"  required minLength={8} maxLength={16} onBlur={(e) => { setusername(e.target.value) }} />
                                                 <label className="form-label">Username</label>
                                             </div>
@@ -151,10 +139,10 @@ function Register() {
                                             <b>{messege}</b>
 
                                             <div className="pt-1 mb-4">
-                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={addData}>Register</button>
+                                                <input className="btn btn-dark btn-lg btn-block" type="checkbox" onClick={addData} value="Confirm"/>
                                             </div>
                                             <div className="pt-1 mb-4">
-                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={onFileChangeHandler}>Add Files</button>
+                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={onFileChangeHandler}>Register</button>
                                             </div>
 
                                             <div className="pt-1 mb-4">

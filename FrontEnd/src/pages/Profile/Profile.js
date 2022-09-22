@@ -23,12 +23,12 @@ function Profile() {
           <li className="list-group-item"><b>Contact No </b>: {user.contact}</li>
         </ul>
         <div className="card-body">
-          <a href="/UpdateProfile" className="btn btn-dark btn-lg btn-block"><b>Update Profile</b></a>
+          <a href="/reqonride" className="btn btn-dark btn-lg btn-block"><b>Request On Ride</b></a>
+          <a href="/bookingStatus" className="btn btn-dark btn-lg btn-block"><b>Upcoming Journey Booking Status</b></a>
           <a href="/upcomingrides" className="btn btn-dark btn-lg btn-block"><b>Upcoming Rides</b></a>
           <a href="/ridehistory" className="btn btn-dark btn-lg btn-block"><b>Completed Rides</b></a>
-          <a href="/bookingStatus" className="btn btn-dark btn-lg btn-block"><b>Upcoming Journey Booking Status</b></a>
           <a href="/mybookings" className="btn btn-dark btn-lg btn-block"><b>Booking History</b></a>
-          <a href="/reqonride" className="btn btn-dark btn-lg btn-block"><b>Request On Ride</b></a>
+          <a href="/UpdateProfile" className="btn btn-dark btn-lg btn-block"><b>Update Profile</b></a>
         </div>
       </div>
     </div>

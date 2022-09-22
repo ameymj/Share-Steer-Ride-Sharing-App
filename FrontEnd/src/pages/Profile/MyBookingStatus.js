@@ -7,6 +7,7 @@ export default function MyBookingStatus() {
     const [bookings, setBookings] = useState([]);
     const [check, setCheck] = useState(false)
 
+    console.log(bookings);
     useEffect(() => {
         axios.get("http://localhost:8080/sharesteer/getmybookings/" + user.user_id)
             .then((response) => {
@@ -16,6 +17,19 @@ export default function MyBookingStatus() {
             .catch((error) => { console.log(error); })
 
     },[])
+
+
+
+    function rejectData(requ) {
+        console.log(requ);
+        axios.get("http://localhost:8080/sharesteer/cancelTicketbyself/" + requ.booking_id)
+        .then((response) => {
+            alert(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
     return (
         <div>
             <h1 style={{ 'textAlign': 'center' }}><b><u>My Bookings Status</u></b></h1>
@@ -30,13 +44,14 @@ export default function MyBookingStatus() {
                                 </div>
                             }
                             <ul className="list-group list-group-flush" key={index + "flush"}>
-                                <li className="list-group-item" key={index + "jd"}>Journey Date :{myBook.date_of_journey}</li>
-                                <li className="list-group-item" key={index + "jt"}>Journey Time :{myBook.time_of_journey}</li>
+                                <li className="list-group-item" key={index + "jd"}>Journey Date :{myBook.journey_date}</li>
+                                <li className="list-group-item" key={index + "jt"}>Journey Time :{myBook.journey_time}</li>
                                 <li className="list-group-item" key={index + "lg"}>Booking-Date :{myBook.booking_date}</li>
                                 <li className="list-group-item" key={index + "gi"}>Seats :{myBook.number_of_seats}</li>
                                 <li className="list-group-item" key={index + "li"}>Fare : {myBook.amount}</li>
                                 <li className="list-group-item" key={index + "tf"}>Total Fare : {myBook.amount * myBook.number_of_seats}</li>
                                 <li className="list-group-item" key={index + "lb"}>Status : {myBook.status}</li>
+                                <li className="list-group-item" key={index + "ls"}><button className='btn btn-danger' onClick={() => { rejectData(myBook) }}>Cancel</button></li>
                             </ul>
                         </div>
                     </div>

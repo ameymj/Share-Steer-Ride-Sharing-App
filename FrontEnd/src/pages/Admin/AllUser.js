@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
-import { ReactSession } from 'react-client-session'
+import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import '../Ride/ride.css';
 export default function AllUser() {
-  const users = ReactSession.get("allUser");
+  const [users, setUsers] = useState([])
+  const [check, setCheck] = useState(false)
+
+
+
+  useEffect(()=>{
+    axios.get("http://localhost:8080/sharesteer/getAllUsers")
+      .then((response) => {
+        setUsers(response.data);
+        setCheck(true)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    },[])
+
+
+
   const [user, setUser] = useState("");
   const [firstName, setFirstName] = useState(user.first_name);
   const [lastName, setLastName] = useState(user.lastName);
@@ -15,6 +31,7 @@ export default function AllUser() {
   const [email, setEmailId] = useState(user.email_id);
   const [verify, setVerify] = useState(user.is_verified);
 
+  console.log(users);
   function updateData(user) {
     console.log(user);
     const updatedUser = {}
@@ -27,7 +44,7 @@ export default function AllUser() {
     updatedUser.contact = contact==undefined?user.contact:contact;
     updatedUser.email_id = email==undefined?user.email_id:email;
     updatedUser.password = password==undefined?user.password:password;
-    updatedUser.is_verified = verify==undefined?user.verify:verify;
+    updatedUser.is_varified = verify==undefined?user.verify:verify;
     console.log(updatedUser);
     axios.post("http://localhost:8080/sharesteer/updateprofilebyAdmin", updatedUser)
       .then((response) => {
@@ -41,6 +58,7 @@ export default function AllUser() {
   return (
 
     <div>
+          <h1 style={{ 'textAlign': 'center' }}><b><u>Admin Page</u></b></h1>
       <Table striped bordered hover className="table-responsive">
         <thead>
           <tr>
@@ -53,15 +71,12 @@ export default function AllUser() {
             <th>Password</th>
             <th>Email</th>
             <th>Contact</th>
-            <th>Image</th>
-            <th>Aadhar</th>
-            <th>Licence</th>
             <th>Verified</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr>
+          {check && users.map((user,index) => (
+            <tr key={index}>
               <td>{user.user_id}</td>
               <td><input type='text' defaultValue={user.first_name} required minLength={1} maxLength={30} onBlur={(e) => { setFirstName(e.target.value); setUser(user) }} /></td>
               <td><input type='text' defaultValue={user.last_name} required minLength={1} maxLength={30} onBlur={(e) => { setLastName(e.target.value) }} /></td>
@@ -71,10 +86,7 @@ export default function AllUser() {
               <td><input type='text' defaultValue={user.password} minLength={8} maxLength={16} onBlur={(e) => { setPassword(e.target.value) }} /></td>
               <td><input type='email' defaultValue={user.email_id} minLength={8} maxLength={100} onBlur={(e) => { setEmailId(e.target.value) }} /></td>
               <td><input type='number' defaultValue={user.contact} minLength={10} maxLength={14} onBlur={(e) => { setContact(e.target.value) }} /></td>
-              <td>{user.user_image}</td>
-              <td>{user.aadhar_image}</td>
-              <td>{user.driving_licence}</td>
-              <td><input type='text' defaultValue={user.is_verified} onBlur={(e) => { setVerify(e.target.value) }} /></td>
+              <td><input type='text' defaultValue={user.is_varified} onBlur={(e) => { setVerify(e.target.value) }} /></td>
               <td><button className='btn btn-dark' onClick={() => { updateData(user) }}>Update</button></td>
             </tr>
           ))}

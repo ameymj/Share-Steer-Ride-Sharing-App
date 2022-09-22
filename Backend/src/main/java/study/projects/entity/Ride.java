@@ -8,17 +8,16 @@ public class Ride {
 	private String status;
 	private int ride_cost;
 	private String description;
-	private boolean only_females;
+	private String only_females;
 	
 	public Ride()
 	{
 		
 	}
 	
-	
 	public Ride(int ride_id, int user_id, int vehicle_id, String date_of_journey, String time_of_journey,
 			String from_city, String to_city, int total_seats, int available_seats, String status, int ride_cost,
-			String description, boolean only_females) {
+			String description, String only_females) {
 		super();
 		this.ride_id = ride_id;
 		this.user_id = user_id;
@@ -147,11 +146,11 @@ public class Ride {
 		this.description = description;
 	}
 
-	public boolean isOnly_females() {
+	public String isOnly_females() {
 		return only_females;
 	}
 
-	public void setOnly_females(boolean only_females) {
+	public void setOnly_females(String only_females) {
 		this.only_females = only_females;
 	}
 	

@@ -3,7 +3,7 @@ package study.projects.entity;
 public class Booking {
 	
 	private int booking_id,ride_id,user_id,number_of_seats;
-	private String status;
+	private String status="Waiting";
 	private String booking_date;
 	private int amount;
 	private String from_city,to_city,description,journey_date,journey_time;
@@ -41,7 +41,7 @@ public class Booking {
 	}
 	
 	public Booking(String journey_date,String journey_time,String from_city,String to_city,String description, int number_of_seats, String booking_date,
-			int amount,String status ) {
+			int amount,String status,int booking_id ) {
 		super();
 		this.number_of_seats = number_of_seats;
 		this.booking_date = booking_date;
@@ -52,12 +52,13 @@ public class Booking {
 		this.journey_time=journey_time;
 		this.description=description;
 		this.status=status;
+		this.booking_id=booking_id;
 	}
 	
 	
 	
 	
-	public Booking(String first_name,String last_name,String contact,String email_id,int no_of_seats,String status)
+	public Booking(String first_name,String last_name,String contact,String email_id,int no_of_seats,String status,int booking_id)
 	{
 		this.first_name=first_name;
 		this.last_name=last_name;
@@ -65,6 +66,7 @@ public class Booking {
 		this.contact=contact;
 		this.number_of_seats=no_of_seats;
 		this.status=status;
+		this.booking_id=booking_id;
 	}
 
 	

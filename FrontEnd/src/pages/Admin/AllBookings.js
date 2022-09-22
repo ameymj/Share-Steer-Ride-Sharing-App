@@ -16,7 +16,10 @@ export default function AllBookings() {
     }, [])
 
     return (
-        <div>{
+        <div>
+                <h1 style={{ 'textAlign': 'center' }}><b><u>Admin Page</u></b></h1>
+
+            {
             myBookings.map((myBook, index) => (
                 <div id='ride' key={index + "ride"}>
                     <div className="card" key={index}>
