@@ -3,7 +3,7 @@ package study.projects.entity;
 public class Booking {
 	
 	private int booking_id,ride_id,user_id,number_of_seats;
-	private String status;
+	private String status="Waiting";
 	private String booking_date;
 	private int amount;
 	private String from_city,to_city,description,journey_date,journey_time;

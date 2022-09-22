@@ -8,13 +8,24 @@ import './ride.css';
 
 export default function PostRide(props) {
 
-  const cities = ReactSession.get("cities");
+  const [cities, setCities] = useState([])
   const [messege, setMessege] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
+  useState(()=>{
+    axios.get("http://localhost:8080/sharesteer/getAllCities")
+    .then((response) => {
+      setCities(response.data);
+      setCheck(true);
+
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  })
   let user = null;
 
-  const [user_id, setUser_id] = useState()
+  const [check, setCheck] = useState(false)
   const [date_of_journey, setDate_of_journey] = useState(null);
   const [time_of_journey, setTime_of_journey] = useState(null);
   const [from_city, setFrom_city] = useState(null);
@@ -148,13 +159,13 @@ export default function PostRide(props) {
 
                       <div>
                         <select className="form-select btn btn-dark btn-lg btn-block" required aria-label="Default select example" onChange={(e) => { setFrom_city(e.target.value) }}>
-                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
+                          {check && cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                         </select>
                         <b>SOURCE</b><br /><br />
                       </div>
                       <div>
                         <select className="form-select btn btn-dark btn-lg btn-block" required aria-label="Default select example" onChange={(e) => { setTo_city(e.target.value); console.log(e); }}>
-                          {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
+                          {check &&  cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
                         </select>
                         <b>DESTINATION</b><br /><br />
                       </div>
@@ -192,9 +203,9 @@ export default function PostRide(props) {
 
                       <div>
                         <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setType(e.target.value); }}>
-                          <option value="0">Select</option>
-                          <option value="1">Only-Females</option>
-                          <option value="0">None</option>
+                          <option value="false">Select</option>
+                          <option value="true">Only-Females</option>
+                          <option value="false">None</option>
                         </select>
                         <label className="form-label">gender</label>
                       </div>
@@ -205,7 +216,7 @@ export default function PostRide(props) {
                       </div>
 
                       {checkVehicle && <><div className="pt-1 mb-4">
-                        <button className="btn btn-dark btn-lg btn-block" type="button" onClick={addRide}>Post Ride</button>
+                        <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={addRide}>Post Ride</button>
                       </div></>}
 
                       <div className="pt-1 mb-4">

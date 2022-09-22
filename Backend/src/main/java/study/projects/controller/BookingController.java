@@ -29,7 +29,7 @@ public class BookingController {
 	{
 		String messege="";		
 		try {
-			temp.update("insert into booking (ride_id,user_id,number_of_seats,status,booking_date,amount) values(?,?,?,?,?,?)",booking.getRide_id(),booking.getUser_id(),booking.getNumber_of_seats(),booking.getStatus(),booking.getBooking_date(),booking.getAmount());
+			temp.update("insert into booking (ride_id,user_id,number_of_seats,booking_date,amount) values(?,?,?,?,?)",booking.getRide_id(),booking.getUser_id(),booking.getNumber_of_seats(),booking.getBooking_date(),booking.getAmount());
 			messege="Ticket Booked Successfully You Will Get Confirmation By Driver";
 
 		} catch (DataAccessException e) {
@@ -96,7 +96,22 @@ public class BookingController {
 	@GetMapping("/cancelTicket/{id}")
 	public String cancelTicket(@PathVariable int id)
 	{
-		String queryString="update booking set status='Cancel' where booking_id="+id;
+		String queryString="update booking set status='Cancel-By-Driver' where booking_id="+id;
+		String messege="";
+		try {
+		temp.update(queryString);
+		messege="Seat Rejected";
+		} catch (DataAccessException e) {
+			messege="Query Failed";
+			e.printStackTrace();
+		}
+		return messege;
+	}
+	
+	@GetMapping("/cancelTicketbyself/{id}")
+	public String cancelTicketByPassenger(@PathVariable int id)
+	{
+		String queryString="update booking set status='Cancel-By-Passenger' where booking_id="+id;
 		String messege="";
 		try {
 		temp.update(queryString);

@@ -67,7 +67,7 @@ public class User {
 
 
 	public User(int user_id, String user_name, String password, String first_name, String last_name, String birth_date,String gender, String email_id,
-			String contact) {
+			String contact,boolean verified) {
 		this.user_id = user_id;
 		this.user_name = user_name;
 		this.password = password;
@@ -77,6 +77,7 @@ public class User {
 		this.email_id = email_id;
 		this.contact = contact;
 		this.gender=gender;
+		this.is_varified=verified;
 		
 	}
 

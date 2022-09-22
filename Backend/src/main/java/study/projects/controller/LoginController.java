@@ -59,7 +59,7 @@ public class LoginController {
 	{
 		User user=null;
 		try {
-			user = temp.queryForObject("select * from user where user_name="+username, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));});
+			user = temp.queryForObject("select * from user where user_name="+username, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getBoolean(13));});
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -72,7 +72,7 @@ public class LoginController {
 	{
 		User user=null;
 		try {
-			user = temp.queryForObject("select * from user where user_id="+user_id, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));});
+			user = temp.queryForObject("select * from user where user_id="+user_id, (rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getBoolean(13));});
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -85,7 +85,7 @@ public class LoginController {
 	{
 		List<User> list=new ArrayList<User>();
 		try {
-			list = temp.query("select * from user",(rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));});
+			list = temp.query("select * from user",(rs,rownum)->{return new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getBoolean(13));});
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -100,7 +100,7 @@ public class LoginController {
 		if(u==null)
 			return "Enter Valid data";
 		try {
-			temp.update("update user set password='"+u.getPassword()+"',first_name='"+u.getFirst_name()+"', last_name='"+u.getLast_name()+" ',birth_date='"+u.getBirth_date()+"',gender='"+u.getGender()+"',contact='"+u.getContact()+"' where user_name= '"+u.getUser_name()+"'");
+			temp.update("update user set password='"+u.getPassword()+"',first_name='"+u.getFirst_name()+"', last_name='"+u.getLast_name()+" ',birth_date='"+u.getBirth_date()+"',gender='"+u.getGender()+"',contact='"+u.getContact()+" where user_name= '"+u.getUser_name()+"'");
 			messege="User Update successfully";
 
 		} catch (DataAccessException e) {
@@ -151,7 +151,11 @@ public class LoginController {
 //		logger.info("name: " + name);
 //		logger.info("contentType: " + contentType);
 //		logger.info("size: " + size);
-		temp.update("update user set user_image=? where user_id="+id,inputStream);
+		try {
+			temp.update("update user set user_image=? where user_id="+id,inputStream);
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
 		return "Photo Upload Successfully";
 	}
 	
@@ -171,7 +175,7 @@ public class LoginController {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con=DriverManager.getConnection(url,Username,Password);
-			File file=new File("C:\\Users\\tusha\\OneDrive\\Desktop\\Share Steer\\Project On git\\myproject\\Share-Steer-Ride-Sharing-App\\FrontEnd\\src\\pages\\Profile\\images\\user.jpg");
+			File file=new File("D:\\IET_JAVA_Script\\Z2_FrontEnd\\steer\\src\\pages\\profile\\images\\user.jpg");
 
 			FileOutputStream fos=new FileOutputStream(file);
 			byte b[];
@@ -197,7 +201,6 @@ public class LoginController {
 				con.close();
 
 			} catch (SQLException e) {
-				
 				e.printStackTrace();
 			}
 		}

@@ -55,7 +55,7 @@ public class RideController {
 		try {
 			al = temp.query("select * from ride where from_city='"+c1+"' and to_city='"+c2+"' and date_of_journey>='"+d+"'",(rs,rownum)->{return new Ride(rs.getInt(1),
 					rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getString(10),rs.getInt(11),
-					rs.getString(12),rs.getBoolean(13));});
+					rs.getString(12),rs.getString(13));});
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -102,6 +102,7 @@ public class RideController {
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
+		System.out.println(book);
 		return (ArrayList<Booking>) book;
 	}
 	
