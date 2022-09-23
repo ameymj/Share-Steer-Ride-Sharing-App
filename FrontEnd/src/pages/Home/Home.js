@@ -107,9 +107,9 @@ const Home = (props) => {
               <img className="first-slide" src={Journey} alt="First slide" />
               <div className="container">
                 <div className="carousel-caption text-left">
-                  <h1>Example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                  <h1>Get Starting With Us....</h1>
+                  <p style={{'color':'black'}}><b>It is platform to connects drivers and passengers willing to travel together between cities and shares the cost of the journey.</b></p>
+                  <p><a className="btn btn-lg btn-primary" href="/register" role="button">Get Started</a></p>
                 </div>
               </div>
             </div>
@@ -117,9 +117,9 @@ const Home = (props) => {
               <img className="second-slide" src={Journey2} alt="Second slide" />
               <div className="container">
                 <div className="carousel-caption">
-                  <h1>Another example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                  <h1>Rated By Passenger</h1>
+                  <p style={{'color':'black'}}><b>To facilitate, perfect ride users are available with feedback and a rating system which will ultimately aim to choose a perfect companion for the journey.</b></p>
+                  <p><a className="btn btn-lg btn-primary" href="/about" role="button">About Us</a></p>
                 </div>
               </div>
             </div>
@@ -127,9 +127,9 @@ const Home = (props) => {
               <img className="third-slide" src={Journey3} alt="Third slide" />
               <div className="container">
                 <div className="carousel-caption text-right">
-                  <h1>One more for good measure.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                  <h1>Our Testimonials</h1>
+                  <p  style={{'color':'black'}}><b>a formal written description of someone's character and qualities given by a previous employer</b></p>
+                  <p><a className="btn btn-lg btn-primary" href="/testimonial" role="button">Our Testimonials</a></p>
                 </div>
               </div>
             </div>

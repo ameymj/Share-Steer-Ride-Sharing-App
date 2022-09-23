@@ -3,6 +3,7 @@ import Welcome from './welcome.webp';
 import Reception from './reception.webp';
 import Journey from './journey.jpg';
 import axios from 'axios';
+import '../../App.css'
 
 
 function Register() {
@@ -139,7 +140,7 @@ function Register() {
                                             <b>{messege}</b>
 
                                             <div className="pt-1 mb-4">
-                                                <input className="btn btn-dark btn-lg btn-block" type="checkbox" onClick={addData} value="Confirm"/>
+                                            <b>Confirm</b><input className="btn btn-dark btn-lg btn-block" type="checkbox" onClick={addData} value="Confirm"/>
                                             </div>
                                             <div className="pt-1 mb-4">
                                                 <button className="btn btn-dark btn-lg btn-block" type="button" onClick={onFileChangeHandler}>Register</button>
