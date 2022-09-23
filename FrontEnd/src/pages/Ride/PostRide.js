@@ -6,7 +6,7 @@ import share from './share.jpeg'
 import { ReactSession } from 'react-client-session';
 import './ride.css';
 
-export default function PostRide(props) {
+export default function PostRide() {
 
   const [cities, setCities] = useState([])
   const [messege, setMessege] = useState();

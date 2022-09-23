@@ -3,7 +3,6 @@ import './Navbar.css';
 import { NavLink, useHistory } from 'react-router-dom';
 import $ from 'jquery';
 import { ReactSession } from 'react-client-session';
-// import { useNavigate } from "react-router-dom";
 
 
 
@@ -125,13 +124,21 @@ const Navbar = (props) => {
             </li>
             {
               ReactSession.get("user") == null ?
-                <li className="nav-item">
+               <> <li className="nav-item">
                   <NavLink className="nav-link" to="/login" exact>
                     <i
                       className="far fa-user">
                     </i>Login
                   </NavLink>
-                </li> :
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/register" exact>
+                    <i
+                      className="far fa-user">
+                    </i>Register
+                  </NavLink>
+                </li>
+                </> :
                 <>
                   <li className="nav-item">
 
@@ -144,7 +151,7 @@ const Navbar = (props) => {
                     <NavLink className="nav-link" onClick={logout} to='/' exact>
                       <i
                         className="fas fa-power-off">
-                      </i>LOGOUT
+                      </i>Logout
                     </NavLink> </li>
                 </>
             }

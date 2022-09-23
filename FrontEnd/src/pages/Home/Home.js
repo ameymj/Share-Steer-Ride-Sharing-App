@@ -3,60 +3,18 @@ import Carousel from 'react-bootstrap/Carousel';
 import FirstSlide from './FirstSlide.jpg';
 import SecondSlide from './SecondSlide.jpg';
 import ThirdSlide from './ThirdSlide.jpg';
-import { useEffect, useState } from 'react';
-import './Home.css'
-import GetAllRide from '../Ride/GetAllRide';
-import PostRide from '../Ride/PostRide';
-import SearchRide from './searchride.jpg'
-import Waiting from './waiting.jpg'
-import { ReactSession } from 'react-client-session';
-import axios from 'axios';
-import Logo from './logos.png'
-import Footer from '../../Components/Navbar/Footer';
-
-
+import SearchRide from '../Profile/SearchRide';
+import Journey from './Images/journey.jpeg';
+import Journey2 from './Images/journey2.jpeg';
+import Journey3 from './Images/journey3.jpeg';
+import icon1 from './Images/icon1.png';
+import icon2  from './Images/icon2.png';
+import icon3  from './Images/icon3.png';
+import Dash1 from './Images/dash1.jpeg';
+import Dash2 from './Images/dash2.jpeg';
+import Dash3 from './Images/dash3.jpeg';
 
 const Home = (props) => {
-
-  const cities = ReactSession.get("cities");
-
-  const rides = ReactSession.get("rides");
-  const [source, setSource] = useState("Pune");
-  const [destination, setDestination] = useState("Pune");
-  const [date, setDate] = useState("");
-  const [check, setCheck] = useState(false);
-  const [ReqRide, setReqRide] = useState([]);
-  const [messge, setMessege] = useState("");
-
-
-
-  function validate() {
-    const ride = {}
-    ride.from_city = source;
-    ride.to_city = destination;
-    ride.date_of_journey = date;
-
-    if (source == destination) {
-      setMessege("Source And Destination Cannot Be Same!");
-      return;
-    }
-
-    axios.post("http://localhost:8080/sharesteer/getrides", ride)
-      .then((response) => {
-        setCheck(true);
-        setReqRide(response.data);
-
-        if(response.data.length==0)
-          setMessege("No Record Found");
-
-      })
-      .catch((error) => {
-        console.log(error);
-        setCheck(false);
-      })
-  }
-
-
   return (
     <div className="container">
       <Carousel>
@@ -95,74 +53,115 @@ const Home = (props) => {
             <b>Comfort</b>
           </Carousel.Caption>
         </Carousel.Item>
-
-        <Carousel.Item>
-          <img
-            className="d-block w-100 h-25"
-            src={Logo}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h2>Travel with</h2>
-            <b>Us</b>
-          </Carousel.Caption>
-        </Carousel.Item>
       </Carousel>
-      <section>
-        <div className="container py-5 h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col col-xl-10">
-              <div className="card" style={{ "borderRadius": " 1rem" }}>
-                <div className="row g-0">
-                  <div className="col-md-6 col-lg-5 d-none d-md-block">
-                    <img src={SearchRide}
-                      alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} /><br /><br /><br />
-                    <img src={Waiting}
-                      alt="login form" className="img-fluid" style={{ "borderRadius": " 1rem 0 0 1rem" }} />
-                  </div>
-                  <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                    <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'lightskyblue' }}>
+      <SearchRide />
+      {/* </div>
+    <div> */}
+    <center>
+      <main role="main">
+      <div className="container marketing">
+      <hr className="featurette-divider" />
+          <div className="row featurette">
+            <div className="col-md-7">
+              <h2 className="featurette-heading">Secure And Safer Rides</h2>
+              <p className="lead">Verified drivers, an emergency alert button, and live ride tracking are some of the features that we have in place to ensure you a safe travel experience</p>
+            </div>
+            <div className="col-md-5">
+              <img className="featurette-image img-fluid mx-auto" src={Dash1} alt="Generic placeholder image" />
+            </div>
+          </div>
 
-                      <form onSubmit={validate}>
-                        <div className="d-flex align-items-center mb-3 pb-1">
-                          <i className="fas fa-route fa-2x me-3"></i>
-                          <span className="h1 fw-bold mb-0">SEARCH RIDE</span>
-                        </div>
-                        <div>
-                          <b>SOURCE</b>
-                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setSource(e.target.value) }}>
-                            {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
-                          </select>
-                        </div>
-                        <div>
-                          <b>DESTINATION</b>
-                          <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setDestination(e.target.value) }}>
-                            {cities.map((city) => (<option key={city.cityName} value={city.cityId}>{city.cityName}</option>))}
-                          </select>
-                        </div>
-                        <div>
-                          <b>DATE</b><input type='date' className='btn btn-dark btn-lg btn-block' required min={new Date().toJSON().slice(0, 10).replace(/-/g, '-')} onChange={(e) => { setDate(e.target.value) }} />
-                          <br />
-                        </div>
-                        <b>{messge}</b>
+          <hr className="featurette-divider" />
 
-                        <div className="pt-1 mb-4">
-                          <button className="btn btn-dark btn-lg btn-block" type="button" onClick={validate}>Search</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+          <div className="row featurette">
+            <div className="col-md-7 order-md-2">
+              <h2 className="featurette-heading">Entertainment While Ride</h2>
+              <p className="lead">Play music, watch videos and a lot more with Ola Play! Also stay connected even if you are travelling through poor network areas with our free wifi facility.</p>
+            </div>
+            <div className="col-md-5 order-md-1">
+              <img className="featurette-image img-fluid mx-auto" src={Dash2} alt="Generic placeholder image" />
+            </div>
+          </div>
+
+          <hr className="featurette-divider" />
+
+          <div className="row featurette">
+            <div className="col-md-7">
+              <h2 className="featurette-heading">All Payment Type</h2>
+              <p className="lead">To enjoy hassle free payments we provided with all type of payments like Cards,Cash,Net-Banking. Enjoy Ride with zero stress and full saving of fuel and time.</p>
+            </div>
+            <div className="col-md-5">
+              <img className="featurette-image img-fluid mx-auto" src={Dash3} alt="Generic placeholder image" />
+            </div>
+          </div>
+
+          <hr className="featurette-divider" />
+          <div id="myCarousel" className="carousel slide" data-ride="carousel">
+          <ol className="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img className="first-slide" src={Journey} alt="First slide" />
+              <div className="container">
+                <div className="carousel-caption text-left">
+                  <h1>Example headline.</h1>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <img className="second-slide" src={Journey2} alt="Second slide" />
+              <div className="container">
+                <div className="carousel-caption">
+                  <h1>Another example headline.</h1>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <img className="third-slide" src={Journey3} alt="Third slide" />
+              <div className="container">
+                <div className="carousel-caption text-right">
+                  <h1>One more for good measure.</h1>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
                 </div>
               </div>
             </div>
           </div>
+          <a className="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+          </a>
+          <a className="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+          </a>
         </div>
-      </section>
-      {check && ReqRide.map((r, index) => <GetAllRide key={index} ride={r} city={cities} />)}
-      <div>
-        <PostRide city={cities} />
-      </div>
+        <div className="row">
+            <div className="col-lg-4">
+              <img className="rounded-circle" src={icon1} alt="Generic placeholder image" width="140" height="140" />
+              <h2>Easy Searching</h2>
+            </div>
+            <div className="col-lg-4">
+              <img className="rounded-circle" src={icon2} alt="Generic placeholder image" width="140" height="140" />
+              <h2>Secure Booking</h2>
+            </div>
+            <div className="col-lg-4">
+              <img className="rounded-circle" src={icon3} alt="Generic placeholder image" width="140" height="140" />
+              <h2>Verified Drivers</h2>
+            </div>
+          </div>
+        </div>
+      </main>
+      </center>
     </div>
+
   )
 }
 export default Home;

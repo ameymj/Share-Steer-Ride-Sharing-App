@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-
-=======
 import React, { useEffect } from 'react';
->>>>>>> 9554e111d8f20ff4f56879f51d980a76fa51f499
 import {
   BrowserRouter as Router,
   Route,
@@ -38,6 +33,7 @@ import AllBookings from './pages/Admin/AllBookings';
 import UpComingRides from './pages/Profile/UpComingRides';
 import RequestOnRide from './pages/Profile/RequestOnRide';
 import MyBookingStatus from './pages/Profile/MyBookingStatus';
+import SearchRide from './pages/Profile/SearchRide';
 
 ReactSession.setStoreType("localStorage");
 
@@ -85,6 +81,7 @@ function App() {
                 <Route path="/testimonial" exact><Testimonial /></Route>
                 <Route path="/contact" exact><Contact /></Route>
                 <Route path="/forgetpassword" exact><ForgetPassword /></Route>
+                <Route path="/searchride" exact><SearchRide /></Route>
                 <Route path="/postride" exact><PostRide /></Route>
                 <Route path="/profile" exact><Profile /></Route>
                 <Route path="/ridehistory" exact><RideHistory /></Route>

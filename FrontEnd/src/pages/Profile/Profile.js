@@ -4,6 +4,8 @@ import User from './images/user.jpg'
 import { ReactSession } from 'react-client-session';
 function Profile() {
   const user=ReactSession.get("user");
+  const cities = ReactSession.get("cities");
+
   console.log(user);
     axios.get("http://localhost:8080/sharesteer/getImage/"+user.user_id)
         .then(function (response) {
@@ -23,6 +25,8 @@ function Profile() {
           <li className="list-group-item"><b>Contact No </b>: {user.contact}</li>
         </ul>
         <div className="card-body">
+        <a href="/postride" className="btn btn-dark btn-lg btn-block"><b>Post Ride</b></a>
+        <a href="/searchride" className="btn btn-dark btn-lg btn-block"><b>Search Ride</b></a>
           <a href="/reqonride" className="btn btn-dark btn-lg btn-block"><b>Request On Ride</b></a>
           <a href="/bookingStatus" className="btn btn-dark btn-lg btn-block"><b>Upcoming Journey Booking Status</b></a>
           <a href="/upcomingrides" className="btn btn-dark btn-lg btn-block"><b>Upcoming Rides</b></a>
