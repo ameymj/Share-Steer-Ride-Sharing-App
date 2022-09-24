@@ -26,6 +26,11 @@ function BookRide(props) {
 
 
     function Book() {
+        if(bookedSeat=="")
+        {
+            setMessege("Enter value For seats!");
+            return false;
+        }
         const bookride = {}
         bookride.user_id = user.user_id;
         bookride.ride_id = myRide.ride_id;
@@ -37,7 +42,7 @@ function BookRide(props) {
         if(bookedSeat>myRide.available_seats)
         {
             setMessege("There is No Enough Seats");
-            return;
+            return false;
         }
 
         axios.post("http://localhost:8080/sharesteer/bookride",bookride)
@@ -47,6 +52,8 @@ function BookRide(props) {
             .catch((error) => {
                 setMessege(error.data);
             })
+
+            return true;
 
     }
 

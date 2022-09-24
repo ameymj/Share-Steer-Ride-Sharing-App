@@ -14,6 +14,12 @@ function Login() {
     const [loggedIn, setLoggedIn] = useState(false);
     function verify() {
 
+        if(username==""||password=="")
+        {
+            setMesssge("Enter Username or Password");
+            return;
+        }
+
         axios.get("http://localhost:8080/sharesteer/getAllUsers")
             .then((response) => {
                 ReactSession.set("allUser", response.data);
@@ -24,7 +30,6 @@ function Login() {
 
         const users = ReactSession.get("allUser");
 
-console.log(users);
         for (let i = 0; i < users.length; i++) {
             if (users[i].user_name === username) {
                 if (users[i].password === password) {

@@ -21,6 +21,12 @@ function Register() {
 
 
     function addData() {
+
+        if(firstName==""||lastName==""||birthdate==""||gender==""||email==""||contact==""||username==""||password=="")
+        {
+            setMessege("Fill Necessary Details")
+            return;
+        }
         const user = {}
         user.first_name = firstName;
         user.last_name = lastName;
@@ -46,6 +52,10 @@ function Register() {
 
 
     function onFileChangeHandler(){
+        if(photo=="")
+        {
+            return;
+        }
         const formData = new FormData();
         formData.append('file', photo)
         formData.append('id', parseInt(userid))
@@ -79,7 +89,7 @@ function Register() {
                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                     <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'lightskyblue' }}>
 
-                                        <form>
+                                        <form action='/login'>
 
                                             <div className="d-flex align-items-center mb-3 pb-1">
                                                 <i className="fas fa-key fa-2x me-3" style={{ "color": " #000" }}></i>
@@ -143,7 +153,7 @@ function Register() {
                                             <b>Confirm</b><input className="btn btn-dark btn-lg btn-block" type="checkbox" onClick={addData} value="Confirm"/>
                                             </div>
                                             <div className="pt-1 mb-4">
-                                                <button className="btn btn-dark btn-lg btn-block" type="button" onClick={onFileChangeHandler}>Register</button>
+                                                <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={onFileChangeHandler}>Register</button>
                                             </div>
 
                                             <div className="pt-1 mb-4">

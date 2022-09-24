@@ -44,7 +44,7 @@ const Contact = () => {
           <Card>
             <Card.Img variant="top" src={emergency} />
             <Card.Body>
-              <Card.Title>Customer Emergrncy</Card.Title>
+              <Card.Title>Customer Emergency</Card.Title>
               <Card.Text>
                 In an emergency situation, it is all too easy to become disoriented. But with a little bit of preparation, we can ensure that you can go through emergencies in the best possible way
               </Card.Text>
