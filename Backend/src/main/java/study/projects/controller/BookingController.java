@@ -30,6 +30,7 @@ public class BookingController {
 		String messege="";		
 		try {
 			temp.update("insert into booking (ride_id,user_id,number_of_seats,booking_date,amount) values(?,?,?,?,?)",booking.getRide_id(),booking.getUser_id(),booking.getNumber_of_seats(),booking.getBooking_date(),booking.getAmount());
+			temp.update("update  ride set available_seats=total_seats-"+booking.getNumber_of_seats());
 			messege="Ticket Booked Successfully You Will Get Confirmation By Driver";
 
 		} catch (DataAccessException e) {
@@ -100,6 +101,8 @@ public class BookingController {
 		String messege="";
 		try {
 		temp.update(queryString);
+		int booked_seat=temp.queryForObject("select number_of_seats from booking where booking_id="+id,Integer.class);
+		temp.update("update ride  set available_seats=available_seats+"+booked_seat);
 		messege="Seat Rejected";
 		} catch (DataAccessException e) {
 			messege="Query Failed";
@@ -115,6 +118,8 @@ public class BookingController {
 		String messege="";
 		try {
 		temp.update(queryString);
+		int booked_seat=temp.queryForObject("select number_of_seats from booking where booking_id="+id,Integer.class);
+		temp.update("update ride  set available_seats=available_seats+"+booked_seat);
 		messege="Seat Rejected";
 		} catch (DataAccessException e) {
 			messege="Query Failed";

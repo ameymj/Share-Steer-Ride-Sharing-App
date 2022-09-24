@@ -3,7 +3,7 @@ import Welcome from './welcome.webp';
 import Reception from './reception.webp';
 import Journey from './journey.jpg';
 import axios from 'axios';
-import '../../App.css'
+// import '../../App.css'
 
 
 function Register() {
@@ -72,7 +72,6 @@ function Register() {
     };
 
     return (
-        <section>
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col col-xl-10">
@@ -174,7 +173,6 @@ function Register() {
                     </div>
                 </div>
             </div>
-        </section>
     );
 }
 

@@ -1,53 +1,52 @@
 import { useEffect, useState } from 'react';
 import Rating from './rating.jpg';
 import Reviews from './review.jpg';
-import { useNavigate } from 'react-router';
-import {useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { ReactSession } from 'react-client-session';
 
-export default function Review(props)
-{
+export default function Review(props) {
     const user = ReactSession.get('user');
 
     const [star, setStar] = useState("");
     const [review, setReview] = useState("");
     const [message, setMessage] = useState("");
 
-    const [driver,setDriver]= useState("");
-    const ride=props.myd;
+    const [driver, setDriver] = useState("");
+    const ride = props.myd;
 
 
-     function ThirdPage(){
+    function ThirdPage() {
         console.log(ride);
-        useEffect(()=>{
-        axios.get("http://localhost:8080/sharesteer/getUser/"+ride)
-        .then((response)=>{setDriver(response.data)})
-        .catch((error)=>{console.log(error)})
-        
-    },[])
-}
+        useEffect(() => {
+            axios.get("http://localhost:8080/sharesteer/getUser/" + ride)
+                .then((response) => { setDriver(response.data) })
+                .catch((error) => { console.log(error) })
 
-      ThirdPage();
-      
-    function rate()
-    {
+        }, [])
+    }
+
+    ThirdPage();
+
+    function rate() {
         const rating = {}
         rating.driver_id = driver.user_id;
         rating.user_id = user.user_id;
         rating.rating = star;
-        rating.comment= review;
+        rating.comment = review;
 
-    axios.post("http://localhost:8080/sharesteer/giverating/",rating)
-    .then((response)=>{setMessage(response.data)})
-    .catch((error)=>{console.log(error)})
+        if(star==""||review=="")
+        {
+            setMessage("Select stars Field");
+            return;
+        }
+        
+
+        axios.post("http://localhost:8080/sharesteer/giverating/", rating)
+            .then((response) => { setMessage(response.data) })
+            .catch((error) => { console.log(error) })
     }
-
-      
-    
-
-    return(
-    <section>
+    return (
+        <section>
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col col-xl-10">
@@ -69,23 +68,24 @@ export default function Review(props)
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="text" id="form2Example27" className="form-control form-control-lg" readOnly value={driver.first_name+" "+driver.last_name} />
+                                                <input type="text" id="form2Example27" className="form-control form-control-lg" readOnly value={driver.first_name + " " + driver.last_name} />
                                                 <label className="form-label">Driver Name</label>
-                                            </div>   
+                                            </div>
 
                                             <div className="form-outline mb-4">
-                                            <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setStar(e.target.value) }}>
-                                                        <option value="1">&#11088;</option>
-                                                        <option value="2">&#11088; &#11088;</option>
-                                                        <option value="3">&#11088; &#11088; &#11088;</option>
-                                                        <option value="4">&#11088; &#11088; &#11088; &#11088;</option>
-                                                        <option value="5">&#11088; &#11088; &#11088; &#11088; &#11088;</option>
-                                                    </select>
+                                                <select className="form-select btn btn-dark btn-lg btn-block" aria-label="Default select example" onChange={(e) => { setStar(e.target.value) }}>
+                                                    <option value="">select</option>
+                                                    <option value="1">&#11088;</option>
+                                                    <option value="2">&#11088; &#11088;</option>
+                                                    <option value="3">&#11088; &#11088; &#11088;</option>
+                                                    <option value="4">&#11088; &#11088; &#11088; &#11088;</option>
+                                                    <option value="5">&#11088; &#11088; &#11088; &#11088; &#11088;</option>
+                                                </select>
                                                 <label className="form-label">Rate out of 5 </label>
                                             </div>
 
                                             <div className="form-outline mb-4">
-                                                <input type="text" id="form2Example27" className="form-control form-control-lg"  onBlur={(e) => { setReview(e.target.value) }} />
+                                                <input type="text" id="form2Example27" className="form-control form-control-lg" onBlur={(e) => { setReview(e.target.value) }} />
                                                 <label className="form-label">Write comment</label>
                                             </div>
 
@@ -93,7 +93,6 @@ export default function Review(props)
                                                 <b>{message}</b>
                                                 <button className="btn btn-dark btn-lg btn-block" type="submit" onClick={rate}>Submit Review</button>
                                             </div>
-    
                                         </form>
                                     </div>
                                 </div>
@@ -103,5 +102,5 @@ export default function Review(props)
                 </div>
             </div>
         </section>
-        );
+    );
 }
