@@ -58,7 +58,6 @@ function BookRide(props) {
     }
 
     return (
-        <section>
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col col-xl-10">
@@ -109,7 +108,7 @@ function BookRide(props) {
                                             <b>{messege}</b>
 
                                             <div className="pt-1 mb-4">
-                                                <b className="btn btn-dark btn-lg btn-block" type="button" onClick={Book}>BookRide</b>
+                                                <b className="btn btn-dark btn-lg btn-block" type="submit" onClick={Book}>BookRide</b>
                                             </div>
                                         </form>
 
@@ -120,7 +119,6 @@ function BookRide(props) {
                     </div>
                 </div>
             </div>
-        </section>
     );
 }
 

@@ -64,7 +64,6 @@ export default function UpdateRide(props) {
   }
 
   return (
-    <section>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10">
@@ -153,6 +152,5 @@ export default function UpdateRide(props) {
           </div>
         </div>
       </div>
-    </section>
   )
 }

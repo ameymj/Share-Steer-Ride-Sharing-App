@@ -123,7 +123,7 @@ export default function PostRide() {
 
 
   return (
-    <section>
+    <div>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10">
@@ -140,7 +140,7 @@ export default function PostRide() {
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-5 text-black" style={{ 'backgroundColor': 'lightskyblue' }}>
 
-                    <form action='/ridehistory'>
+                    <form action='/upcomingrides'>
 
                       <div className="d-flex align-items-center mb-3 pb-1">
                         <i className="fas fa-taxi fa-2x me-3" style={{ "color": " #000" }}></i>
@@ -207,7 +207,7 @@ export default function PostRide() {
                           <option value="true">Only-Females</option>
                           <option value="false">None</option>
                         </select>
-                        <label className="form-label">gender</label>
+                        <label className="form-label">Type</label>
                       </div>
 
                       <div className="form-outline mb-4">
@@ -236,6 +236,6 @@ export default function PostRide() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

@@ -49,7 +49,7 @@ function UpdateProfile() {
     }
 
     return (
-       <section>
+       <div>
               <h1 style={{'textAlign':'center'}}><b><u>Update Profile</u></b></h1>
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
@@ -128,7 +128,7 @@ function UpdateProfile() {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
 
