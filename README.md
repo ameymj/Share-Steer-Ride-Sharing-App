@@ -44,7 +44,7 @@ A Real-Time Route Tracking system is provided for both users.
 Any anonymous User will be able to view different Rides available for booking. Any User will be able to select rides available based on categories and can promote further after registration only. 
 To facilitate, perfect ride users are available with feedback and a rating system which will ultimately aim to choose a perfect companion for the journey.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 
@@ -99,17 +99,20 @@ _To deploy Application follow the below instruction_
   
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Our Project is helpful to having featurs like post ride,search ride,book ride and travel with your booked vehicle.
+Our Project is helpful to having featurs like 
+post ride,
+search ride,
+book ride, 
+and travel with your booked vehicle.
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 
@@ -118,19 +121,19 @@ Our Project is helpful to having featurs like post ride,search ride,book ride an
 
 Tushar Sthul (tusharsthul121@gmail.com)
 
-Amey Joshi ()
+Amey Joshi (amey.joshi0929@gmail.com)
 
-Mahesh Shinde ()
+Mahesh Shinde (shindemahesh1226@gmail.com)
 
-Naman Saxena ()
+Naman Saxena (namasaxena00@gmail.com)
 
-Swapnil Kalange ()
+Swapnil Kalange (swapnilkalange1996@gmail.com)
 
-Prajakta Mutyalwar ()
+Prajakta Mutyalwar (prajaktamutyalwar19@gmail.com)
 
 Project Link: [https://github.com/ameymj/Share-Steer-Ride-Sharing-App](https://github.com/your_username/repo_name)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 
@@ -139,4 +142,14 @@ Project Link: [https://github.com/ameymj/Share-Steer-Ride-Sharing-App](https://g
 
 We would like to express our sincere thanks and gratitude to IET(Institute Of Emerging Technology Pune) for letting us work on this project. we are very grateful to all teachers for their support and guidance in completing this project.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Let's GO
+
+![Project Image1](Images/LoginPage.png)
+![Project Image1](Images/Register.Page.png)
+![Project Image1](Images/SearchRide.png)
+![Project Image1](Images/PostRide.png)
+![Project Image1](Images/BookRide.png)
+![Project Image1](Images/AboutPage.png)
+![Project Image1](Images/Testimonial.png)
+---
